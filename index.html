@@ -18,7 +18,7 @@
 				for (var j = 0; j< jsonObj.length; j++) {
 					var newItem = document.createElement('li');
 					var newImage = document.createElement('IMG');
-					newImage.src = jsonObj[j].image;
+					newImage.src = '/' + jsonObj[j].image;
 					newItem.appendChild(newImage);
 					myList.appendChild(newItem);
 				}
