@@ -9,11 +9,23 @@
 			request.send();
 			request.onload = function() {
 				var attackModifiers = request.response;
-				console.log(JSON.stringify(attackModifiers));
+				populateDeck(attackModifiers);
+			}
+
+			function populateDeck(jsonObj) {
+				var deckElem = document.getElementById("deck");
+				var myList = document.createElement('ul');
+				for (var j = 0; j< jsonObj.length; j++) {
+					var newItem = document.createElement('li');
+					newItem.textContent = '<img src="' + jsonObj[1].image + '">';
+					myList.appendChild(newItem);
+				}
+				deckElem.appendChild(myList);
 			}
 			</script>
 	</head>
 	<body>
 		<img src="/images/character-mats/spellweaver.png">
+		<div id="deck"></div>
 	</body>
 </html>
