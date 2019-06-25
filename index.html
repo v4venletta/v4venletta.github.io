@@ -8,6 +8,14 @@
 	<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script type="text/javascript">
+	function drawCard() {
+		var discardPile = document.getElementById("discard");
+		var min = 0;
+		var max = 20;
+		var random = Math.floor(Math.random() * (+max - +min)) + +min;
+		discardPile.url = '/images/' + attackModifiers[random].image;
+	}
+
 		var attackModifiers;
 		var request = new XMLHttpRequest();
 		request.open('GET', '/data/attack-modifiers.js');
@@ -30,13 +38,6 @@
 				myList.appendChild(newItem);*/
 			}
 			/*deckElem.appendChild(myList);*/
-			function drawCard() {
-				var discardPile = document.getElementById("discard");
-				var min = 0;
-				var max = 20;
-				var random = Math.floor(Math.random() * (+max - +min)) + +min;
-				discardPile.url = '/images/' + attackModifiers[random].image;
-			}
 
 
 
