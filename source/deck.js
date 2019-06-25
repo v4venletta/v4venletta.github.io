@@ -1,32 +1,44 @@
 class Deck {
 	constructor () {
-		this.drawPile = {};
-		this.discardPile = {};
+		this.drawPile = [];
+		this.discardPile = [];
+
+		this.populateBaseDeck();
 	}
 
+	// addCard(){
+
+	// }
+
+	// removeCard(){
+
+	// }
+
 	//Draw Function
-	function draw(){
+	draw(){
 		var drawnCard = this.drawPile.pop();
 		this.discardPile.push(drawnCard);
 		return drawnCard;
 	}
 
 	//
-	function advantageDraw(){
+	advantageDraw(){
 		
-		var cards = []
+		var cards = [];
 		cards.push(this.drawPile.pop())
 		cards.push(this.drawPile.pop());
+		this.discardPile = this.discardPile.concat(cards);
+
 		//V2 would determine which card was more valuable automatically if possible.
 		return cards;
 	}
-	function disadvantageDraw(){
-		//V2
-		this.advantageDraw();
+	disadvantageDraw(){
+		//V2 would handle this differently than advantageDraw
+		return this.advantageDraw();
 	}
 
 	//Shuffles only the draw pile.  Used for blessings, curses and negative scenario effects.
-	function shuffle(){
+	shuffle(){
 		let m = this.drawPile.length, i;
 
 		while (m) {
@@ -36,28 +48,46 @@ class Deck {
 	}
 
 	//Shuffles the draw and discard pile together.
-	function shuffleAll(){
+	shuffleAll(){
 		this.drawPile = this.drawPile.concat(this.discardPile);
 		this.discardPile = [];
 		this.shuffle();
 	}
 
+	//Total deck length
 	get length(){
 		return this.drawPile.length + this.discardPile.length;
 	}
 
-	// function setClass(class){
+	get lengthOfDrawPile(){
+		return this.drawPile.length;
+	}
+
+	get lengthOfDiscardPile(){
+		return this.discardPile.length;
+	}
+
+	//Not sure if I need these
+	// get drawPile() {
+	// 	return this.drawPile;
+	// }
+
+	// get discardPile() {
+	// 	return this.discardPile;
+	// }
+
+	// setClass(strClass){
 	// 	this.class = class
 	// }
 
-	//Pull in the JSON and return an array.
-	function populateDeck(){
+	/*Pull in the JSON and return an array.*/
+	populateBaseDeck(){
 		var request = new XMLHttpRequest();
 		request.open('GET', '/data/attack-modifiers.js');
 		request.responseType = 'json';
 		request.send();
 		request.onload = function() {
-			attackModifiers = request.response;
+			this.drawPile = request.response;
 			/*populateDeck(attackModifiers);*/
 		}
 	}

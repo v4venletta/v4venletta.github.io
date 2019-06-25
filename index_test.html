@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+
+<head>
+	<title>Attack Modifiers Test</title>
+	<link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+	<script src="/source/deck.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript">
+		function doStuff(){
+			var activeDeck = new Deck();
+			console.log(activeDeck.length);
+		}		
+	</script>
+	<meta name="viewport" content="width=device-width">
+</head>
+
+<body>
+	<!--<img src="/images/character-mats/spellweaver.png">-->
+	<header>
+		<div class="mdc-top-app-bar__row mdc-top-app-bar--fixed">
+			<section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+				<a href="#" class="material-icons mdc-top-app-bar__navigation-icon">menu</a>
+				<span class="mdc-top-app-bar__title">Attack Modifiers</span>
+			</section>
+		</div>
+	</header>
+	<div class="mdc-layout-grid">
+		<div class="mdc-layout-grid__inner">
+			<button type="button" onclick="doStuff()">Click</button>
+		</div>
+	</div>
+	<div id="deck"></div>
+</body>
+
+</html>
