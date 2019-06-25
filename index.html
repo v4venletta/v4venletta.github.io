@@ -1,33 +1,39 @@
 <!doctype html>
 <html>
-	<head>
-		<title>This is the title of the webpage!</title>.
-		<script type="text/javascript" >
-			var request = new XMLHttpRequest();
-			request.open('GET','/data/attack-modifiers.js');
-			request.responseType = 'json';
-			request.send();
-			request.onload = function() {
-				var attackModifiers = request.response;
-				populateDeck(attackModifiers);
-			}
 
-			function populateDeck(jsonObj) {
-				var deckElem = document.getElementById("deck");
-				var myList = document.createElement('ul');
-				for (var j = 0; j< jsonObj.length; j++) {
-					var newItem = document.createElement('li');
-					var newImage = document.createElement('IMG');
-					newImage.src = '/images/' + jsonObj[j].image;
-					newItem.appendChild(newImage);
-					myList.appendChild(newItem);
-				}
-				deckElem.appendChild(myList);
+<head>
+	<title>Attack Modifiers</title>
+	<link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+	<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript">
+		var request = new XMLHttpRequest();
+		request.open('GET', '/data/attack-modifiers.js');
+		request.responseType = 'json';
+		request.send();
+		request.onload = function() {
+			var attackModifiers = request.response;
+			populateDeck(attackModifiers);
+		}
+
+		function populateDeck(jsonObj) {
+			var deckElem = document.getElementById("deck");
+			var myList = document.createElement('ul');
+			for (var j = 0; j < jsonObj.length; j++) {
+				var newItem = document.createElement('li');
+				var newImage = document.createElement('IMG');
+				newImage.src = '/images/' + jsonObj[j].image;
+				newItem.appendChild(newImage);
+				myList.appendChild(newItem);
 			}
-			</script>
-	</head>
-	<body>
-		<img src="/images/character-mats/spellweaver.png">
-		<div id="deck"></div>
-	</body>
+			deckElem.appendChild(myList);
+		}
+	</script>
+</head>
+
+<body>
+	<img src="/images/character-mats/spellweaver.png">
+	<div id="deck"></div>
+</body>
+
 </html>
