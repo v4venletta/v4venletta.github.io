@@ -14,7 +14,7 @@
 		request.send();
 		request.onload = function() {
 			var attackModifiers = request.response;
-			populateDeck(attackModifiers);
+			/*populateDeck(attackModifiers);*/
 		}
 
 		function populateDeck(jsonObj) {
@@ -34,9 +34,17 @@
 
 <body>
 	<!--<img src="/images/character-mats/spellweaver.png">-->
+	<header>
+		<div class="mdc-top-app-bar__row">
+	<section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+		<a href="#" class="material-icons mdc-top-app-bar__navigation-icon">menu</a>
+		<span class="mdc-top-app-bar__title">Attack Modifiers</span>
+	</section>
+</div>
+	</header>
 	<div class="mdc-layout-grid">
   <div class="mdc-layout-grid__inner">
-    <img class="mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-12-phone mdc-card rounded" src="/images/attack-modifiers/top-small.jpg">
+    <img class="mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-10-tablet mdc-layout-grid__cell--span-12-phone mdc-card rounded" src="/images/attack-modifiers/top-small.jpg">
 
   </div>
 </div>
