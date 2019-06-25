@@ -29,13 +29,14 @@
 				myList.appendChild(newItem);*/
 			}
 			/*deckElem.appendChild(myList);*/
-			var drawCard = function () {
+			function drawCard() {
 				var discardPile = document.getElementById("discard");
 				var min=0;
     		var max=20;
     	var random =Math.floor(Math.random() * (+max - +min)) + +min;
 			discardPile.url = '/images/' + attackModifiers[random].image;
 			}
+			document.getElementById ("hand").addEventListener ("click", drawCard, false);
 		}
 	</script>
 </head>
@@ -52,8 +53,8 @@
 	</header>
 	<div class="mdc-layout-grid">
   <div class="mdc-layout-grid__inner">
-    <img onClick="drawCard()" class="mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-10-tablet mdc-layout-grid__cell--span-12-phone mdc-card rounded" src="/images/attack-modifiers/top-small.jpg">
-		<img id="discard" style="background-color:gray" class="mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-10-tablet mdc-layout-grid__cell--span-12-phone mdc-card rounded" src="">
+    <img id="hand" class="mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-10-tablet mdc-layout-grid__cell--span-12-phone mdc-card rounded" src="/images/attack-modifiers/top-small.jpg">
+		<img id="discard" class="mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-10-tablet mdc-layout-grid__cell--span-12-phone mdc-card rounded" src="">
 
   </div>
 </div>
