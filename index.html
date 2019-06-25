@@ -4,6 +4,7 @@
 <head>
 	<title>Attack Modifiers</title>
 	<link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script type="text/javascript">
@@ -23,16 +24,20 @@
 				var newItem = document.createElement('li');
 				var newImage = document.createElement('IMG');
 				newImage.src = '/images/' + jsonObj[j].image;
-				newItem.appendChild(newImage);
-				myList.appendChild(newItem);
+				/*newItem.appendChild(newImage);
+				myList.appendChild(newItem);*/
 			}
-			deckElem.appendChild(myList);
+			/*deckElem.appendChild(myList);*/
 		}
 	</script>
 </head>
 
 <body>
-	<img src="/images/character-mats/spellweaver.png">
+	<!--<img src="/images/character-mats/spellweaver.png">-->
+	<div class="mdc-card">
+  <!-- ... content ... -->
+	<img src="/images/attack-modifiers/top-small.jpg">
+</div>
 	<div id="deck"></div>
 </body>
 
