@@ -8,22 +8,23 @@
 	<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script type="text/javascript">
-	function drawCard() {
-		var discardPile = document.getElementById("discard");
-		var min = 0;
-		var max = 20;
-		var random = Math.floor(Math.random() * (+max - +min)) + +min;
-		discardPile.url = '/images/' + attackModifiers[random].image;
-	}
-
 		var attackModifiers;
+
+		function drawCard() {
+			var discardPile = document.getElementById("discard");
+			var min = 0;
+			var max = 20;
+			var random = Math.floor(Math.random() * (+max - +min)) + +min;
+			discardPile.url = '/images/' + attackModifiers[random].image;
+		}
+
+
 		var request = new XMLHttpRequest();
 		request.open('GET', '/data/attack-modifiers.js');
 		request.responseType = 'json';
 		request.send();
 		request.onload = function() {
 			attackModifiers = request.response;
-			document.getElementById("hand").addEventListener("click", drawCard, false);
 			/*populateDeck(attackModifiers);*/
 		}
 
@@ -57,7 +58,7 @@
 	</header>
 	<div class="mdc-layout-grid">
 		<div class="mdc-layout-grid__inner">
-			<img id="hand" class="mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-10-tablet mdc-layout-grid__cell--span-12-phone mdc-card rounded" src="/images/attack-modifiers/top-small.jpg">
+			<img id="hand" onClick="drawCard()" class="mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-10-tablet mdc-layout-grid__cell--span-12-phone mdc-card rounded" src="/images/attack-modifiers/top-small.jpg">
 			<img id="discard" class="mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-10-tablet mdc-layout-grid__cell--span-12-phone mdc-card rounded" src="">
 
 		</div>
