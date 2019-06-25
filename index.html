@@ -17,14 +17,14 @@
 		function drawCard() {
 			var discardPile = document.getElementById("discard");
 			var min = 0;
-			var max = 20;
+			var max = attackModifiers.length;
 			var random = Math.floor(Math.random() * (+max - +min)) + +min;
 			discardPile.src = '/images/' + attackModifiers[random].image;
 		}
 
 
 		var request = new XMLHttpRequest();
-		request.open('GET', '/data/attack-modifiers.js');
+		request.open('GET', '/data/am_base_player.js');
 		request.responseType = 'json';
 		request.send();
 		request.onload = function() {
