@@ -1,18 +1,21 @@
 class Deck {
-	constructor () {
-		this.drawPile = [];
+	constructor (jsonObj) {
+		this.drawPile = jsonObj 
 		this.discardPile = [];
-
-		this.populateBaseDeck();
+		//this.loadBaseDeck();
 	}
 
-	// addCard(){
+	addCard(jsonCardObj){
 
-	// }
+	}
 
-	// removeCard(){
+	removeCard(jsonCardObjd){
 
-	// }
+	}
+
+	removeCardByIndex(index){
+		this.drawPile = this.drawPile.splice(index, 1);
+	}
 
 	//Draw Function
 	draw(){
@@ -59,36 +62,7 @@ class Deck {
 		return this.drawPile.length + this.discardPile.length;
 	}
 
-	get lengthOfDrawPile(){
-		return this.drawPile.length;
-	}
-
-	get lengthOfDiscardPile(){
-		return this.discardPile.length;
-	}
-
-	//Not sure if I need these
-	// get drawPile() {
-	// 	return this.drawPile;
-	// }
-
-	// get discardPile() {
-	// 	return this.discardPile;
-	// }
-
 	// setClass(strClass){
 	// 	this.class = class
 	// }
-
-	/*Pull in the JSON and return an array.*/
-	populateBaseDeck(){
-		var request = new XMLHttpRequest();
-		request.open('GET', '/data/attack-modifiers.js');
-		request.responseType = 'json';
-		request.send();
-		request.onload = function() {
-			this.drawPile = request.response;
-			/*populateDeck(attackModifiers);*/
-		}
-	}
 }

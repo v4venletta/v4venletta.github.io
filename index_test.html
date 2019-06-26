@@ -6,12 +6,22 @@
 	<link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+	<script
+		  src="https://code.jquery.com/jquery-3.4.1.min.js"
+		  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		  crossorigin="anonymous">
+	  	
+	</script>
 	<script src="/source/deck.js"></script>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script type="text/javascript">
 		function doStuff(){
-			var activeDeck = new Deck();
-			console.log(activeDeck.length);
+			var activeDeck;
+			$.getJSON("/data/am_base_player.js", {data: "value"}, function(json){
+				activeDeck = new Deck(json);
+				activeDeck.draw();
+				console.log("activeDeck");
+			});
 		}		
 	</script>
 	<meta name="viewport" content="width=device-width">
