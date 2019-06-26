@@ -8,3 +8,5 @@ topAppBar.setScrollTarget(document.getElementById('main-content'));
 topAppBar.listen('MDCTopAppBar:nav', () => {
   drawer.open = !drawer.open;
 });
+
+import {MDCList} from "@material/list";

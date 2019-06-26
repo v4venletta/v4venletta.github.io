@@ -1,1 +1,39 @@
 @import "@material/top-app-bar/mdc-top-app-bar";
+
+body {
+  background-image: url('/images/background.jpg');
+  background-repeat: no-repeat;
+ background-attachment: fixed;
+ display: flex;
+ height: 100vh;
+ font-family: 'Pirata One';
+}
+
+.rounded {
+  border-radius: 35px;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+
+.mdc-drawer-app-content {
+  flex: auto;
+  overflow: auto;
+  position: relative;
+}
+
+.main-content {
+  overflow: auto;
+  height: 100%;
+}
+
+.app-bar {
+  position: absolute;
+  background: none;
+}
+
+// only apply this style if below top app bar
+.mdc-top-app-bar {
+  z-index: 7;
+}
