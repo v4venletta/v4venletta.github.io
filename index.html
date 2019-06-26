@@ -43,16 +43,21 @@
 				myList.appendChild(newItem);*/
 			}
 			/*deckElem.appendChild(myList);*/
-
-
-
 		}
+		mdc.autoInit();
+
+var drawer = new mdc.drawer.MDCDrawer(document.querySelector('.mdc-drawer'));
+const topAppBar = mdc.topAppBar.MDCTopAppBar.attachTo(document.getElementById('app-bar'));
+topAppBar.setScrollTarget(document.getElementById('main-content'));
+topAppBar.listen('MDCTopAppBar:nav', () => {
+  drawer.open = !drawer.open;
+});
 	</script>
 	<meta name="viewport" content="width=device-width">
 </head>
 
 <body>
-	<!--<img src="/images/character-mats/spellweaver.png">-->
+	<!--<img src="/images/character-mats/spellweaver.png">
 	<header>
 		<div class="mdc-top-app-bar__row mdc-top-app-bar--fixed">
 			<section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
@@ -61,6 +66,7 @@
 			</section>
 		</div>
 	</header>
+
 	<div class="mdc-layout-grid">
 		<div class="mdc-layout-grid__inner">
 			<img id="hand" onClick="drawCard()" class="mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-10-tablet mdc-layout-grid__cell--span-12-phone mdc-card rounded" src="/images/attack-modifiers/top-small.jpg">
@@ -68,7 +74,42 @@
 
 		</div>
 	</div>
-	<div id="deck"></div>
+	<div id="deck"></div>-->
+	<aside class="mdc-drawer mdc-drawer--dismissible">
+    <div class="mdc-drawer__content">
+      <div class="mdc-list">
+        <a class="mdc-list-item mdc-list-item--activated" href="#" aria-current="page">
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">inbox</i>
+          <span class="mdc-list-item__text">Inbox</span>
+        </a>
+        <a class="mdc-list-item" href="#">
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">send</i>
+          <span class="mdc-list-item__text">Outgoing</span>
+        </a>
+        <a class="mdc-list-item" href="#">
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">drafts</i>
+          <span class="mdc-list-item__text">Drafts</span>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <div class="mdc-drawer-app-content">
+    <header class="mdc-top-app-bar app-bar" id="app-bar">
+      <div class="mdc-top-app-bar__row">
+        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+          <a href="#" class="demo-menu material-icons mdc-top-app-bar__navigation-icon">menu</a>
+          <span class="mdc-top-app-bar__title">Dismissible Drawer</span>
+        </section>
+      </div>
+    </header>
+
+    <main class="main-content" id="main-content">
+      <div class="mdc-top-app-bar--fixed-adjust">
+        App Content
+      </div>
+    </main>
+  </div>
 </body>
 
 </html>
