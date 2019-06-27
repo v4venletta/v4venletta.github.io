@@ -1,0 +1,56 @@
+@import "@material/top-app-bar/mdc-top-app-bar";
+@import "@material/drawer/mdc-drawer";
+@import "@material/list/mdc-list";
+
+body {
+  background-image: url('/images/background.jpg');
+  background-repeat: no-repeat;
+ background-attachment: fixed;
+ display: flex;
+ height: 100vh;
+ font-family: 'Pirata One';
+}
+
+
+.attempt{
+  @include mdc-drawer-width(300px);
+}
+.mdc-drawer__content {
+  background-image: url('/images/gloommap.jpg');
+  background-repeat: no-repeat;
+ background-attachment: fixed;
+ height: 100%;
+
+}
+.mdc-list-item__text {
+  font-family: 'Pirata One';
+  font-size: 24px;
+}
+.rounded {
+  border-radius: 35px;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+
+.mdc-drawer-app-content {
+  flex: auto;
+  overflow: auto;
+  position: relative;
+}
+
+.main-content {
+  overflow: auto;
+  height: 100%;
+}
+
+.app-bar {
+  position: absolute;
+  background: none;
+}
+
+// only apply this style if below top app bar
+.mdc-top-app-bar {
+  z-index: 7;
+}
