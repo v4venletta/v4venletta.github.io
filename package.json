@@ -19,6 +19,8 @@
   },
   "dependencies": {
     "@material/drawer": "^3.0.0",
+    "@material/menu": "^3.0.0",
+    "@material/select": "^3.0.0",
     "@material/top-app-bar": "^3.0.0"
   },
   "devDependencies": {

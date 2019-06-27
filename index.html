@@ -1,75 +1,82 @@
 <!doctype html>
 <html>
-
-<head>
-	<title>Attack Modifiers</title>
-	<link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-	<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-	<link href='https://fonts.googleapis.com/css?family=Pirata One' rel='stylesheet'>
-	<script src="bundle.js" async></script>
-	<link rel="stylesheet" href="bundle.css">
-	<script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
-	<meta name="viewport" content="width=device-width">
-	<script type="text/javascript">
-	var attackModifiers;
-
-	function drawCard() {
-	  var discardPile = document.getElementById("discard");
-	  var min = 0;
-	  var max = attackModifiers.length;
-	  var random = Math.floor(Math.random() * (+max - +min)) + +min;
-	  discardPile.src = '/images/' + attackModifiers[random].image;
-	}
-
-
-	var request = new XMLHttpRequest();
-	request.open('GET', '/data/am_base_player.js');
-	request.responseType = 'json';
-	request.send();
-	request.onload = function() {
-	  attackModifiers = request.response;
-	  /*populateDeck(attackModifiers);*/
-	}
-
-	function populateDeck(jsonObj) {
-	  var deckElem = document.getElementById("deck");
-	  var myList = document.createElement('ul');
-	  for (var j = 0; j < jsonObj.length; j++) {
-	    var newItem = document.createElement('li');
-	    var newImage = document.createElement('IMG');
-	    newImage.src = '/images/' + jsonObj[j].image;
-	    /*newItem.appendChild(newImage);
-	    myList.appendChild(newItem);*/
-	  }
-	  /*deckElem.appendChild(myList);*/
-	}
-
-	</script>
-</head>
-
-<body>
-	<aside class="mdc-drawer mdc-drawer--dismissible attempt" style="margin-top:-10px">
-	    <div class="mdc-drawer__content">
-	      <div class="mdc-list">
-	        <a class="mdc-list-item mdc-list-item--activated" href="#" aria-current="page">
-	          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">inbox</i>
-	          <span class="mdc-list-item__text">Inbox</span>
-	        </a>
-	        <a class="mdc-list-item" href="#">
-	          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">send</i>
-	          <span class="mdc-list-item__text">Outgoing</span>
-	        </a>
-	        <a class="mdc-list-item" href="#">
-	          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">drafts</i>
-	          <span class="mdc-list-item__text">Drafts</span>
-	        </a>
-	      </div>
-	    </div>
-	  </aside>
+	<head>
+		<title>Attack Modifiers</title>
+		<link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+		<link href='https://fonts.googleapis.com/css?family=Pirata One' rel='stylesheet'>
+		<script src="bundle.js" async></script>
+		<link rel="stylesheet" href="bundle.css">
+		<script
+		src="https://code.jquery.com/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		crossorigin="anonymous"></script>
+		<meta name="viewport" content="width=device-width">
+		<script type="text/javascript">
+		var attackModifiers;
+		function drawCard() {
+		var discardPile = document.getElementById("discard");
+		var min = 0;
+		var max = attackModifiers.length;
+		var random = Math.floor(Math.random() * (+max - +min)) + +min;
+		discardPile.src = '/images/' + attackModifiers[random].image;
+		}
+		var request = new XMLHttpRequest();
+		request.open('GET', '/data/am_base_player.js');
+		request.responseType = 'json';
+		request.send();
+		request.onload = function() {
+		attackModifiers = request.response;
+		/*populateDeck(attackModifiers);*/
+		}
+		function populateDeck(jsonObj) {
+		var deckElem = document.getElementById("deck");
+		var myList = document.createElement('ul');
+		for (var j = 0; j < jsonObj.length; j++) {
+		var newItem = document.createElement('li');
+		var newImage = document.createElement('IMG');
+		newImage.src = '/images/' + jsonObj[j].image;
+		/*newItem.appendChild(newImage);
+		myList.appendChild(newItem);*/
+		}
+		/*deckElem.appendChild(myList);*/
+		}
+		</script>
+	</head>
+	<body>
+		<aside class="mdc-drawer mdc-drawer--dismissible attempt" style="margin-top:-10px">
+			<div class="mdc-drawer__content">
+				<div class="mdc-list">
+					<a class="mdc-list-item mdc-list-item--activated" href="#" aria-current="page" style="height:75px;">
+						<div class="mdc-select" style="background:none;">
+								<input type="hidden" name="enhanced-select">
+								<i class="mdc-select__dropdown-icon"></i>
+								<div class="mdc-select__selected-text" style="font-family: 'Pirata One';font-size:24px;"></div>
+								<div class="mdc-select__menu mdc-menu mdc-menu-surface demo-width-class" >
+									<ul class="mdc-list" style="font-family: 'Pirata One';font-size:24px">
+										
+										<li class="mdc-list-item" data-value="grains">
+											<img style="width:60px;height:50px" src="/images/class-icons/brute.png"><p style="padding:10px">Brute</p>
+										</li>
+										
+									</ul>
+								</div>
+								<span class="mdc-floating-label" style="font-family: 'Pirata One';font-size:24px;">Pick a class</span>
+								<div class="mdc-line-ripple" ></div>
+							</div>
+					</a>
+					<a class="mdc-list-item" href="#">
+						<i class="material-icons mdc-list-item__graphic" aria-hidden="true">send</i>
+						<span class="mdc-list-item__text">Outgoing</span>
+					</a>
+					<a class="mdc-list-item" href="#">
+						<i class="material-icons mdc-list-item__graphic" aria-hidden="true">drafts</i>
+						<span class="mdc-list-item__text">Drafts</span>
+					</a>
+				</div>
+			</div>
+		</aside>
 		<div class="mdc-drawer-app-content">
 			<header class="mdc-top-app-bar app-bar" id="app-bar">
 				<div class="mdc-top-app-bar__row">
@@ -79,55 +86,49 @@
 					</section>
 				</div>
 			</header>
-
-			<main class="main-content" id="main-content">
-				<div class="mdc-top-app-bar--fixed-adjust">
-					<div class="mdc-layout-grid">
-						<div class="mdc-layout-grid__inner">
-							<img id="hand" onClick="drawCard()" class="mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-10-tablet mdc-layout-grid__cell--span-12-phone mdc-card rounded" src="/images/attack-modifiers/top-small.jpg">
-							<img id="discard" class="mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-10-tablet mdc-layout-grid__cell--span-12-phone mdc-card rounded" src="">
-
-						</div>
+			<main class="main-content" id="main-content" style="margin-top:30px;">
+				
+				<div class="mdc-layout-grid">
+					<div class="mdc-layout-grid__inner">
+						<img id="hand" onClick="drawCard()" class="mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-10-tablet mdc-layout-grid__cell--span-12-phone mdc-card rounded" src="/images/attack-modifiers/top-small.jpg">
+						<img id="discard" class="mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-10-tablet mdc-layout-grid__cell--span-12-phone mdc-card rounded" src="">
 					</div>
 				</div>
+				
 			</main>
 		</div>
-
-<!--	<aside class="mdc-drawer mdc-drawer--dismissible">
-    <div class="mdc-drawer__content">
-      <div class="mdc-list">
-        <a class="mdc-list-item mdc-list-item--activated" href="#" aria-current="page">
-          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">inbox</i>
-          <span class="mdc-list-item__text">Inbox</span>
-        </a>
-        <a class="mdc-list-item" href="#">
-          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">send</i>
-          <span class="mdc-list-item__text">Outgoing</span>
-        </a>
-        <a class="mdc-list-item" href="#">
-          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">drafts</i>
-          <span class="mdc-list-item__text">Drafts</span>
-        </a>
-      </div>
-    </div>
-  </aside>
-
-  <div class="mdc-drawer-app-content">
-    <header class="mdc-top-app-bar app-bar" id="app-bar">
-      <div class="mdc-top-app-bar__row">
-        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-          <a href="#" class="demo-menu material-icons mdc-top-app-bar__navigation-icon">menu</a>
-          <span class="mdc-top-app-bar__title">Dismissible Drawer</span>
-        </section>
-      </div>
-    </header>
-
-    <main class="main-content" id="main-content">
-      <div class="mdc-top-app-bar--fixed-adjust">
-        App Content
-      </div>
-    </main>
-  </div>--->
-</body>
-
+		<!--	<aside class="mdc-drawer mdc-drawer--dismissible">
+			<div class="mdc-drawer__content">
+								<div class="mdc-list">
+													<a class="mdc-list-item mdc-list-item--activated" href="#" aria-current="page">
+																		<i class="material-icons mdc-list-item__graphic" aria-hidden="true">inbox</i>
+																		<span class="mdc-list-item__text">Inbox</span>
+													</a>
+													<a class="mdc-list-item" href="#">
+																		<i class="material-icons mdc-list-item__graphic" aria-hidden="true">send</i>
+																		<span class="mdc-list-item__text">Outgoing</span>
+													</a>
+													<a class="mdc-list-item" href="#">
+																		<i class="material-icons mdc-list-item__graphic" aria-hidden="true">drafts</i>
+																		<span class="mdc-list-item__text">Drafts</span>
+													</a>
+								</div>
+			</div>
+		</aside>
+		<div class="mdc-drawer-app-content">
+			<header class="mdc-top-app-bar app-bar" id="app-bar">
+								<div class="mdc-top-app-bar__row">
+													<section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+																		<a href="#" class="demo-menu material-icons mdc-top-app-bar__navigation-icon">menu</a>
+																		<span class="mdc-top-app-bar__title">Dismissible Drawer</span>
+													</section>
+								</div>
+			</header>
+			<main class="main-content" id="main-content">
+								<div class="mdc-top-app-bar--fixed-adjust">
+													App Content
+								</div>
+			</main>
+		</div>--->
+	</body>
 </html>
