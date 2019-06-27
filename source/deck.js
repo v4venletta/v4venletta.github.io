@@ -2,29 +2,26 @@ class Deck {
 	constructor (jsonObj) {
 		this.drawPile = jsonObj 
 		this.discardPile = [];
-		//this.loadBaseDeck();
 	}
 
 	addCard(jsonCardObj){
-
+		//to-do
 	}
 
-	removeCard(jsonCardObjd){
-
+	removeCardByName(cardName){
+		//to-do
 	}
 
 	removeCardByIndex(index){
 		this.drawPile = this.drawPile.splice(index, 1);
 	}
 
-	//Draw Function
 	draw(){
 		var drawnCard = this.drawPile.pop();
 		this.discardPile.push(drawnCard);
 		return drawnCard;
 	}
 
-	//
 	advantageDraw(){
 		
 		var cards = [];
@@ -35,6 +32,7 @@ class Deck {
 		//V2 would determine which card was more valuable automatically if possible.
 		return cards;
 	}
+	
 	disadvantageDraw(){
 		//V2 would handle this differently than advantageDraw
 		return this.advantageDraw();
@@ -61,8 +59,4 @@ class Deck {
 	get length(){
 		return this.drawPile.length + this.discardPile.length;
 	}
-
-	// setClass(strClass){
-	// 	this.class = class
-	// }
 }

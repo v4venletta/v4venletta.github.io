@@ -12,16 +12,19 @@
 		  crossorigin="anonymous">
 	  	
 	</script>
+	<script src="/source/character.js"></script>
 	<script src="/source/deck.js"></script>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script type="text/javascript">
 		function doStuff(){
-			var activeDeck;
-			$.getJSON("/data/am_base_player.js", {data: "value"}, function(json){
-				activeDeck = new Deck(json);
-				activeDeck.draw();
-				console.log("activeDeck");
-			});
+			// var activeDeck;
+			// $.getJSON("/data/am_base_player.js", {data: "value"}, function(json){
+			// 	activeDeck = new Deck(json);
+			// 	activeDeck.draw();
+			// 	console.log("activeDeck");
+			// });
+			var activeCharacter = new Character("kurt");
+			console.log("activeCharacter");
 		}		
 	</script>
 	<meta name="viewport" content="width=device-width">
