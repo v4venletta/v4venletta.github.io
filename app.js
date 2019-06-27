@@ -30,3 +30,35 @@ mainContentEl.addEventListener('click', (event) => {
 drawer.open = false;
 });
 
+var attackModifiers;
+		function drawCard() {
+		var discardPile = document.getElementById("discard");
+		var min = 0;
+		var max = attackModifiers.length;
+		var random = Math.floor(Math.random() * (+max - +min)) + +min;
+		discardPile.src = '/images/' + attackModifiers[random].image;
+		}
+		var request = new XMLHttpRequest();
+		request.open('GET', '/data/am_base_player.js');
+		request.responseType = 'json';
+		request.send();
+		request.onload = function() {
+		attackModifiers = request.response;
+		/*populateDeck(attackModifiers);*/
+		}
+		function populateDeck(jsonObj) {
+		var deckElem = document.getElementById("deck");
+		var myList = document.createElement('ul');
+		for (var j = 0; j < jsonObj.length; j++) {
+		var newItem = document.createElement('li');
+		var newImage = document.createElement('IMG');
+		newImage.src = '/images/' + jsonObj[j].image;
+		/*newItem.appendChild(newImage);
+		myList.appendChild(newItem);*/
+		}
+		/*deckElem.appendChild(myList);*/
+		}
+
+		document.getElementById("hand").addEventListener('click',(event) => {
+			drawCard();
+		});
