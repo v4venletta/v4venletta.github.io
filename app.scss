@@ -13,7 +13,7 @@ body {
 
 
 .attempt{
-  @include mdc-drawer-width(400px);
+  @include mdc-drawer-width(300px);
 }
 .mdc-drawer__content {
   background-image: url('/images/gloommap.jpg');
