@@ -14,7 +14,12 @@ body {
  height: 100vh;
  font-family: 'Pirata One';
 }
-
+img:not([src]) {
+   visibility: hidden;
+}
+.mdc-list {
+  @include mdc-drawer-activated-overlay-color(green);
+}
 
 .attempt{
   @include mdc-drawer-width(300px);

@@ -9,11 +9,11 @@ const menu = new MDCMenu(document.querySelector('.mdc-menu'));
 const topAppBar = MDCTopAppBar.attachTo(document.getElementById('app-bar'));
 const select = new MDCSelect(document.querySelector('.mdc-select'));
 
-/*
+
 select.listen('MDCSelect:change', () => {
-  alert(`Selected option at index ${select.selectedIndex} with value "${select.value}"`);
+document.getElementById("chosen-class").src = `/images/class-icons/${select.value}.png`;
 });
-*/
+
 topAppBar.setScrollTarget(document.getElementById('main-content'));
 topAppBar.listen('MDCTopAppBar:nav', () => {
   drawer.open = !drawer.open;
@@ -21,10 +21,10 @@ topAppBar.listen('MDCTopAppBar:nav', () => {
 
 const listEl = document.querySelector('.mdc-drawer .mdc-list');
 const mainContentEl = document.querySelector('.main-content');
-
+/*
 listEl.addEventListener('click', (event) => {
   mainContentEl.querySelector('input, button').focus();
-});
+});*/
 
 mainContentEl.addEventListener('click', (event) => {
 drawer.open = false;
