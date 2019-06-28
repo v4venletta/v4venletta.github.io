@@ -90,7 +90,7 @@
             ]
           }
         ]
-      }
+      },
       {
         "name": "Replace two +1 cards with two +2 cards",
         "actions": [
