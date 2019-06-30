@@ -13,10 +13,15 @@ import {
 import {
   MDCMenu
 } from '@material/menu';
-const drawer = MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
-const topAppBar = MDCTopAppBar.attachTo(document.getElementById('app-bar'));
+console.log(1);
 const select = new MDCSelect(document.querySelector('.mdc-select'));
+console.log(2);
+const drawer = MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
+console.log(3);
 const listEl = document.querySelector('.mdc-drawer .mdc-list');
+console.log(4);
+const topAppBar = MDCTopAppBar.attachTo(document.getElementById('app-bar'));
+console.log(5);
 
 topAppBar.setScrollTarget(document.getElementById('main-content'));
 topAppBar.listen('MDCTopAppBar:nav', () => {
