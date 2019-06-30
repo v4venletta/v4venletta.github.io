@@ -13,15 +13,10 @@ import {
 import {
   MDCMenu
 } from '@material/menu';
-console.log(1);
 const select = new MDCSelect(document.querySelector('.mdc-select'));
-console.log(2);
 const drawer = MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
-console.log(3);
 const listEl = document.querySelector('.mdc-drawer .mdc-list');
-console.log(4);
 const topAppBar = MDCTopAppBar.attachTo(document.getElementById('app-bar'));
-console.log(5);
 
 topAppBar.setScrollTarget(document.getElementById('main-content'));
 topAppBar.listen('MDCTopAppBar:nav', () => {
@@ -42,23 +37,22 @@ select.listen('MDCSelect:change', () => {
   }
 });
 document.getElementById("hand").addEventListener('click', (event) => {
-  alert("click1");
+  alert("starting draw");
   var discardPile = document.getElementById("discard");
+  alert("about to get deck from activeCharacter");
   var tempDeck = activeCharacter.deck;
-  alert("click2");
+  alert("after deck has been set from activeCharacter");
   if (tempDeck.drawPile.length === 0) {
     tempDeck.shuffleAll();
   }
   var drawnCard = tempDeck.draw();
-  alert("click3");
   var stats = document.getElementById("stats");
-  alert("click4");
+
   stats.innerHTML="Draw Pile: " + tempDeck.drawPile.length + ", Discard Pile: " + tempDeck.discardPile.length;
   //console.log(drawnCard);
   //console.log(Object.getOwnPropertyNames(Object.getPrototypeOf(activeCharacter)));
   //console.log(tempDeck.draw());
   discardPile.src = '/images/' + drawnCard.image;
-  alert("click5");
 });
 
 document.getElementById("shuffle").addEventListener('click', (event) => {
