@@ -5,7 +5,7 @@
 @import "@material/list/mdc-list";
 @import "@material/menu-surface/mdc-menu-surface";
 @import "@material/menu/mdc-menu";
-
+/*
 body {
   background-image: url('/images/background.jpg');
   background-repeat: no-repeat;
@@ -16,9 +16,6 @@ body {
 }
 img:not([src]) {
    visibility: hidden;
-}
-.mdc-list {
-  @include mdc-drawer-activated-overlay-color(green);
 }
 
 .attempt{
@@ -55,11 +52,75 @@ img:not([src]) {
 }
 
 .app-bar {
-  position: absolute;
   background: none;
 }
 
 // only apply this style if below top app bar
 .mdc-top-app-bar {
   z-index: 7;
+}
+
+/* Rules for sizing the icon. */
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+// Note: these styles do not account for any paddings/margins that you may need.
+
+body {
+  display: flex;
+  height: 100vh;
+}
+
+.mdc-drawer-app-content {
+  flex: auto;
+  overflow: auto;
+  position: relative;
+}
+
+.main-content {
+  overflow: auto;
+  height: 100%;
+}
+
+.app-bar {
+  position: absolute;
+  color:black;
+}
+
+// only apply this style if below top app bar
+.mdc-top-app-bar {
+  z-index: 7;
+  background-color: #ac8357;
+
+}
+.mdc-top-app-bar__title {
+  font-family:'Pirata One';
+  font-size: 36px;
+}
+.mdc-drawer__content {
+  background-image: url('/images/gloommap.jpg');
+  background-repeat: no-repeat;
+ background-attachment: fixed;
+ height: 100%;
+
+}
+body {
+  background-image: url('/images/background.jpg');
+  background-repeat: no-repeat;
+ background-attachment: fixed;
+ display: flex;
+ height: 100vh;
+ font-family: 'Pirata One';
+}
+
+img:not([src]) {
+   visibility: hidden;
+}
+.rounded {
+  border-radius: 35px;
+  display: block;
+  width: 100%;
+  height: auto;
 }
