@@ -29,19 +29,16 @@ select.listen('MDCSelect:change', () => {
   if (activeCharacter === undefined) {
     document.getElementById("chosen-class").src = `/images/class-icons/${select.value}.png`;
     activeCharacter = new Character("test7", `${select.value}`);
-    console.log('New Character');
+    alert('New Character');
   } else if (activeCharacter.class != `${select.value}`) {
     document.getElementById("chosen-class").src = `/images/class-icons/${select.value}.png`;
     activeCharacter.class = `${select.value}`;
-    console.log(`${select.value}`);
+    alert(`${select.value}` + ':' + activeCharacter.class);
   }
 });
 document.getElementById("hand").addEventListener('click', (event) => {
-  alert("starting draw");
   var discardPile = document.getElementById("discard");
-  alert("about to get deck from activeCharacter");
   var tempDeck = activeCharacter.deck;
-  alert("after deck has been set from activeCharacter");
   if (tempDeck.drawPile.length === 0) {
     tempDeck.shuffleAll();
   }
