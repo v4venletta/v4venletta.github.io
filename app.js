@@ -37,6 +37,7 @@ select.listen('MDCSelect:change', () => {
   }
 });
 document.getElementById("hand").addEventListener('click', (event) => {
+  alert("click");
   var discardPile = document.getElementById("discard");
   var tempDeck = activeCharacter.deck;
   if (tempDeck.drawPile.length === 0) {
