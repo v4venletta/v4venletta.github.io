@@ -1,9 +1,9 @@
 class Character {
-	constructor(strName, strClass){
+	constructor(strName, characterClass){
 		this.name = strName;
 
 		//to-do Update the logic in this to not use "perks" in the name of the class.
-		this.class = strClass;
+		this.class = characterClass;
 		this.sheet;
 		this.deck;
 		this.items = [];
@@ -27,7 +27,9 @@ class Character {
 					});
 					break;
 				case 'add':
-					//to-do Not sure how I want to do this yet.
+					action.cards.foreach(function(card) {
+						this.deck.addCardByName(card.name);
+					});
 					break;
 				default:
 					//to-do error handling
@@ -36,20 +38,37 @@ class Character {
 
 	}
 
+	//to-do
+	removePerk(){
+
+	}
+
 	get storageName(){
 		//to-do make sure this isn't vulnerable to injection.
 		return "Character(" + this.name + ")";
 	}
 
-	//Had to use a callback function to set the perks so I could bind the context to "this".
+	//Callback function to set the perks to bind the context to "this".
 	setSheet = function(json){
-		this.sheet = json.filter(sheet => sheet.name == this.class);
+		this.sheet = json.filter(sheet => sheet.name == this.class.name + " perks");
 		this.save();
 	}
 
-	//Had to use a callback function to set the deck so I could bind the context to "this".
+	//Callback function to set the perks to bind the context to "this".
 	setDeck = function(json){
-		this.deck = new Deck(json);
+
+		//Not sure if this is the best place to determine which cards are base vs mods but it's here for now.
+		var baseCards, modCards;
+		baseCards = json.filter(card => card.name.startsWith("am-p-"));
+		modCards = json.filter(card => card.name.startsWith ("am-" + this.class.abbr));
+
+		//Check to see if the global modifier deck has been set, if not set it.
+		//to-do - Include monster modifier cards and make the filter logic more sound.
+		if (!localStorage.getItem("globalModCards")) {
+			localStorage.setItem("globalModCards", JSON.stringify(json.filter(card => card.name.startsWith("am-pm-"))));
+		}
+
+		this.deck = new Deck(baseCards, modCards);
 		this.save();
 	}
 
@@ -62,7 +81,7 @@ class Character {
 	}
 
 	load(){
-		//to-do make sure this isn't vulnerable to injection.
+		//to-do - make sure this isn't vulnerable to injection.
 		var char = localStorage.getItem(this.storageName);
 
 		//If the character is already stored in local storage then load it.
@@ -75,7 +94,7 @@ class Character {
 			    .fail(function(json) {
 			        //to-do error handling
 		    	});
-			$.getJSON("../data/am_base_player.js")
+			$.getJSON("../data/attack-modifiers.js")
 				.then(this.setDeck.bind(this))
 				.fail(function(json) {
 					//to-do error handling

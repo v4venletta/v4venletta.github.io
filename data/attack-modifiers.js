@@ -183,330 +183,385 @@
     "name": "am-p-01",
     "points": 30,
     "image": "attack-modifiers/base/player/am-p-01.png",
+    "value": 0,
     "xws": "amp01"
   },
   {
     "name": "am-p-02",
     "points": 31,
     "image": "attack-modifiers/base/player/am-p-02.png",
+    "value": 0,
     "xws": "amp02"
   },
   {
     "name": "am-p-03",
     "points": 32,
     "image": "attack-modifiers/base/player/am-p-03.png",
+    "value": 0,
     "xws": "amp03"
   },
   {
     "name": "am-p-04",
     "points": 33,
     "image": "attack-modifiers/base/player/am-p-04.png",
+    "value": 0,
     "xws": "amp04"
   },
   {
     "name": "am-p-05",
     "points": 34,
     "image": "attack-modifiers/base/player/am-p-05.png",
+    "value": 0,
     "xws": "amp05"
   },
   {
     "name": "am-p-06",
     "points": 35,
     "image": "attack-modifiers/base/player/am-p-06.png",
+    "value": 0,
     "xws": "amp06"
   },
   {
     "name": "am-p-07",
     "points": 36,
     "image": "attack-modifiers/base/player/am-p-07.png",
+    "value": 1,
     "xws": "amp07"
   },
   {
     "name": "am-p-08",
     "points": 37,
     "image": "attack-modifiers/base/player/am-p-08.png",
+    "value": 1,
     "xws": "amp08"
   },
   {
     "name": "am-p-09",
     "points": 38,
     "image": "attack-modifiers/base/player/am-p-09.png",
+    "value": 1,
     "xws": "amp09"
   },
   {
     "name": "am-p-10",
     "points": 39,
     "image": "attack-modifiers/base/player/am-p-10.png",
+    "value": 1,
     "xws": "amp10"
   },
   {
     "name": "am-p-11",
     "points": 40,
     "image": "attack-modifiers/base/player/am-p-11.png",
+    "value": 1,
     "xws": "amp11"
   },
   {
     "name": "am-p-12",
     "points": 41,
     "image": "attack-modifiers/base/player/am-p-12.png",
+    "value": -1,
     "xws": "amp12"
   },
   {
     "name": "am-p-13",
     "points": 42,
     "image": "attack-modifiers/base/player/am-p-13.png",
+    "value": -1,
     "xws": "amp13"
   },
   {
     "name": "am-p-14",
     "points": 43,
     "image": "attack-modifiers/base/player/am-p-14.png",
+    "value": -1,
     "xws": "amp14"
   },
   {
     "name": "am-p-15",
     "points": 44,
     "image": "attack-modifiers/base/player/am-p-15.png",
+    "value": -1,
     "xws": "amp15"
   },
   {
     "name": "am-p-16",
     "points": 45,
     "image": "attack-modifiers/base/player/am-p-16.png",
+    "value": -1,
     "xws": "amp16"
   },
   {
     "name": "am-p-17",
     "points": 46,
     "image": "attack-modifiers/base/player/am-p-17.png",
+    "value": -1,
     "xws": "amp17"
   },
   {
     "name": "am-p-18",
     "points": 47,
     "image": "attack-modifiers/base/player/am-p-18.png",
+    "value": 2,
     "xws": "amp18"
   },
   {
     "name": "am-p-19",
     "points": 48,
     "image": "attack-modifiers/base/player/am-p-19.png",
+    "value": "miss",
     "xws": "amp19"
   },
   {
     "name": "am-p-20",
     "points": 49,
     "image": "attack-modifiers/base/player/am-p-20.png",
+    "value": "x2",
     "xws": "amp20"
   },
   {
     "name": "am-pm-01",
     "points": 50,
     "image": "attack-modifiers/base/player-mod/am-pm-01.png",
+    "value": "bless",
     "xws": "ampm01"
   },
   {
     "name": "am-pm-02",
     "points": 51,
     "image": "attack-modifiers/base/player-mod/am-pm-02.png",
+    "value": "bless",
     "xws": "ampm02"
   },
   {
     "name": "am-pm-03",
     "points": 52,
     "image": "attack-modifiers/base/player-mod/am-pm-03.png",
+    "value": "bless",
     "xws": "ampm03"
   },
   {
     "name": "am-pm-04",
     "points": 53,
     "image": "attack-modifiers/base/player-mod/am-pm-04.png",
+    "value": "bless",
     "xws": "ampm04"
   },
   {
     "name": "am-pm-05",
     "points": 54,
     "image": "attack-modifiers/base/player-mod/am-pm-05.png",
+    "value": "bless",
     "xws": "ampm05"
   },
   {
     "name": "am-pm-06",
     "points": 55,
     "image": "attack-modifiers/base/player-mod/am-pm-06.png",
+    "value": "bless",
     "xws": "ampm06"
   },
   {
     "name": "am-pm-07",
     "points": 56,
     "image": "attack-modifiers/base/player-mod/am-pm-07.png",
+    "value": "bless",
     "xws": "ampm07"
   },
   {
     "name": "am-pm-08",
     "points": 57,
     "image": "attack-modifiers/base/player-mod/am-pm-08.png",
+    "value": "bless",
     "xws": "ampm08"
   },
   {
     "name": "am-pm-09",
     "points": 58,
     "image": "attack-modifiers/base/player-mod/am-pm-09.png",
+    "value": "bless",
     "xws": "ampm09"
   },
   {
     "name": "am-pm-10",
     "points": 59,
     "image": "attack-modifiers/base/player-mod/am-pm-10.png",
+    "value": "bless",
     "xws": "ampm10"
   },
   {
     "name": "am-pm-11",
     "points": 60,
     "image": "attack-modifiers/base/player-mod/am-pm-11.png",
+    "value": -1,
     "xws": "ampm11"
   },
   {
     "name": "am-pm-12",
     "points": 61,
     "image": "attack-modifiers/base/player-mod/am-pm-12.png",
+    "value": -1,
     "xws": "ampm12"
   },
   {
     "name": "am-pm-13",
     "points": 62,
     "image": "attack-modifiers/base/player-mod/am-pm-13.png",
+    "value": -1,
     "xws": "ampm13"
   },
   {
     "name": "am-pm-14",
     "points": 63,
     "image": "attack-modifiers/base/player-mod/am-pm-14.png",
+    "value": -1,
     "xws": "ampm14"
   },
   {
     "name": "am-pm-15",
     "points": 64,
     "image": "attack-modifiers/base/player-mod/am-pm-15.png",
+    "value": -1,
     "xws": "ampm15"
   },
   {
     "name": "am-pm-16",
     "points": 65,
     "image": "attack-modifiers/base/player-mod/am-pm-16.png",
+    "value": -1,
     "xws": "ampm16"
   },
   {
     "name": "am-pm-17",
     "points": 66,
     "image": "attack-modifiers/base/player-mod/am-pm-17.png",
+    "value": -1,
     "xws": "ampm17"
   },
   {
     "name": "am-pm-18",
     "points": 67,
     "image": "attack-modifiers/base/player-mod/am-pm-18.png",
+    "value": -1,
     "xws": "ampm18"
   },
   {
     "name": "am-pm-19",
     "points": 68,
     "image": "attack-modifiers/base/player-mod/am-pm-19.png",
+    "value": -1,
     "xws": "ampm19"
   },
   {
     "name": "am-pm-20",
     "points": 69,
     "image": "attack-modifiers/base/player-mod/am-pm-20.png",
+    "value": -1,
     "xws": "ampm20"
   },
   {
     "name": "am-pm-21",
     "points": 70,
     "image": "attack-modifiers/base/player-mod/am-pm-21.png",
+    "value": "curse",
     "xws": "ampm21"
   },
   {
     "name": "am-pm-22",
     "points": 71,
     "image": "attack-modifiers/base/player-mod/am-pm-22.png",
+    "value": "curse",
     "xws": "ampm22"
   },
   {
     "name": "am-pm-23",
     "points": 72,
     "image": "attack-modifiers/base/player-mod/am-pm-23.png",
+    "value": "curse",
     "xws": "ampm23"
   },
   {
     "name": "am-pm-24",
     "points": 73,
     "image": "attack-modifiers/base/player-mod/am-pm-24.png",
+    "value": "curse",
     "xws": "ampm24"
   },
   {
     "name": "am-pm-25",
     "points": 74,
     "image": "attack-modifiers/base/player-mod/am-pm-25.png",
+    "value": "curse",
     "xws": "ampm25"
   },
   {
     "name": "am-pm-26",
     "points": 75,
     "image": "attack-modifiers/base/player-mod/am-pm-26.png",
+    "value": "curse",
     "xws": "ampm26"
   },
   {
     "name": "am-pm-27",
     "points": 76,
     "image": "attack-modifiers/base/player-mod/am-pm-27.png",
+    "value": "curse",
     "xws": "ampm27"
   },
   {
     "name": "am-pm-28",
     "points": 77,
     "image": "attack-modifiers/base/player-mod/am-pm-28.png",
+    "value": "curse",
     "xws": "ampm28"
   },
   {
     "name": "am-pm-29",
     "points": 78,
     "image": "attack-modifiers/base/player-mod/am-pm-29.png",
+    "value": "curse",
     "xws": "ampm29"
   },
   {
     "name": "am-pm-30",
     "points": 79,
     "image": "attack-modifiers/base/player-mod/am-pm-30.png",
+    "value": "curse",
     "xws": "ampm30"
   },
   {
     "name": "am-pm-31",
     "points": 80,
     "image": "attack-modifiers/base/player-mod/am-pm-31.png",
+    "value": -1,
     "xws": "ampm31"
   },
   {
     "name": "am-pm-32",
     "points": 81,
     "image": "attack-modifiers/base/player-mod/am-pm-32.png",
+    "value": -1,
     "xws": "ampm32"
   },
   {
     "name": "am-pm-33",
     "points": 82,
     "image": "attack-modifiers/base/player-mod/am-pm-33.png",
+    "value": -1,
     "xws": "ampm33"
   },
   {
     "name": "am-pm-34",
     "points": 83,
     "image": "attack-modifiers/base/player-mod/am-pm-34.png",
+    "value": -1,
     "xws": "ampm34"
   },
   {
     "name": "am-pm-35",
     "points": 84,
     "image": "attack-modifiers/base/player-mod/am-pm-35.png",
+    "value": -1,
     "xws": "ampm35"
   },
   {
