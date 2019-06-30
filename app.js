@@ -8,10 +8,18 @@ const drawer = MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
 const menu = new MDCMenu(document.querySelector('.mdc-menu'));
 const topAppBar = MDCTopAppBar.attachTo(document.getElementById('app-bar'));
 const select = new MDCSelect(document.querySelector('.mdc-select'));
+var activeCharacter;
 
-
+/* listens for state change on select field */
 select.listen('MDCSelect:change', () => {
-document.getElementById("chosen-class").src = `/images/class-icons/${select.value}.png`;
+  if (activeCharacter === undefined)
+  {
+    document.getElementById("chosen-class").src = `/images/class-icons/${select.value}.png`;
+    activeCharacter = new Character("test3", `${select.value}`);
+} else if (activeCharacter.class != `${select.value}`) {
+  document.getElementById("chosen-class").src = `/images/class-icons/${select.value}.png`;
+  activeCharacter.class = `${select.value}`;
+}
 });
 
 topAppBar.setScrollTarget(document.getElementById('main-content'));
@@ -29,7 +37,7 @@ listEl.addEventListener('click', (event) => {
 mainContentEl.addEventListener('click', (event) => {
 drawer.open = false;
 });
-
+/*
 var attackModifiers;
 		function drawCard() {
 		var discardPile = document.getElementById("discard");
@@ -44,7 +52,7 @@ var attackModifiers;
 		request.send();
 		request.onload = function() {
 		attackModifiers = request.response;
-		/*populateDeck(attackModifiers);*/
+		populateDeck(attackModifiers);
 		}
 		function populateDeck(jsonObj) {
 		var deckElem = document.getElementById("deck");
@@ -54,11 +62,24 @@ var attackModifiers;
 		var newImage = document.createElement('IMG');
 		newImage.src = '/images/' + jsonObj[j].image;
 		/*newItem.appendChild(newImage);
-		myList.appendChild(newItem);*/
+		myList.appendChild(newItem);
 		}
-		/*deckElem.appendChild(myList);*/
-		}
+		/*deckElem.appendChild(myList);
 
+
+
+
+  }
+  function drawCard() {
+    var discardPile = document.getElementById("discard");
+    var min = 0;
+    var max = attackModifiers.length;
+    var random = Math.floor(Math.random() * (+max - +min)) + +min;
+    discardPile.src = '/images/' + attackModifiers[random].image;
+  }*/
 		document.getElementById("hand").addEventListener('click',(event) => {
-			drawCard();
+      var discardPile = document.getElementById("discard");
+      console.log(activeCharacter.deck);
+      console.log(activeCharacter.deck.draw());
+		    //discardPile.src = 	'/images/' + activeCharacter.deck.draw().image ;
 		});
