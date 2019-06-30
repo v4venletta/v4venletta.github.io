@@ -37,19 +37,23 @@ select.listen('MDCSelect:change', () => {
   }
 });
 document.getElementById("hand").addEventListener('click', (event) => {
-  alert("click");
+  alert("click1");
   var discardPile = document.getElementById("discard");
   var tempDeck = activeCharacter.deck;
+  alert("click2");
   if (tempDeck.drawPile.length === 0) {
     tempDeck.shuffleAll();
   }
   var drawnCard = tempDeck.draw();
+  alert("click3");
   var stats = document.getElementById("stats");
+  alert("click4");
   stats.innerHTML="Draw Pile: " + tempDeck.drawPile.length + ", Discard Pile: " + tempDeck.discardPile.length;
-  console.log(drawnCard);
-  console.log(Object.getOwnPropertyNames(Object.getPrototypeOf(activeCharacter)));
+  //console.log(drawnCard);
+  //console.log(Object.getOwnPropertyNames(Object.getPrototypeOf(activeCharacter)));
   //console.log(tempDeck.draw());
   discardPile.src = '/images/' + drawnCard.image;
+  alert("click5");
 });
 
 document.getElementById("shuffle").addEventListener('click', (event) => {
