@@ -3,6 +3,7 @@ class Deck {
 		this.drawPile = baseCards 
 		this.discardPile = [];
 		this.modPile = modCards;
+		this.shuffle();
 	}
 
 	addCard(cardObj){
