@@ -64,31 +64,32 @@ class Character {
 
 		//Check to see if the global modifier deck has been set, if not set it.
 		//to-do - Include monster modifier cards and make the filter logic more sound.
-		if (!localStorage.getItem("globalModCards")) {
-			localStorage.setItem("globalModCards", JSON.stringify(json.filter(card => card.name.startsWith("am-pm-"))));
-		}
+		// if (!localStorage.getItem("globalModCards")) {
+		// 	localStorage.setItem("globalModCards", JSON.stringify(json.filter(card => card.name.startsWith("am-pm-"))));
+		// }
 
 		this.deck = new Deck(baseCards, modCards);
 		this.save();
 	}
 
 	delete(){
-		localStorage.removeItem(this.storageName);
+		//localStorage.removeItem(this.storageName);
 	}
 
 	save(){
-		localStorage.setItem(this.storageName, JSON.stringify(this));
+		//localStorage.setItem(this.storageName, JSON.stringify(this));
+		//to-do
 	}
 
 	load(){
 		//to-do - make sure this isn't vulnerable to injection.
-		var char = localStorage.getItem(this.storageName);
+		//var char = localStorage.getItem(this.storageName);
 
 		//If the character is already stored in local storage then load it.
-		if (char != null){			
-			Object.assign(this, JSON.parse(char));
-		//If not then initialize a few more things.
-		} else {
+		// if (char != null){			
+		// 	//Object.assign(this, JSON.parse(char));
+		// //If not then initialize a few more things.
+		// } else {
 			$.getJSON("../data/character-perks+.js")
 				.then(this.setSheet.bind(this))
 			    .fail(function(json) {
@@ -99,6 +100,6 @@ class Character {
 				.fail(function(json) {
 					//to-do error handling
 				});
-		}
+		//}
 	}
 }
