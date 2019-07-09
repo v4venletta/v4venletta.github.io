@@ -60,7 +60,7 @@ class Character {
 		//Not sure if this is the best place to determine which cards are base vs mods but it's here for now.
 		var baseCards, modCards;
 		baseCards = json.filter(card => card.name.startsWith("am-p-"));
-		modCards = json.filter(card => card.name.startsWith ("am-" + this.class.abbr));
+		//modCards = json.filter(card => card.name.startsWith ("am-" + this.class.abbr));
 
 		//Check to see if the global modifier deck has been set, if not set it.
 		//to-do - Include monster modifier cards and make the filter logic more sound.
