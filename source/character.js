@@ -1,3 +1,4 @@
+console.log('character class js file loading');
 class Character {
 	constructor(strName, characterClass){
 		console.log('Character being constructed');
@@ -109,3 +110,4 @@ class Character {
 		//}
 	}
 }
+console.log('character class js file loaded');
