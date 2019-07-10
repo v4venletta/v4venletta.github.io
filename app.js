@@ -22,14 +22,14 @@ const listEl = document.querySelector('.mdc-drawer .mdc-list');
 const topAppBar = MDCTopAppBar.attachTo(document.getElementById('app-bar'));
 var fullDiscard = document.getElementById("discardpile"); 
 
-dialog.listen('MDCDialog:opened', function() {
+/*dialog.listen('MDCDialog:opened', function() {
   // Assuming contentElement references a common parent element with the rest of the page's content
   contentElement.setAttribute('aria-hidden', 'true');
 });
 
 dialog.listen('MDCDialog:closing', function() {
   contentElement.removeAttribute('aria-hidden');
-});
+});*/
 
 topAppBar.setScrollTarget(document.getElementById('main-content'));
 topAppBar.listen('MDCTopAppBar:nav', () => {
@@ -37,7 +37,7 @@ topAppBar.listen('MDCTopAppBar:nav', () => {
 });
 console.log("pre active character");
 var activeCharacter = new Character('base','');
-console.log(activeCharacter.class);
+console.log("post new character");
 //localStorage.removeItem("Character(test7)");
 select.listen('MDCSelect:change', () => {
 	console.log("select listener");
