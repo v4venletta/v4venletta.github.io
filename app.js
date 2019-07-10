@@ -36,7 +36,12 @@ topAppBar.listen('MDCTopAppBar:nav', () => {
   drawer.open = !drawer.open;
 });
 console.log("pre active character");
+try {
 var activeCharacter = new Character('base','');
+} catch(err) {
+	console.log(err);
+	console.error(err);
+}
 console.log("post new character");
 //localStorage.removeItem("Character(test7)");
 select.listen('MDCSelect:change', () => {
