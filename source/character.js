@@ -1,5 +1,6 @@
 class Character {
 	constructor(strName, characterClass){
+		console.log('Character being constructed');
 		this.name = strName;
 
 		//to-do Update the logic in this to not use "perks" in the name of the class.
@@ -10,7 +11,7 @@ class Character {
 		this.activePerks = [];
 		this.xp = 0;
 		this.gold = 0;
-
+		console.log('Pre load()');
 		this.load();
 
 	}
@@ -90,16 +91,21 @@ class Character {
 		// 	//Object.assign(this, JSON.parse(char));
 		// //If not then initialize a few more things.
 		// } else {
+			console.log('Load character-perks');
 			$.getJSON("../data/character-perks+.js")
 				.then(this.setSheet.bind(this))
 			    .fail(function(json) {
+			    	console.log('Character perk load failed');
 			        //to-do error handling
 		    	});
+		    console.log('Load attack-modifiers');
 			$.getJSON("../data/attack-modifiers.js")
 				.then(this.setDeck.bind(this))
 				.fail(function(json) {
+					console.log('AM Load failed');
 					//to-do error handling
 				});
+
 		//}
 	}
 }
