@@ -35,18 +35,18 @@ topAppBar.setScrollTarget(document.getElementById('main-content'));
 topAppBar.listen('MDCTopAppBar:nav', () => {
   drawer.open = !drawer.open;
 });
-
+console.log("pre active character");
 var activeCharacter = new Character('base','');
+console.log(activeCharacter.class);
 //localStorage.removeItem("Character(test7)");
 select.listen('MDCSelect:change', () => {
+	console.log("select listener");
   if (activeCharacter === undefined) {
     document.getElementById("chosen-class").src = `/images/class-icons/${select.value}.png`;
-    activeCharacter = new Character("test7", `${select.value}`);
-    alert('New Character');
   } else if (activeCharacter.class != `${select.value}`) {
     document.getElementById("chosen-class").src = `/images/class-icons/${select.value}.png`;
     activeCharacter.class = `${select.value}`;
-    alert(`${select.value}` + ':' + activeCharacter.class);
+    console.log(`${select.value}` + ':' + activeCharacter.class);
   }
 });
 
