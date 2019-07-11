@@ -33,8 +33,8 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader',
-        query: {
+        loader : 'babel-loader',
+        query:{
           presets: ['es2015'],
         },
       }

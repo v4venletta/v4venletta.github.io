@@ -14,6 +14,8 @@ import {
   MDCMenu
 } from '@material/menu';
 import {MDCDialog} from '@material/dialog';
+import {Deck} from 'deck';
+import {Character} from 'character';
 
 const dialog = new MDCDialog(document.querySelector('.mdc-dialog'));
 const select = new MDCSelect(document.querySelector('.mdc-select'));
@@ -37,12 +39,14 @@ topAppBar.listen('MDCTopAppBar:nav', () => {
 });
 console.log("pre active character");
 try {
+
 var activeCharacter = new Character('base','');
+console.log(activeCharacter);
 } catch(err) {
 	console.log(err);
 	console.error(err);
 }
-console.log("post new character");
+
 //localStorage.removeItem("Character(test7)");
 select.listen('MDCSelect:change', () => {
 	console.log("select listener");

@@ -1,4 +1,5 @@
-export class Character {
+console.log('character class js file loading');
+class Character {
 	constructor(strName, characterClass){
 		console.log('Character being constructed');
 		this.name = strName;
@@ -50,13 +51,13 @@ export class Character {
 	}
 
 	//Callback function to set the perks to bind the context to "this".
-	setSheet = function(json){
+	setSheet(json){
 		this.sheet = json.filter(sheet => sheet.name == this.class.name + " perks");
 		this.save();
 	}
 
 	//Callback function to set the perks to bind the context to "this".
-	setDeck = function(json){
+	setDeck(json){
 
 		//Not sure if this is the best place to determine which cards are base vs mods but it's here for now.
 		var baseCards, modCards;
@@ -109,3 +110,4 @@ export class Character {
 		//}
 	}
 }
+console.log('character class js file loaded');
