@@ -22,7 +22,7 @@ const select = new MDCSelect(document.querySelector('.mdc-select'));
 const drawer = MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
 const listEl = document.querySelector('.mdc-drawer .mdc-list');
 const topAppBar = MDCTopAppBar.attachTo(document.getElementById('app-bar'));
-var fullDiscard = document.getElementById("discardpile"); 
+var fullDiscard = document.getElementById("discardpile");
 
 /*dialog.listen('MDCDialog:opened', function() {
   // Assuming contentElement references a common parent element with the rest of the page's content
@@ -60,6 +60,7 @@ select.listen('MDCSelect:change', () => {
 });
 
 document.getElementById("hand").addEventListener('click', (event) => {
+  $("#cards").slideUp("fast");
   var discardPile = document.getElementById("discard");
   var tempDeck = activeCharacter.deck;
   if (tempDeck.drawPile.length === 0) {
@@ -74,15 +75,17 @@ document.getElementById("hand").addEventListener('click', (event) => {
 	var warning = document.getElementById("warning");
   	warning.style = "display:inline;color:red;";
   }
-  
+
 });
 
 document.getElementById("discard").addEventListener('click', (event) => {
+  $("#cards").slideDown("fast");
 	var pileHTML = '';
 	for (var i = activeCharacter.deck.discardPile.length-1;i>=0; i--){
 		pileHTML = pileHTML + '<img src="' +'/images/' + activeCharacter.deck.discardPile[i].image + '" class="rounded_s" style="display:inline-block;width:100px;">'
 	}
-	fullDiscard.innerHTML = pileHTML ;
+	fullDiscard.innerHTML = pileHTML;
+
 });
 
 document.getElementById("shuffle").addEventListener('click', (event) => {

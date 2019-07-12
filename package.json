@@ -20,6 +20,7 @@
   "dependencies": {
     "@material/dialog": "^3.0.0",
     "@material/drawer": "^3.0.0",
+    "@material/layout-grid": "^3.0.0",
     "@material/menu": "^3.0.0",
     "@material/select": "^3.0.0",
     "@material/top-app-bar": "^3.0.0"
