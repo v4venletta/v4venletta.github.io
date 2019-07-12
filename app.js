@@ -63,9 +63,10 @@ document.getElementById("hand").addEventListener('click', (event) => {
   $("#cards").slideUp("fast");
   var discardPile = document.getElementById("discard");
   var tempDeck = activeCharacter.deck;
-  if (tempDeck.drawPile.length === 0) {
-    tempDeck.shuffleAll();
-  }
+  //This is now handled by Deck.draw()
+  // if (tempDeck.drawPile.length === 0) {
+  //   tempDeck.shuffleAll();
+  // }
   var drawnCard = tempDeck.draw();
   var stats = document.getElementById("stats");
 
