@@ -111,12 +111,23 @@ body {
 img:not([src]) {
    visibility: hidden;
 }
+@media only screen and (min-width: 601px) {
 .rounded {
   border-radius: 35px;
   display: block;
   width: 100%;
   height: auto;
 }
+}
+@media only screen and (max-width: 600px) {
+.rounded {
+  border-radius: 35px;
+  display: block;
+  width: 80%;
+  height: auto;
+}
+}
+
 
 .rounded_s {
   border-radius: 15px;
