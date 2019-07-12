@@ -1,4 +1,4 @@
-export class Character {
+/*export*/ class Character {
 	constructor(strName, characterClass){
 		console.log('Character being constructed');
 		this.name = strName;
@@ -50,45 +50,44 @@ export class Character {
 	}
 
 	//Callback function to set the perks to bind the context to "this".
-	setSheet = function(json){
+	setSheet(json){
 		this.sheet = json.filter(sheet => sheet.name == this.class.name + " perks");
-		this.save();
+		// this.save();
 	}
 
 	//Callback function to set the perks to bind the context to "this".
-	setDeck = function(json){
+	setDeck(json){
 
 		//Not sure if this is the best place to determine which cards are base vs mods but it's here for now.
 		var baseCards, modCards;
 		baseCards = json.filter(card => card.name.startsWith("am-p-"));
-		//modCards = json.filter(card => card.name.startsWith ("am-" + this.class.abbr));
+		modCards = json.filter(card => card.name.startsWith ("am-" + this.class.abbr));
 
 		//Check to see if the global modifier deck has been set, if not set it.
 		//to-do - Include monster modifier cards and make the filter logic more sound.
-		// if (!localStorage.getItem("globalModCards")) {
-		// 	localStorage.setItem("globalModCards", JSON.stringify(json.filter(card => card.name.startsWith("am-pm-"))));
-		// }
+		if (!localStorage.getItem("globalModCards")) {
+			localStorage.setItem("globalModCards", JSON.stringify(json.filter(card => card.name.startsWith("am-pm-"))));
+		}
 
 		this.deck = new Deck(baseCards, modCards);
-		this.save();
+		// this.save();
 	}
 
 	delete(){
-		//localStorage.removeItem(this.storageName);
+		localStorage.removeItem(this.storageName);
 	}
 
 	save(){
-		//localStorage.setItem(this.storageName, JSON.stringify(this));
-		//to-do
+		localStorage.setItem(this.storageName, JSON.stringify(this));
 	}
 
 	load(){
 		//to-do - make sure this isn't vulnerable to injection.
-		//var char = localStorage.getItem(this.storageName);
+		// var char = localStorage.getItem(this.storageName);
 
 		//If the character is already stored in local storage then load it.
 		// if (char != null){			
-		// 	//Object.assign(this, JSON.parse(char));
+		// 	Object.assign(this, JSON.parse(char));
 		// //If not then initialize a few more things.
 		// } else {
 			console.log('Load character-perks');
@@ -106,6 +105,6 @@ export class Character {
 					//to-do error handling
 				});
 
-		//}
+		// }
 	}
 }

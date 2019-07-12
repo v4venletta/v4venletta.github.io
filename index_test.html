@@ -17,6 +17,7 @@
 	<script src="/source/deck.js"></script>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script type="text/javascript">
+		var activeCharacter = new Character("kurt", characterClasses.mindthief);
 		function doStuff(){
 			// var activeDeck;
 			// $.getJSON("/data/am_base_player.js", {data: "value"}, function(json){
@@ -24,7 +25,7 @@
 			// 	activeDeck.draw();
 			// 	console.log("activeDeck");
 			// });
-			var activeCharacter = new Character("kurt", characterClasses.mindthief);
+			activeCharacter.deck.draw();
 			console.log("activeCharacter");
 		}		
 	</script>
