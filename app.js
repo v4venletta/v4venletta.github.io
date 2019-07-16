@@ -72,7 +72,7 @@ document.getElementById("hand").addEventListener('click', (event) => {
 
   stats.innerHTML="Draw Pile: " + tempDeck.drawPile.length + ", Discard Pile: " + tempDeck.discardPile.length;
   discardPile.src = '/images/' + drawnCard.image;
-  if (drawnCard.value === "x2" || drawnCard.value === "miss") {
+  if (activeCharacter.deck.shuffleNeeded) {
     var warning = document.getElementById("warning");
   	warning.style = "display:inline;color:red;";
   }
@@ -102,7 +102,7 @@ document.getElementById("shuffle").addEventListener('click', (event) => {
 
 });
 
-document.getElementById("flip").addEventListener('click',(event)=>{
+document.getElementById("flip").addEventListener('click',(event) => {
   let tempDeck = activeCharacter.deck;
   let drawnCards = tempDeck.drawCards(2);
   let stats = document.getElementById("stats");
@@ -123,10 +123,13 @@ dialog.listen('MDCDialog:opened', (event) => {
 });
 
 dialog.listen('MDCDialog:closed', (event) => {
-  // Need to decide how we're going to handle this.
-  // if (drawnCards.find(card => card.value == "x2" || drawnCard.value == "miss")) {
-  //   let warning = document.getElementById("warning");
-  //   warning.style = "display:inline;color:red;";
-  // }
-  document.getElementById("discard").src = event.detail.action;
+  if (activeCharacter.deck.shuffleNeeded) {
+    document.getElementById("warning").style = "display:inline;color:red;";
+  }
+  if (event.detail.action == "close"){
+    document.getElementById("discard").src = '/images/' + activeCharacter.deck.discardPile[activeCharacter.deck.discardPile.length-1].image; 
+  } else {
+    document.getElementById("discard").src = event.detail.action;
+  }
+  
 });
