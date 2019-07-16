@@ -106,10 +106,14 @@ document.getElementById("flip").addEventListener('click',(event)=>{
   let tempDeck = activeCharacter.deck;
   let drawnCards = tempDeck.drawCards(2);
   let stats = document.getElementById("stats");
+  let card1 = document.getElementById("recent");
+  let card2 = document.getElementById("recent-1");
 
   stats.innerHTML="Draw Pile: " + tempDeck.drawPile.length + ", Discard Pile: " + tempDeck.discardPile.length;
-  document.getElementById("recent").src = '/images/' + drawnCards[0].image;
-  document.getElementById("recent-1").src = '/images/' + drawnCards[1].image;
+  card1.src = '/images/' + drawnCards[0].image;
+  card1.attributes["data-mdc-dialog-action"].value = card1.src;
+  card2.src = '/images/' + drawnCards[1].image;
+  card2.attributes["data-mdc-dialog-action"].value = card2.src;
 
   dialog.open();
 });
@@ -124,5 +128,5 @@ dialog.listen('MDCDialog:closed', (event) => {
   //   let warning = document.getElementById("warning");
   //   warning.style = "display:inline;color:red;";
   // }
-  document.getElementById("discard").src = '/images/' + activeCharacter.deck.discardPile[activeCharacter.deck.discardPile.length-1].image;
+  document.getElementById("discard").src = event.detail.action;
 });
