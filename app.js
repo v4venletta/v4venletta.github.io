@@ -103,9 +103,6 @@ document.getElementById("shuffle").addEventListener('click', (event) => {
 });
 
 document.getElementById("flip").addEventListener('click',(event)=>{
-
-
-  let discardPile = document.getElementById("discard");
   let tempDeck = activeCharacter.deck;
   let drawnCards = tempDeck.drawCards(2);
   let stats = document.getElementById("stats");
@@ -114,21 +111,18 @@ document.getElementById("flip").addEventListener('click',(event)=>{
   document.getElementById("recent").src = '/images/' + drawnCards[0].image;
   document.getElementById("recent-1").src = '/images/' + drawnCards[1].image;
 
-  // if (drawnCards.find(card => card.value == "x2" || drawnCard.value == "miss")) {
-  //   var warning = document.getElementById("warning");
-  //   warning.style = "display:inline;color:red;";
-  // }
-  //discardPile.src = '/images/' + drawnCards[drawnCards.length-1].image;
   dialog.open();
 });
 
-document.getElementById("recent").addEventListener('click',(event)=>{
-  document.getElementById("recent").src = event.currentTarget.src;
-  dialog.close();
+dialog.listen('MDCDialog:opened', (event) => {
+  console.log("Dialog Opened");
 });
 
-document.getElementById("recent-1").addEventListener('click',(event)=>{
-  dialog.close();
+dialog.listen('MDCDialog:closed', (event) => {
+  // Need to decide how we're going to handle this.
+  // if (drawnCards.find(card => card.value == "x2" || drawnCard.value == "miss")) {
+  //   let warning = document.getElementById("warning");
+  //   warning.style = "display:inline;color:red;";
+  // }
+  document.getElementById("discard").src = '/images/' + activeCharacter.deck.discardPile[activeCharacter.deck.discardPile.length-1].image;
 });
-
-
