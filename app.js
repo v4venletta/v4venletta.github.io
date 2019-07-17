@@ -95,15 +95,36 @@ var blessingCard =   {    "name": "am-pm-01",
 
 });
 
+document.getElementById("main-content").addEventListener('click',(event) => {
+  var cardsDiv = document.getElementById("cards");
+  console.log(window.getComputedStyle(cardsDiv).display);
+     if (window.getComputedStyle(cardsDiv).display != "none") {
+    // Do something..
+    console.log("sliding up");
+     $("#cards").slideUp("fast");
+  }
+  console.log(window.getComputedStyle(cardsDiv).display);
+});
+
 document.getElementById("discard").addEventListener('click', (event) => {
-  $("#cards").slideDown("fast");
-	var pileHTML = '';
-	for (var i = activeCharacter.deck.discardPile.length-1;i>=0; i--){
-		pileHTML = pileHTML + '<img src="' +'/images/' + activeCharacter.deck.discardPile[i].image + '" class="rounded_s" style="display:inline-block;width:100px;">'
-	}
-	fullDiscard.innerHTML = pileHTML;
+
+  var cardsDiv = document.getElementById("cards");
+   if (window.getComputedStyle(cardsDiv).display != "none") {
+    // Do something..
+    console.log("sliding up");
+    cardsDiv.slideUp("fast");
+  } else {
+    cardsDiv.slideDown("fast");
+      var pileHTML = '';
+  for (var i = activeCharacter.deck.discardPile.length-1;i>=0; i--){
+    pileHTML = pileHTML + '<img src="' +'/images/' + activeCharacter.deck.discardPile[i].image + '" class="rounded_s" style="display:inline-block;width:100px;">'
+  }
+  fullDiscard.innerHTML = pileHTML;
+  }
+
 
 });
+
 
 //Adding event listener to handle shuffling
 document.getElementById("shuffle").addEventListener('click', (event) => {
