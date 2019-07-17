@@ -1,132 +1,125 @@
 <!doctype html>
 <html>
-
-<head>
-	<title>Attack Modifiers</title>
-	<link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-	<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-	<link href='https://fonts.googleapis.com/css?family=Pirata One' rel='stylesheet'>
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-	<link rel="stylesheet" href="bundle.css">
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-	<meta name="viewport" content="width=device-width">
-</head>
-
-<body style="margin:0;">
-	<header class="mdc-top-app-bar app-bar mdc-top-app-bar--fixed" id="app-bar">
-		<div class="mdc-top-app-bar__row">
-			<section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-				<a href="#" class="demo-menu material-icons mdc-top-app-bar__navigation-icon" style="text-decoration:none;color:black">menu</a>
-				<span class="mdc-top-app-bar__title">Attack Modifier</span><span><img style="height:50px;width:60px;border:none;margin-left:20px;" id="chosen-class"></span>
-			</section>
-		</div>
-	</header>
-	<aside class="mdc-drawer mdc-drawer--dismissible mdc-top-app-bar--fixed-adjust">
-		<div class="mdc-drawer__content">
-			<div class="mdc-list">
-				<div class="mdc-list-item" style="height:100%;margin:25px;padding:0px">
-					<div class="mdc-select" style="background:none;width:100%;">
-						<input type="hidden" name="enhanced-select">
-						<i class="mdc-select__dropdown-icon"></i>
-						<div class="mdc-select__selected-text" style="font-family: 'Pirata One';font-size:24px;"></div>
-						<div class="mdc-select__menu mdc-menu mdc-menu-surface demo-width-class">
-							<ul class="mdc-list" style="font-family: 'Pirata One';font-size:24px">
-								<li class="mdc-list-item" data-value="brute">
-									<img style="width:60px;height:50px" src="/images/class-icons/brute.png">
-									<p style="padding:10px">Brute</p>
-								</li>
-								<li class="mdc-list-item" data-value="spellweaver">
-									<img style="width:60px;height:50px" src="/images/class-icons/spellweaver.png">
-									<p style="padding:10px">Spellweaver</p>
-								</li>
-								<li class="mdc-list-item" data-value="scoundrel">
-									<img style="width:60px;height:50px" src="/images/class-icons/scoundrel.png">
-									<p style="padding:10px">Scoundrel</p>
-								</li>
-								<li class="mdc-list-item" data-value="cragheart">
-									<img style="width:60px;height:50px" src="/images/class-icons/cragheart.png">
-									<p style="padding:10px">Cragheart</p>
-								</li>
-								<li class="mdc-list-item" data-value="mindthief">
-									<img style="width:60px;height:50px" src="/images/class-icons/mindthief.png">
-									<p style="padding:10px">Mindthief</p>
-								</li>
-								<li class="mdc-list-item" data-value="tinkerer">
-									<img style="width:60px;height:50px" src="/images/class-icons/tinkerer.png">
-									<p style="padding:10px">Tinkerer</p>
-								</li>
-							</ul>
+	<head>
+		<title>Attack Modifiers</title>
+		<link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+		<link href='https://fonts.googleapis.com/css?family=Pirata One' rel='stylesheet'>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" href="bundle.css">
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+		<meta name="viewport" content="width=device-width">
+	</head>
+	<body style="margin:0;">
+		<header class="mdc-top-app-bar app-bar mdc-top-app-bar--fixed" id="app-bar">
+			<div class="mdc-top-app-bar__row">
+				<section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+					<a href="#" class="demo-menu material-icons mdc-top-app-bar__navigation-icon" style="text-decoration:none;color:black">menu</a>
+					<span class="mdc-top-app-bar__title">Attack Modifier</span><span><img style="height:50px;width:60px;border:none;margin-left:20px;" id="chosen-class"></span>
+				</section>
+			</div>
+		</header>
+		<aside class="mdc-drawer mdc-drawer--dismissible mdc-top-app-bar--fixed-adjust">
+			<div class="mdc-drawer__content">
+				<div class="mdc-list">
+					<div class="mdc-list-item" style="height:100%;margin:25px;padding:0px">
+						<div class="mdc-select" style="background:none;width:100%;">
+							<input type="hidden" name="enhanced-select">
+							<i class="mdc-select__dropdown-icon"></i>
+							<div class="mdc-select__selected-text" style="font-family: 'Pirata One';font-size:24px;"></div>
+							<div class="mdc-select__menu mdc-menu mdc-menu-surface demo-width-class">
+								<ul class="mdc-list" style="font-family: 'Pirata One';font-size:24px">
+									<li class="mdc-list-item" data-value="brute">
+										<img style="width:60px;height:50px" src="/images/class-icons/brute.png">
+										<p style="padding:10px">Brute</p>
+									</li>
+									<li class="mdc-list-item" data-value="spellweaver">
+										<img style="width:60px;height:50px" src="/images/class-icons/spellweaver.png">
+										<p style="padding:10px">Spellweaver</p>
+									</li>
+									<li class="mdc-list-item" data-value="scoundrel">
+										<img style="width:60px;height:50px" src="/images/class-icons/scoundrel.png">
+										<p style="padding:10px">Scoundrel</p>
+									</li>
+									<li class="mdc-list-item" data-value="cragheart">
+										<img style="width:60px;height:50px" src="/images/class-icons/cragheart.png">
+										<p style="padding:10px">Cragheart</p>
+									</li>
+									<li class="mdc-list-item" data-value="mindthief">
+										<img style="width:60px;height:50px" src="/images/class-icons/mindthief.png">
+										<p style="padding:10px">Mindthief</p>
+									</li>
+									<li class="mdc-list-item" data-value="tinkerer">
+										<img style="width:60px;height:50px" src="/images/class-icons/tinkerer.png">
+										<p style="padding:10px">Tinkerer</p>
+									</li>
+								</ul>
+							</div>
+							<span class="mdc-floating-label" style="font-family: 'Pirata One';font-size:24px;">Pick a class</span>
+							<div class="mdc-line-ripple"></div>
 						</div>
-						<span class="mdc-floating-label" style="font-family: 'Pirata One';font-size:24px;">Pick a class</span>
-						<div class="mdc-line-ripple"></div>
+						
+					</div>
+					<div id="bless" class="mdc-list-item" style="height:auto;">
+						<div style="width:100%;font-family: 'Pirata One';font-size:22px;">
+							<div style="width:25%;float:left;"><img src="/images/attack-modifiers/bless_alpha.png" style="height:50px;width:50px;border:none;"></div>
+							<div style="width:50%;display:flex;float:left;margin-left:10px;margin-top:15px;height:100%;align-items:center;">Bless</div>
+						</div>
 					</div>
 				</div>
-				<!--- <a class="mdc-list-item" href="#">
-						<i class="material-icons mdc-list-item__graphic" aria-hidden="true">send</i>
-						<span class="mdc-list-item__text">Outgoing</span>
-					</a>
-					<a class="mdc-list-item" href="#">
-						<i class="material-icons mdc-list-item__graphic" aria-hidden="true">drafts</i>
-						<span class="mdc-list-item__text">Drafts</span>
-					</a>--->
 			</div>
-		</div>
-	</aside>
-	<div class="mdc-drawer-app-content mdc-top-app-bar--fixed-adjust">
-		<main class="main-content" id="main-content">
-			<div class="mdc-layout-grid">
-				<div class="mdc-layout-grid__inner">
-					<div class="mdc-layout-grid__cell--span-5-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-					<img id="hand"  style="margin-right:auto;margin-left:auto;" class="mdc-card rounded" src="/images/attack-modifiers/top-small.jpg"></div>
-					<div class="mdc-layout-grid__cell--span-5-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-					<img id="discard" class="mdc-card rounded" style="margin-right:auto;margin-left:auto;" src=""></div>
+		</aside>
+		<div class="mdc-drawer-app-content mdc-top-app-bar--fixed-adjust">
+			<main class="main-content" id="main-content">
+				<div class="mdc-layout-grid">
+					<div class="mdc-layout-grid__inner">
+						<div class="mdc-layout-grid__cell--span-5-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+						<img id="hand"  style="margin-right:auto;margin-left:auto;" class="mdc-card rounded" src="/images/attack-modifiers/top-small.jpg"></div>
+						<div class="mdc-layout-grid__cell--span-5-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+						<img id="discard" class="mdc-card rounded" style="margin-right:auto;margin-left:auto;" src=""></div>
+					</div>
 				</div>
-			</div>
-			<div>
-				<span>
-					<i id="shuffle" class="material-icons md-48">loop</i>
-					<i id="flip" class="material-icons md-48">flip_to_front</i>
-					<i id="warning" class="material-icons md-48" style="display:none;">warning</i>
-				</span>
-			</div>
-			<p id="stats"></p>
-
-		</main>
-	</div>
-	<div class="mdc-dialog" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title" aria-describedby="my-dialog-content">
-		<div class="mdc-dialog__container">
-			<div class="mdc-dialog__surface" style="background-color: #ac8357">
-				<!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
-				<h2 class="mdc-dialog__title" id="my-dialog-title">
+				<div>
+					<span>
+						<i id="shuffle" class="material-icons md-48">loop</i>
+						<i id="flip" class="material-icons md-48">flip_to_front</i>
+						<i id="warning" class="material-icons md-48" style="display:none;">warning</i>
+					</span>
+				</div>
+				<p id="stats"></p>
+			</main>
+		</div>
+		<div class="mdc-dialog" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title" aria-describedby="my-dialog-content">
+			<div class="mdc-dialog__container">
+				<div class="mdc-dialog__surface" style="background-color: #ac8357">
+					<!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
+					<h2 class="mdc-dialog__title" id="my-dialog-title">
 					<!--
 					-->Choose a Card
 					<!--
 					-->
-				</h2>
-				<div class="mdc-dialog__content" id="my-dialog-content">
-					<div class="mdc-layout-grid">
-						<div class="mdc-layout-grid__inner">
-							<!-- <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close"> -->
+					</h2>
+					<div class="mdc-dialog__content" id="my-dialog-content">
+						<div class="mdc-layout-grid">
+							<div class="mdc-layout-grid__inner">
+								<!-- <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close"> -->
 								<input id="recent" type="image" class="mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-10-tablet mdc-layout-grid__cell--span-2-phone mdc-card rounded_s" data-mdc-dialog-action="close" src="">
-							<!-- </button> -->
-							<!-- <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close"> -->
+								<!-- </button> -->
+								<!-- <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close"> -->
 								<input id="recent-1" type="image" class="mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-10-tablet mdc-layout-grid__cell--span-2-phone mdc-card rounded_s" data-mdc-dialog-action="close" src="">
-							<!-- </button> -->
+								<!-- </button> -->
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+			<div class="mdc-dialog__scrim"></div>
 		</div>
-		<div class="mdc-dialog__scrim"></div>
-	</div>
-	<script src="bundle.js" async></script>
-	<div id="cards" style="overflow-x:auto;white-space:nowrap;height:90px;display:none;position: absolute;right: 0; bottom: 0; left: 0; background-color: #ac8357; text-align: center;">
-		<div id="discardpile" style="width:100%;height:auto;margin: 0; position: absolute; top: 50%; -ms-transform: translateY(-50%); transform: translateY(-50%);">
+		<script src="bundle.js" async></script>
+		<div id="cards" style="overflow-x:auto;white-space:nowrap;height:90px;display:none;position: absolute;right: 0; bottom: 0; left: 0; background-color: #ac8357; text-align: center;">
+			<div id="discardpile" style="width:100%;height:auto;margin: 0; position: absolute; top: 50%; -ms-transform: translateY(-50%); transform: translateY(-50%);">
+			</div>
 		</div>
-
-	</div>
-</body>
-
+	</body>
 </html>
