@@ -37,7 +37,8 @@ topAppBar.setScrollTarget(document.getElementById('main-content'));
 topAppBar.listen('MDCTopAppBar:nav', () => {
   drawer.open = !drawer.open;
 });
-console.log("pre active character");
+
+//Instantiating a new Character
 try {
 
 var activeCharacter = new Character('base','');
@@ -59,6 +60,7 @@ select.listen('MDCSelect:change', () => {
   }
 });
 
+//Add event listener to hand for handling cards being drawn
 document.getElementById("hand").addEventListener('click', (event) => {
   $("#cards").slideUp("fast");
   var discardPile = document.getElementById("discard");
@@ -79,6 +81,19 @@ document.getElementById("hand").addEventListener('click', (event) => {
 
 });
 
+document.getElementById("bless").addEventListener('click', (event) => {
+var blessingCard =   {    "name": "am-pm-01",
+    "points": 50,
+    "image": "attack-modifiers/base/player-mod/am-pm-01.png",
+    "value": "bless",
+    "xws": "ampm01"
+  };
+  var tempDeck = activeCharacter.deck;
+  tempDeck.addCard(blessingCard);
+
+
+});
+
 document.getElementById("discard").addEventListener('click', (event) => {
   $("#cards").slideDown("fast");
 	var pileHTML = '';
@@ -89,6 +104,7 @@ document.getElementById("discard").addEventListener('click', (event) => {
 
 });
 
+//Adding event listener to handle shuffling
 document.getElementById("shuffle").addEventListener('click', (event) => {
   var discardPile = document.getElementById("discard");
   var tempDeck = activeCharacter.deck;
@@ -102,6 +118,7 @@ document.getElementById("shuffle").addEventListener('click', (event) => {
 
 });
 
+//Handle building the elements inside the modal window
 document.getElementById("flip").addEventListener('click',(event) => {
   let tempDeck = activeCharacter.deck;
   let drawnCards = tempDeck.drawCards(2);
