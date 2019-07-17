@@ -56,6 +56,7 @@ select.listen('MDCSelect:change', () => {
   } else if (activeCharacter.class != `${select.value}`) {
     document.getElementById("chosen-class").src = `/images/class-icons/${select.value}.png`;
     activeCharacter.class = `${select.value}`;
+    activeCharacter.setClass(activeCharacter.class);
     console.log(`${select.value}` + ':' + activeCharacter.class);
   }
 });
