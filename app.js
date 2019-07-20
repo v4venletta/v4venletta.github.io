@@ -23,7 +23,14 @@ const drawer = MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
 const listEl = document.querySelector('.mdc-drawer .mdc-list');
 const topAppBar = MDCTopAppBar.attachTo(document.getElementById('app-bar'));
 var fullDiscard = document.getElementById("discardpile");
-
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+}
 /*dialog.listen('MDCDialog:opened', function() {
   // Assuming contentElement references a common parent element with the rest of the page's content
   contentElement.setAttribute('aria-hidden', 'true');
@@ -57,9 +64,10 @@ select.listen('MDCSelect:change', () => {
     document.getElementById("chosen-class").src = `/images/class-icons/${select.value}.png`;
     activeCharacter.class = `${select.value}`;
     activeCharacter.setClass(activeCharacter.class);
-    console.log(`${select.value}` + ':' + activeCharacter.class);
+    console.log(`${select.value}` + ':' + activeCharacter.class);    
   }
 });
+
 
 //Add event listener to hand for handling cards being drawn
 document.getElementById("hand").addEventListener('click', (event) => {
@@ -95,26 +103,15 @@ var blessingCard =   {    "name": "am-pm-01",
 
 });
 
-document.getElementById("main-content").addEventListener('click',(event) => {
-  var cardsDiv = document.getElementById("cards");
-  console.log(window.getComputedStyle(cardsDiv).display);
-     if (window.getComputedStyle(cardsDiv).display != "none") {
-    // Do something..
-    console.log("sliding up");
-     $("#cards").slideUp("fast");
-  }
-  console.log(window.getComputedStyle(cardsDiv).display);
-});
-
 document.getElementById("discard").addEventListener('click', (event) => {
 
   var cardsDiv = document.getElementById("cards");
    if (window.getComputedStyle(cardsDiv).display != "none") {
     // Do something..
     console.log("sliding up");
-    cardsDiv.slideUp("fast");
+    $('#cards').slideUp("fast");
   } else {
-    cardsDiv.slideDown("fast");
+   $('#cards').slideDown("fast");
       var pileHTML = '';
   for (var i = activeCharacter.deck.discardPile.length-1;i>=0; i--){
     pileHTML = pileHTML + '<img src="' +'/images/' + activeCharacter.deck.discardPile[i].image + '" class="rounded_s" style="display:inline-block;width:100px;">'
