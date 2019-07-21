@@ -26,7 +26,8 @@
     "@material/top-app-bar": "^3.0.0",
     "animations.js": "^1.0.5",
     "character": "1.0.0",
-    "deck": "1.0.0"
+    "deck": "1.0.0",
+    "mem": "^5.1.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
