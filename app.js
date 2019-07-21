@@ -13,20 +13,61 @@ import {
 import {
   MDCMenu
 } from '@material/menu';
-import {MDCDialog} from '@material/dialog';
-import {Deck} from 'deck';
-import {Character} from 'character';
-
+import {
+  MDCDialog
+} from '@material/dialog';
+import {
+  Deck
+} from 'deck';
+import {
+  Character
+} from 'character';
+import {
+  animations
+} from "animations.js"
+const slideInLeft = {
+  easing: "ease",
+  transform: [
+    "translate3d(-100%,0, 0)",
+    "translate3d(0, 0, 0)"
+  ],
+  transformOrigin: [
+    "center",
+    "center"
+  ]
+};
+const fadeOut = {
+  easing: "ease",
+  opacity: [
+    1,
+    0
+  ]
+};
+const timing = {
+  duration: 1000,
+  fill: "forwards",
+  iterations: 1,
+  delay: 0,
+  endDelay: 0
+};
+const timing2 = {
+  duration: 2000,
+  fill: "forwards",
+  iterations: 1,
+  delay: 0,
+  endDelay: 0
+};
 const dialog = new MDCDialog(document.querySelector('.mdc-dialog'));
 const select = new MDCSelect(document.querySelector('.mdc-select'));
 const drawer = MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
 const listEl = document.querySelector('.mdc-drawer .mdc-list');
 const topAppBar = MDCTopAppBar.attachTo(document.getElementById('app-bar'));
 var fullDiscard = document.getElementById("discardpile");
+
 function sleep(milliseconds) {
   var start = new Date().getTime();
   for (var i = 0; i < 1e7; i++) {
-    if ((new Date().getTime() - start) > milliseconds){
+    if ((new Date().getTime() - start) > milliseconds) {
       break;
     }
   }
@@ -48,23 +89,23 @@ topAppBar.listen('MDCTopAppBar:nav', () => {
 //Instantiating a new Character
 try {
 
-var activeCharacter = new Character('base','');
-console.log(activeCharacter);
-} catch(err) {
-	console.log(err);
-	console.error(err);
+  var activeCharacter = new Character('base', '');
+  console.log(activeCharacter);
+} catch (err) {
+  console.log(err);
+  console.error(err);
 }
 
 //localStorage.removeItem("Character(test7)");
 select.listen('MDCSelect:change', () => {
-	console.log("select listener");
+  console.log("select listener");
   if (activeCharacter === undefined) {
     document.getElementById("chosen-class").src = `/images/class-icons/${select.value}.png`;
   } else if (activeCharacter.class != `${select.value}`) {
     document.getElementById("chosen-class").src = `/images/class-icons/${select.value}.png`;
     activeCharacter.class = `${select.value}`;
     activeCharacter.setClass(activeCharacter.class);
-    console.log(`${select.value}` + ':' + activeCharacter.class);    
+    console.log(`${select.value}` + ':' + activeCharacter.class);
   }
 });
 
@@ -81,42 +122,79 @@ document.getElementById("hand").addEventListener('click', (event) => {
   var drawnCard = tempDeck.draw();
   var stats = document.getElementById("stats");
 
-  stats.innerHTML="Draw Pile: " + tempDeck.drawPile.length + ", Discard Pile: " + tempDeck.discardPile.length;
+  stats.innerHTML = "Draw Pile: " + tempDeck.drawPile.length + ", Discard Pile: " + tempDeck.discardPile.length;
   discardPile.src = '/images/' + drawnCard.image;
   if (activeCharacter.deck.shuffleNeeded) {
     var warning = document.getElementById("warning");
-  	warning.style = "display:inline;color:red;";
+    warning.style = "display:inline;color:red;";
   }
 
 });
 
 document.getElementById("bless").addEventListener('click', (event) => {
-var blessingCard =   {    "name": "am-pm-01",
+  let blessingCard = {
+    "name": "am-pm-01",
     "points": 50,
     "image": "attack-modifiers/base/player-mod/am-pm-01.png",
     "value": "bless",
     "xws": "ampm01"
   };
-  var tempDeck = activeCharacter.deck;
+  let tempDeck = activeCharacter.deck;
   tempDeck.addCard(blessingCard);
-
-
+  let blessDeck = document.getElementById("modDeck");
+  blessDeck.src = "/images/attack-modifiers/base/player-mod/am-pm-01.png";
+  blessDeck.animate(
+    slideInLeft,
+    timing
+  );
+  blessDeck.style.zIndex = 1000;
+  blessDeck.animate(
+    fadeOut,
+    timing2
+  );
+  setTimeout(function() {
+    blessDeck.style.zIndex = 0
+  }, 2000);
 });
-
+document.getElementById("curse").addEventListener('click', (event) => {
+  let curseCard = {
+    "name": "am-pm-21",
+    "points": 50,
+    "image": "attack-modifiers/base/player-mod/am-pm-21.png",
+    "value": "curse",
+    "xws": "ampm21"
+  };
+  let tempDeck = activeCharacter.deck;
+  tempDeck.addCard(curseCard);
+  let curseDeck = document.getElementById("modDeck");
+  curseDeck.src = "/images/attack-modifiers/base/player-mod/am-pm-21.png";
+  curseDeck.animate(
+    slideInLeft,
+    timing
+  );
+  curseDeck.style.zIndex = 1000;
+  curseDeck.animate(
+    fadeOut,
+    timing2
+  );
+  setTimeout(function() {
+    curseDeck.style.zIndex = 0
+  }, 2000);
+});
 document.getElementById("discard").addEventListener('click', (event) => {
 
   var cardsDiv = document.getElementById("cards");
-   if (window.getComputedStyle(cardsDiv).display != "none") {
+  if (window.getComputedStyle(cardsDiv).display != "none") {
     // Do something..
     console.log("sliding up");
     $('#cards').slideUp("fast");
   } else {
-   $('#cards').slideDown("fast");
-      var pileHTML = '';
-  for (var i = activeCharacter.deck.discardPile.length-1;i>=0; i--){
-    pileHTML = pileHTML + '<img src="' +'/images/' + activeCharacter.deck.discardPile[i].image + '" class="rounded_s" style="display:inline-block;width:100px;">'
-  }
-  fullDiscard.innerHTML = pileHTML;
+    $('#cards').slideDown("fast");
+    var pileHTML = '';
+    for (var i = activeCharacter.deck.discardPile.length - 1; i >= 0; i--) {
+      pileHTML = pileHTML + '<img src="' + '/images/' + activeCharacter.deck.discardPile[i].image + '" class="rounded_s" style="display:inline-block;width:100px;">'
+    }
+    fullDiscard.innerHTML = pileHTML;
   }
 
 
@@ -131,21 +209,21 @@ document.getElementById("shuffle").addEventListener('click', (event) => {
 
   discardPile.src = '';
   var stats = document.getElementById("stats");
-  stats.innerHTML="Draw Pile: " + tempDeck.drawPile.length + ", Discard Pile: " + tempDeck.discardPile.length;
+  stats.innerHTML = "Draw Pile: " + tempDeck.drawPile.length + ", Discard Pile: " + tempDeck.discardPile.length;
   var warning = document.getElementById("warning");
   warning.style = "display:none;";
 
 });
 
 //Handle building the elements inside the modal window
-document.getElementById("flip").addEventListener('click',(event) => {
+document.getElementById("flip").addEventListener('click', (event) => {
   let tempDeck = activeCharacter.deck;
   let drawnCards = tempDeck.drawCards(2);
   let stats = document.getElementById("stats");
   let card1 = document.getElementById("recent");
   let card2 = document.getElementById("recent-1");
 
-  stats.innerHTML="Draw Pile: " + tempDeck.drawPile.length + ", Discard Pile: " + tempDeck.discardPile.length;
+  stats.innerHTML = "Draw Pile: " + tempDeck.drawPile.length + ", Discard Pile: " + tempDeck.discardPile.length;
   card1.src = '/images/' + drawnCards[0].image;
   card1.attributes["data-mdc-dialog-action"].value = card1.src;
   card2.src = '/images/' + drawnCards[1].image;
@@ -162,10 +240,10 @@ dialog.listen('MDCDialog:closed', (event) => {
   if (activeCharacter.deck.shuffleNeeded) {
     document.getElementById("warning").style = "display:inline;color:red;";
   }
-  if (event.detail.action == "close"){
-    document.getElementById("discard").src = '/images/' + activeCharacter.deck.discardPile[activeCharacter.deck.discardPile.length-1].image; 
+  if (event.detail.action == "close") {
+    document.getElementById("discard").src = '/images/' + activeCharacter.deck.discardPile[activeCharacter.deck.discardPile.length - 1].image;
   } else {
     document.getElementById("discard").src = event.detail.action;
   }
-  
+
 });
