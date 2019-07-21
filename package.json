@@ -25,8 +25,8 @@
     "@material/select": "^3.0.0",
     "@material/top-app-bar": "^3.0.0",
     "animations.js": "^1.0.5",
-    "character": "^0",
-    "deck": "^0"
+    "character": "1.0.0",
+    "deck": "1.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
