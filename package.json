@@ -25,6 +25,7 @@
     "@material/select": "^3.0.0",
     "@material/top-app-bar": "^3.0.0",
     "animations.js": "^1.0.5",
+    "animejs": "^3.0.1",
     "character": "file:local_modules/character",
     "deck": "file:local_modules/deck",
     "mem": "^5.1.1"

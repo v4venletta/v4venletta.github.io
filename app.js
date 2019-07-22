@@ -22,9 +22,7 @@ import {
 import {
   Character
 } from 'character';
-import {
-  animations
-} from "animations.js"
+import anime from 'animejs/lib/anime.es.js';
 const characterClasses = {
     beasttyrant: {name: "beast tyrant", abbr: "bt"},  
     berserker: {name: "berserker", abbr: "be"}, 
@@ -46,61 +44,14 @@ const characterClasses = {
     sunkeeper: {name: "sunkeeper", abbr: "sk"},
     tinkerer: {name: "tinkerer", abbr: "ti"}
   };
-const slideInLeft = {
-  easing: "ease",
-  transform: [
-    "translate3d(-100%,0, 0)",
-    "translate3d(0, 0, 0)"
-  ],
-  transformOrigin: [
-    "center",
-    "center"
-  ]
-};
-const fadeOut = {
-  easing: "ease",
-  opacity: [
-    1,
-    0
-  ]
-};
-const timing = {
-  duration: 1000,
-  fill: "forwards",
-  iterations: 1,
-  delay: 0,
-  endDelay: 0
-};
-const timing2 = {
-  duration: 2000,
-  fill: "forwards",
-  iterations: 1,
-  delay: 0,
-  endDelay: 0
-};
+
 const dialog = new MDCDialog(document.querySelector('.mdc-dialog'));
 const select = new MDCSelect(document.querySelector('.mdc-select'));
 const drawer = MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
 const listEl = document.querySelector('.mdc-drawer .mdc-list');
 const topAppBar = MDCTopAppBar.attachTo(document.getElementById('app-bar'));
 var fullDiscard = document.getElementById("discardpile");
-
-function sleep(milliseconds) {
-  var start = new Date().getTime();
-  for (var i = 0; i < 1e7; i++) {
-    if ((new Date().getTime() - start) > milliseconds) {
-      break;
-    }
-  }
-}
-/*dialog.listen('MDCDialog:opened', function() {
-  // Assuming contentElement references a common parent element with the rest of the page's content
-  contentElement.setAttribute('aria-hidden', 'true');
-});
-
-dialog.listen('MDCDialog:closing', function() {
-  contentElement.removeAttribute('aria-hidden');
-});*/
+var rotate = 0;
 
 topAppBar.setScrollTarget(document.getElementById('main-content'));
 topAppBar.listen('MDCTopAppBar:nav', () => {
@@ -155,6 +106,7 @@ document.getElementById("hand").addEventListener('click', (event) => {
 
 });
 
+
 document.getElementById("bless").addEventListener('click', (event) => {
   let blessingCard = {
     "name": "am-pm-01",
@@ -167,18 +119,22 @@ document.getElementById("bless").addEventListener('click', (event) => {
   tempDeck.addCard(blessingCard);
   let blessDeck = document.getElementById("modDeck");
   blessDeck.src = "/images/attack-modifiers/base/player-mod/am-pm-01.png";
-  blessDeck.animate(
-    slideInLeft,
-    timing
-  );
-  blessDeck.style.zIndex = 1000;
-  blessDeck.animate(
-    fadeOut,
-    timing2
-  );
-  setTimeout(function() {
-    blessDeck.style.zIndex = 0
-  }, 2000);
+  blessDeck.style.opacity = 1.0;
+  rotate = rotate + 360;
+  anime({
+    targets: '#modDeck',
+     translateX: {
+    value: [-250,0],
+    duration: 800
+  },
+  opacity:{
+    value: 0.0,
+    delay: 800,
+    easing: 'linear'
+  },
+    rotate: rotate,
+    duration: 800
+  });
 });
 document.getElementById("curse").addEventListener('click', (event) => {
   let curseCard = {
@@ -192,18 +148,22 @@ document.getElementById("curse").addEventListener('click', (event) => {
   tempDeck.addCard(curseCard);
   let curseDeck = document.getElementById("modDeck");
   curseDeck.src = "/images/attack-modifiers/base/player-mod/am-pm-21.png";
-  curseDeck.animate(
-    slideInLeft,
-    timing
-  );
-  curseDeck.style.zIndex = 1000;
-  curseDeck.animate(
-    fadeOut,
-    timing2
-  );
-  setTimeout(function() {
-    curseDeck.style.zIndex = 0
-  }, 2000);
+  curseDeck.style.opacity = 1.0;
+  rotate = rotate + 360;
+  anime({
+    targets: '#modDeck',
+     translateX: {
+    value: [-250,0],
+    duration: 800
+  },
+  opacity:{
+    value: 0.0,
+    delay: 800,
+    easing: 'linear'
+  },
+    rotate: rotate,
+    duration: 800
+  });
 });
 document.getElementById("discard").addEventListener('click', (event) => {
 
