@@ -25,6 +25,27 @@ import {
 import {
   animations
 } from "animations.js"
+const characterClasses = {
+    beasttyrant: {name: "beast tyrant", abbr: "bt"},  
+    berserker: {name: "berserker", abbr: "be"}, 
+    bladeswarm: {name: "bladeswarm", abbr: "bs"},
+    brute: {name: "brute", abbr: "br"},
+    cragheart: {name: "cragheart", abbr: "ch"},
+    diviner: {name: "diviner", abbr: "dr"},
+    doomstalker: {name: "doomstalker", abbr: "ds"},
+    elementalist: {name: "elementalist", abbr: "el"},
+    mindthief: {name: "mindthief", abbr: "mt"},
+    nightshroud: {name: "nightshroud", abbr: "ns"},
+    plagueherald: {name: "plagueherald", abbr: "ph"},
+    quartermaster: {name: "quartermaster", abbr: "qm"},
+    sawbones: {name: "sawbones", abbr: "sb"},
+    scoundrel: {name: "scoundrel", abbr: "sc"},
+    soothsinger: {name: "soothsinger", abbr: "ss"},
+    spellweaver: {name: "spellweaver", abbr: "sw"},
+    summoner: {name: "summoner", abbr: "su"},
+    sunkeeper: {name: "sunkeeper", abbr: "sk"},
+    tinkerer: {name: "tinkerer", abbr: "ti"}
+  };
 const slideInLeft = {
   easing: "ease",
   transform: [
@@ -104,7 +125,11 @@ select.listen('MDCSelect:change', () => {
   } else if (activeCharacter.class != `${select.value}`) {
     document.getElementById("chosen-class").src = `/images/class-icons/${select.value}.png`;
     activeCharacter.class = `${select.value}`;
-    activeCharacter.setClass(activeCharacter.class);
+    activeCharacter.setClass(activeCharacter.class)
+      .then(function(data){
+        console.log(data);
+        console.log(activeCharacter);
+      });
     console.log(`${select.value}` + ':' + activeCharacter.class);
   }
 });
