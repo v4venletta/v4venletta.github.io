@@ -126,11 +126,10 @@ select.listen('MDCSelect:change', () => {
     document.getElementById("chosen-class").src = `/images/class-icons/${select.value}.png`;
     activeCharacter.class = `${select.value}`;
     activeCharacter.setClass(activeCharacter.class)
-      .then(function(data){
-        console.log(data);
+      .then(function(){
+        //Load the sheet checkmarks here.
         console.log(activeCharacter);
       });
-    console.log(`${select.value}` + ':' + activeCharacter.class);
   }
 });
 

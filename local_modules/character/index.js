@@ -43,13 +43,15 @@ export class Character {
 	}
 
 	get storageName(){
+		//to-do make sure this isn't vulnerable to injection.
 		return "Character(" + this.name + ")";
 	}
 
 	//Callback function to set the perks to bind the context to "this".
 	setSheet(json){
 		this.sheet = json[json.findIndex(sheet => sheet.name == this.class + " perks")];
-		return $.Deferred().resolve().promoise();
+		//this.save();
+		console.log(this.sheet);
 	}
 
 	//Callback function to set the perks to bind the context to "this".
@@ -58,9 +60,7 @@ export class Character {
 		//Not sure if this is the best place to determine which cards are base vs mods but it's here for now.
 		var baseCards, modCards;
 		baseCards = json.filter(card => card.name.startsWith("am-p-"));
-		// if (this.class){
-		// 	modCards = json.filter(card => card.name.startsWith ("am-" + this.class.abbr));
-		// }
+		//modCards = json.filter(card => card.name.startsWith ("am-" + this.class.abbr));
 
 		//Check to see if the global modifier deck has been set, if not set it.
 		//to-do - Include monster modifier cards and make the filter logic more sound.
@@ -74,13 +74,7 @@ export class Character {
 
 	setClass(className){
 		this.class = className;
-
-		return $.getJSON("../data/character-perks+.js")
-			.then(this.setSheet.bind(this));
-		    // .fail(function(json) {
-		    // 	console.log('Character perk load failed');
-		    //     //to-do error handling
-	    	// });
+		this.load();
 	}
 
 	delete(){
@@ -101,6 +95,13 @@ export class Character {
 		// 	//Object.assign(this, JSON.parse(char));
 		// //If not then initialize a few more things.
 		// } else {
+			console.log('Load character-perks');
+			$.getJSON("../data/character-perks+.js")
+				.then(this.setSheet.bind(this))
+			    .fail(function(json) {
+			    	console.log('Character perk load failed');
+			        //to-do error handling
+		    	});
 		    console.log('Load attack-modifiers');
 			$.getJSON("../data/attack-modifiers.js")
 				.then(this.setDeck.bind(this))
