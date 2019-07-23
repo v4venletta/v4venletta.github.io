@@ -167,7 +167,7 @@ document.getElementById("hand").addEventListener('click', (event) => {
             translateY: {
                 value: [-250, 0],
                 duration: 800
-            }
+            },rotateX: {value: '+=360', duration:800,easing: 'linear'}
         });
     } else {
         console.log(screen.width);
@@ -176,7 +176,7 @@ document.getElementById("hand").addEventListener('click', (event) => {
             translateX: {
                 value: [-250, 0],
                 duration: 800
-            }
+            },rotateY: {value: '+=360', duration:800,easing: 'linear'}
         });
     }
     if (activeCharacter.deck.shuffleNeeded) {
@@ -239,7 +239,7 @@ document.getElementById("curse").addEventListener('click', (event) => {
         opacity: {
             value: 0.0,
             delay: 800,
-            easing: 'linear'
+            easing: 'easeInOutSine'
         },
         rotate: rotate,
         duration: 800
