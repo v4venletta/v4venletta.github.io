@@ -103,6 +103,7 @@ document.getElementById("hand").addEventListener('click', (event) => {
   discardPile.src = '/images/' + drawnCard.image;
   discardPile.style.opacity = 1.0;
   if (screen.width <=600) {
+    console.log(screen.width);
      anime({
     targets: '#discard',
      translateY: {
@@ -111,6 +112,7 @@ document.getElementById("hand").addEventListener('click', (event) => {
   }
   });
   } else {
+    console.log(screen.width);
     anime({
     targets: '#discard',
      translateX: {
