@@ -99,6 +99,7 @@ document.getElementById("hand").addEventListener('click', (event) => {
 
   stats.innerHTML = "Draw Pile: " + tempDeck.drawPile.length + ", Discard Pile: " + tempDeck.discardPile.length;
   discardPile.src = '/images/' + drawnCard.image;
+  discardPile.style.opacity = 1.0;
   if (activeCharacter.deck.shuffleNeeded) {
     var warning = document.getElementById("warning");
     warning.style = "display:inline;color:red;";
