@@ -94,17 +94,33 @@ document.getElementById("hand").addEventListener('click', (event) => {
   // if (tempDeck.drawPile.length === 0) {
   //   tempDeck.shuffleAll();
   // }
+  if (tempDeck.discardPile.length > 0) {
+  document.getElementById("discardParent").style.backgroundImage = "url('/images/" + tempDeck.discardPile[tempDeck.discardPile.length-1].image +"')";};
   var drawnCard = tempDeck.draw();
   var stats = document.getElementById("stats");
 
   stats.innerHTML = "Draw Pile: " + tempDeck.drawPile.length + ", Discard Pile: " + tempDeck.discardPile.length;
   discardPile.src = '/images/' + drawnCard.image;
   discardPile.style.opacity = 1.0;
+  if (screen.width <=600) {
+     anime({
+    targets: '#discard',
+     translateY: {
+    value: [-250,0],
+    duration: 800
+  }
+  });
+  } else {
+    anime({
+    targets: '#discard',
+     translateX: {
+    value: [-250,0],
+    duration: 800}});
+  }
   if (activeCharacter.deck.shuffleNeeded) {
     var warning = document.getElementById("warning");
     warning.style = "display:inline;color:red;";
   }
-
 });
 
 
@@ -136,6 +152,7 @@ document.getElementById("bless").addEventListener('click', (event) => {
     rotate: rotate,
     duration: 800
   });
+
 });
 document.getElementById("curse").addEventListener('click', (event) => {
   let curseCard = {
@@ -191,8 +208,9 @@ document.getElementById("shuffle").addEventListener('click', (event) => {
   var discardPile = document.getElementById("discard");
   var tempDeck = activeCharacter.deck;
   tempDeck.shuffleAll();
-
-  discardPile.src = '';
+  discardPile.src = 'images/attack-modifiers/top-small.jpg';
+  discardPile.style.opacity = 0.0;
+   document.getElementById("discardParent").style.backgroundImage = "";
   var stats = document.getElementById("stats");
   stats.innerHTML = "Draw Pile: " + tempDeck.drawPile.length + ", Discard Pile: " + tempDeck.discardPile.length;
   var warning = document.getElementById("warning");
