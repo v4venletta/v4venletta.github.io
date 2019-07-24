@@ -21,6 +21,7 @@ export class Deck {
 
 	removeCardByName(cardName){
 		var index = this.drawPile.findIndex(card => card.name == cardName);
+
 		this.removeCardByIndex(index);
 	}
 
@@ -43,7 +44,8 @@ export class Deck {
 
 		}
 
-		this.drawPile.splice(index, 1);
+		console.log("Removed " + this.drawPile[index].name + " card");
+		this.drawPile = this.drawPile.splice(index, 1);
 	}
 
 	drawNoDiscard(){

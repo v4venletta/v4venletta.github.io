@@ -143,6 +143,8 @@ select.listen('MDCSelect:change', () => {
 
                   let newInput = document.createElement("input");
                   newInput.type = "checkbox";
+                  newInput.name = activeCharacter.sheet.perks[i].name;
+                  newInput.value = i;
                   newInput.id = "perk_" + i;
 
                   let newLabel = document.createElement('label')
@@ -152,7 +154,6 @@ select.listen('MDCSelect:change', () => {
                   newDiv.appendChild(newInput);
                   newDiv.appendChild(newLabel);  
                   perkDiv.appendChild(newDiv);
-
                 }
                 
                 // console.log("Active Character");
@@ -385,4 +386,18 @@ dialog.listen('MDCDialog:closed', (event) => {
         document.getElementById("discard").src = event.detail.action;
     }
 
+});
+
+perksDialog.listen('MDCDialog:closed', (event) => {
+    if (event.detail.action == "accept") {
+        let perkDiv = document.getElementById("perksContent");
+        let checkBoxes = perkDiv.getElementsByTagName("input");
+        activeCharacter.load();
+
+        for (let i = 0; i < checkBoxes.length; i++) {
+            if (checkBoxes[i].checked) {
+                activeCharacter.applyPerk(i);
+            }
+        }       
+    }
 });

@@ -14,31 +14,26 @@ export class Character {
 
 	}
 
-	applyPerk(perkName){
-		var perk = this.sheet.perks.filter(perk => perk.name == perkName);
+	applyPerk(perkIndex){
+		var perk = this.sheet.perks[perkIndex];
 		this.deck.shuffleAll();
 		
-		perk.actions.foreach(function(action) {
+		perk.actions.forEach((action) => {
 			switch(action.type) {
 				case 'remove':
-					action.cards.foreach(function(card) {
-						this.deck.removeCardByName(card.name);
+					action.cards.forEach((card) => {
+						this.deck.removeCardByName(card);
 					});
 					break;
 				case 'add':
-					action.cards.foreach(function(card) {
-						this.deck.addCardByName(card.name);
+					action.cards.forEach((card) => {
+						this.deck.addCardByName(card);
 					});
 					break;
 				default:
 					//to-do error handling
 			}
 		});
-
-	}
-
-	//to-do
-	removePerk(){
 
 	}
 
@@ -75,7 +70,8 @@ export class Character {
 		this.class = className;
 
 		return $.getJSON("../data/character-perks+.js")
-			.then(this.setSheet.bind(this));
+			.then(this.setSheet.bind(this))
+			.then(this.load.bind(this));
 		    // .fail(function(json) {
 		    // 	console.log('Character perk load failed');
 		    //     //to-do error handling
@@ -100,13 +96,12 @@ export class Character {
 		// 	//Object.assign(this, JSON.parse(char));
 		// //If not then initialize a few more things.
 		// } else {
-		    console.log('Load attack-modifiers');
-			$.getJSON("../data/attack-modifiers.js")
-				.then(this.setDeck.bind(this))
-				.fail(function(json) {
-					console.log('AM Load failed');
-					//to-do error handling
-				});
+		return $.getJSON("../data/attack-modifiers.js")
+				.then(this.setDeck.bind(this));
+				// .fail(function(json) {
+				// 	console.log('AM Load failed');
+				// 	//to-do error handling
+				// });
 
 		//}
 	}
