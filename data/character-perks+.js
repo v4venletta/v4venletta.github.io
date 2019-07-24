@@ -200,7 +200,7 @@
         "actions": [
           {
             "type": "add",
-            "cards": ["am-mt-20". "am-mt-16"]
+            "cards": ["am-mt-20", "am-mt-16"]
           }
         ]
       },           

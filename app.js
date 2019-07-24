@@ -103,6 +103,7 @@ const characterClasses = {
 };
 
 const dialog = new MDCDialog(document.querySelector('.mdc-dialog'));
+const perksDialog = new MDCDialog(document.getElementById('perks'));
 const select = new MDCSelect(document.querySelector('.mdc-select'));
 const drawer = MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
 const listEl = document.querySelector('.mdc-drawer .mdc-list');
@@ -135,8 +136,30 @@ select.listen('MDCSelect:change', () => {
         activeCharacter.class = `${select.value}`;
         activeCharacter.setClass(activeCharacter.class)
             .then(function() {
-                //Load the sheet checkmarks here.
-                console.log(activeCharacter);
+                var perkDiv = document.getElementById("perksContent");
+
+                for (let i = 0; i < activeCharacter.sheet.perks.length; i++){
+                  let newDiv = document.createElement("div");
+
+                  let newInput = document.createElement("input");
+                  newInput.type = "checkbox";
+                  newInput.id = "perk_" + i;
+
+                  let newLabel = document.createElement('label')
+                  newLabel.htmlFor = "perk_" + i + "_label";
+                  newLabel.appendChild(document.createTextNode(activeCharacter.sheet.perks[i].name));
+
+                  newDiv.appendChild(newInput);
+                  newDiv.appendChild(newLabel);  
+                  perkDiv.appendChild(newDiv);
+
+                }
+                
+                // console.log("Active Character");
+                // console.log(activeCharacter);
+            })
+            .fail(function() {
+                console.log("Set Class Failed");
             });
     }
 });
@@ -342,6 +365,10 @@ document.getElementById("flip").addEventListener('click', (event) => {
     card2.attributes["data-mdc-dialog-action"].value = card2.src;
 
     dialog.open();
+});
+
+document.getElementById('chosen-class').addEventListener('click', (event) => {
+    perksDialog.open();
 });
 
 dialog.listen('MDCDialog:opened', (event) => {
