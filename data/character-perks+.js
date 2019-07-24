@@ -54,7 +54,7 @@
     "xws": "mindthiefperks",
     "perks": [
       {
-        "name": "Remove two -1 cards",
+        "name": "Remove two (-1) cards",
         "actions": [
           {
             "type": "remove",
@@ -66,7 +66,7 @@
         ]
       },
       {
-        "name": "Remove two -1 cards",
+        "name": "Remove two (-1) cards",
         "actions": [
           {
             "type": "remove",
@@ -78,7 +78,7 @@
         ]
       },
       {
-        "name": "Remove four +0 cards",
+        "name": "Remove four (+0) cards",
         "actions": [
           {
             "type": "remove",
@@ -92,7 +92,7 @@
         ]
       },
       {
-        "name": "Replace two +1 cards with two +2 cards",
+        "name": "Replace two (+1) cards with two (+2) cards",
         "actions": [
           {
             "type": "remove",
@@ -109,7 +109,105 @@
             ]
           }
         ]
-      }
+      },
+      {
+        "name": "Replace one (-2) card with one (+0) card",
+        "actions": [
+          {
+            "type": "remove",
+            "cards": ["am-p-17"]
+          },
+          {
+            "type": "add",
+            "cards": ["am-mt-03"]
+          }
+        ]
+      },
+      {
+        "name": "Add one (+2) (ice) card",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-mt-04"]
+          }
+        ]
+      },    
+      {
+        "name": "Add one (+2) (ice) card",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-mt-05"]
+          }
+        ]
+      },          
+      {
+        "name": "Add two (rolling) (+1)",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-mt-06", "am-mt-07"]
+          }
+        ]
+      },  
+      {
+        "name": "Add two (rolling) (+1)",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-mt-08", "am-mt-09"]
+          }
+        ]
+      },    
+      {
+        "name": "Add three (rolling) PULL (pull) 1 cards",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-mt-10", "am-mt-11", "am-mt-12"]
+          }
+        ]
+      },    
+      {
+        "name": "Add three (rolling) MUDDLE (muddle) cards",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-mt-13", "am-mt-14", "am-mt-15"]
+          }
+        ]
+      },
+      {
+        "name": "Add two (rolling) IMMOBILIZE (IMMOBILIZE) cards",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-mt-17", "am-mt-18"]
+          }
+        ]
+      }, 
+      {
+        "name": "Add one (rolling) STUN (stun) card",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-mt-19"]
+          }
+        ]
+      },                       
+      {
+        "name": "Add one (rolling) DISARM (disarm) card and one (rolling) MUDDLE (muddle) card",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-mt-20". "am-mt-16"]
+          }
+        ]
+      },           
+      {
+        "name": "Ignore negative scenario effects",
+        "actions": []
+      }       
     ]
   },
   {
