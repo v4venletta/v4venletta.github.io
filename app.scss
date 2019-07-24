@@ -167,7 +167,6 @@ img:not([src]) {
 
 .front
 {
-    background-image:url('/images/attack-modifiers/top-small.jpg');
     background-size:cover;
     height:auto;
     margin-right:auto; 
@@ -179,9 +178,7 @@ img:not([src]) {
     position: absolute;
     top: 0;
     left: 0;
-
     transform: rotateY(180deg);
-
     color: #2196f3;
     background: #fff;
 }

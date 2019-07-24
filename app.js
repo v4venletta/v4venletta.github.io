@@ -143,14 +143,11 @@ select.listen('MDCSelect:change', () => {
 
 
 //Add event listener to hand for handling cards being drawn
+var cardState = "front";
 document.getElementById("hand").addEventListener('click', (event) => {
     $("#cards").slideUp("fast");
-    var discardPile = document.getElementById("discard");
+    var discardPile = document.getElementById("discarded");
     var tempDeck = activeCharacter.deck;
-    //This is now handled by Deck.draw()
-    // if (tempDeck.drawPile.length === 0) {
-    //   tempDeck.shuffleAll();
-    // }
     if (tempDeck.discardPile.length > 0) {
         document.getElementById("discardParent").style.backgroundImage = "url('/images/" + tempDeck.discardPile[tempDeck.discardPile.length - 1].image + "')";
     };
@@ -159,30 +156,81 @@ document.getElementById("hand").addEventListener('click', (event) => {
 
     stats.innerHTML = "Draw Pile: " + tempDeck.drawPile.length + ", Discard Pile: " + tempDeck.discardPile.length;
     discardPile.src = '/images/' + drawnCard.image;
-    discardPile.style.opacity = 1.0;
+    document.getElementById("discard").style.zIndex = 1;
     if (screen.width <= 600) {
         console.log(screen.width);
+        if (cardState === "back") {
+            anime({
+                targets: '#discard',
+                rotateY: '+=180',
+                duration: 0,
+                delay: 10
+            });
+            cardState = "front";
+            console.log(cardState);
+        }
         anime({
             targets: '#discard',
+            scale: [{
+                value: 1
+            }, {
+                value: 1.4
+            }, {
+                value: 1,
+                delay: 250
+            }],
+            rotateY: {
+                value: '+=180',
+                delay: 200
+            },
             translateY: {
-                value: [-250, 0],
-                duration: 800
-            },rotateX: {value: '+=360', duration:800,easing: 'linear'}
+                value: [-200, 0],
+                duration: 400
+            },
+            easing: 'easeInOutSine',
+            duration: 400
+
         });
+
     } else {
         console.log(screen.width);
+        if (cardState === "back") {
+            anime({
+                targets: '#discard',
+                rotateY: '+=180',
+                duration: 0,
+                delay: 10
+            });
+            cardState = "front";
+            console.log(cardState);
+        }
         anime({
             targets: '#discard',
+            scale: [{
+                value: 1
+            }, {
+                value: 1.4
+            }, {
+                value: 1,
+                delay: 250
+            }],
+            rotateY: {
+                value: '+=180',
+                delay: 200
+            },
             translateX: {
-                value: [-250, 0],
+                value: [-600, 0],
                 duration: 800
-            },rotateY: {value: '+=360', duration:800,easing: 'linear'}
+            },
+            easing: 'easeInOutSine',
+            duration: 400
         });
     }
     if (activeCharacter.deck.shuffleNeeded) {
         var warning = document.getElementById("warning");
         warning.style = "display:inline;color:red;";
     }
+    cardState = "back";
 });
 
 
@@ -270,8 +318,7 @@ document.getElementById("shuffle").addEventListener('click', (event) => {
     var discardPile = document.getElementById("discard");
     var tempDeck = activeCharacter.deck;
     tempDeck.shuffleAll();
-    discardPile.src = 'images/attack-modifiers/top-small.jpg';
-    discardPile.style.opacity = 0.0;
+    discardPile.style.zIndex=-1;
     document.getElementById("discardParent").style.backgroundImage = "";
     var stats = document.getElementById("stats");
     stats.innerHTML = "Draw Pile: " + tempDeck.drawPile.length + ", Discard Pile: " + tempDeck.discardPile.length;
