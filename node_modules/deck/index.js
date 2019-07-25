@@ -21,14 +21,13 @@ export class Deck {
 
 	removeCardByName(cardName){
 		var index = this.drawPile.findIndex(card => card.name == cardName);
-
 		this.removeCardByIndex(index);
 	}
 
 	removeCardByIndex(index){
 
 		//Determine where the removed card came from and put it back in the correct place.
-		var urlArray = this.drawPile[index].name.split("/");
+		var urlArray = this.drawPile[index].image.split("/");
 		switch (urlArray[urlArray.length - 1]) {
 			case "player":
 			case "monster":
@@ -45,7 +44,7 @@ export class Deck {
 		}
 
 		console.log("Removed " + this.drawPile[index].name + " card");
-		this.drawPile = this.drawPile.splice(index, 1);
+		this.drawPile.splice(index, 1);
 	}
 
 	drawNoDiscard(){

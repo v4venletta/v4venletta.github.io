@@ -127,42 +127,38 @@ try {
 }
 
 //localStorage.removeItem("Character(test7)");
-select.listen('MDCSelect:change', () => {
-    console.log("select listener");
-    if (activeCharacter === undefined) {
-        document.getElementById("chosen-class").src = `/images/class-icons/${select.value}.png`;
-    } else if (activeCharacter.class != `${select.value}`) {
-        document.getElementById("chosen-class").src = `/images/class-icons/${select.value}.png`;
-        activeCharacter.class = `${select.value}`;
-        activeCharacter.setClass(activeCharacter.class)
-            .then(function() {
-                var perkDiv = document.getElementById("perksContent");
+select.listen('MDCSelect:change', () => {   
 
-                for (let i = 0; i < activeCharacter.sheet.perks.length; i++){
-                  let newDiv = document.createElement("div");
+    document.getElementById("chosen-class").src = `/images/class-icons/${select.value}.png`;
 
-                  let newInput = document.createElement("input");
-                  newInput.type = "checkbox";
-                  newInput.name = activeCharacter.sheet.perks[i].name;
-                  newInput.value = i;
-                  newInput.id = "perk_" + i;
+    activeCharacter.setClass(characterClasses[`${select.value}`])
+        .then(function() {
+            var perkDiv = document.getElementById("perksContent");
 
-                  let newLabel = document.createElement('label')
-                  newLabel.htmlFor = "perk_" + i + "_label";
-                  newLabel.appendChild(document.createTextNode(activeCharacter.sheet.perks[i].name));
+            for (let i = 0; i < activeCharacter.sheet.perks.length; i++){
+              let newDiv = document.createElement("div");
 
-                  newDiv.appendChild(newInput);
-                  newDiv.appendChild(newLabel);  
-                  perkDiv.appendChild(newDiv);
-                }
-                
-                // console.log("Active Character");
-                // console.log(activeCharacter);
-            })
-            .fail(function() {
-                console.log("Set Class Failed");
-            });
-    }
+              let newInput = document.createElement("input");
+              newInput.type = "checkbox";
+              newInput.name = activeCharacter.sheet.perks[i].name;
+              newInput.value = i;
+              newInput.id = "perk_" + i;
+
+              let newLabel = document.createElement('label')
+              newLabel.htmlFor = "perk_" + i + "_label";
+              newLabel.appendChild(document.createTextNode(activeCharacter.sheet.perks[i].name));
+
+              newDiv.appendChild(newInput);
+              newDiv.appendChild(newLabel);  
+              perkDiv.appendChild(newDiv);
+            }
+            
+            // console.log("Active Character");
+            // console.log(activeCharacter);
+        })
+        .fail(function() {
+            console.log("Set Class Failed");
+        });
 });
 
 
@@ -392,12 +388,13 @@ perksDialog.listen('MDCDialog:closed', (event) => {
     if (event.detail.action == "accept") {
         let perkDiv = document.getElementById("perksContent");
         let checkBoxes = perkDiv.getElementsByTagName("input");
-        activeCharacter.load();
-
-        for (let i = 0; i < checkBoxes.length; i++) {
-            if (checkBoxes[i].checked) {
-                activeCharacter.applyPerk(i);
-            }
-        }       
+        activeCharacter.load()
+          .then(function() {
+              for (let i = 0; i < checkBoxes.length; i++) {
+                  if (checkBoxes[i].checked) {
+                      activeCharacter.applyPerk(i);
+                  }
+              }
+          });       
     }
 });
