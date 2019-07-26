@@ -141,7 +141,9 @@ select.listen('MDCSelect:change', () => {
 
             for (let i = 0; i < activeCharacter.sheet.perks.length; i++){
               //Start of code to replace (icon) text with the actual icon images.
-              //let labelArray = activeCharacter.sheet.perks[i].name.replace(/\(([^)]+)\))/, '<img src="/images/">'
+              let labelText = activeCharacter.sheet.perks[i].name.replace(/\([^)]+\)/g, (match, string) => {
+                    return `<img style="height: 25px; width: 25px;" src="/images/icons/${match.substr(1, match.length-2)}.png">`;
+              });
 
 
               let newDiv = document.createElement("div");
@@ -163,7 +165,7 @@ select.listen('MDCSelect:change', () => {
                       <div class="mdc-checkbox__mixedmark"></div>
                     </div>
                   </div>
-                  <label for="checkbox-${i}">${activeCharacter.sheet.perks[i].name}</label>
+                  <label for="checkbox-${i}">${labelText}</label>
                 </div>`;
 
               perkDiv.appendChild(newDiv);

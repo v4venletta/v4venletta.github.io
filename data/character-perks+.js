@@ -54,7 +54,7 @@
     "xws": "mindthiefperks",
     "perks": [
       {
-        "name": "Remove two (-1) cards",
+        "name": "Remove two -1 cards",
         "actions": [
           {
             "type": "remove",
@@ -66,7 +66,7 @@
         ]
       },
       {
-        "name": "Remove two (-1) cards",
+        "name": "Remove two -1 cards",
         "actions": [
           {
             "type": "remove",
@@ -78,7 +78,7 @@
         ]
       },
       {
-        "name": "Remove four (+0) cards",
+        "name": "Remove four +0 cards",
         "actions": [
           {
             "type": "remove",
@@ -92,7 +92,7 @@
         ]
       },
       {
-        "name": "Replace two (+1) cards with two (+2) cards",
+        "name": "Replace two +1 cards with two +2 cards",
         "actions": [
           {
             "type": "remove",
@@ -111,7 +111,7 @@
         ]
       },
       {
-        "name": "Replace one (-2) card with one (+0) card",
+        "name": "Replace one -2 card with one +0 card",
         "actions": [
           {
             "type": "remove",
@@ -124,7 +124,7 @@
         ]
       },
       {
-        "name": "Add one (+2) (ice) card",
+        "name": "Add one +2 (ice) card",
         "actions": [
           {
             "type": "add",
@@ -133,7 +133,7 @@
         ]
       },    
       {
-        "name": "Add one (+2) (ice) card",
+        "name": "Add one +2 (ice) card",
         "actions": [
           {
             "type": "add",
@@ -142,7 +142,7 @@
         ]
       },          
       {
-        "name": "Add two (rolling) (+1)",
+        "name": "Add two (rolling) +1",
         "actions": [
           {
             "type": "add",
@@ -151,7 +151,7 @@
         ]
       },  
       {
-        "name": "Add two (rolling) (+1)",
+        "name": "Add two (rolling) +1",
         "actions": [
           {
             "type": "add",
