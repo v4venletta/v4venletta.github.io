@@ -18,6 +18,7 @@
     "start": "webpack-dev-server"
   },
   "dependencies": {
+    "@material/checkbox": "^3.1.0",
     "@material/dialog": "^3.0.0",
     "@material/drawer": "^3.0.0",
     "@material/layout-grid": "^3.0.0",

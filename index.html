@@ -134,28 +134,26 @@
 			</div>
 			<div class="mdc-dialog__scrim"></div>
 		</div>
-		<div id="perks" class="mdc-dialog mdc-dialog--scrollable" role="alertdialog" aria-modal="true" aria-labelledby="mdc-dialog-with-list-label" aria-describedby="mdc-dialog-with-list-description">
+		<div id="perks" class="mdc-dialog" role="alertdialog" aria-modal="true" aria-labelledby="mdc-dialog-with-list-label" aria-describedby="mdc-dialog-with-list-description">
 			<div class="mdc-dialog__container">
 				<div class="mdc-dialog__surface" style="background-color: #ac8357">
 					<!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
-					<h2 class="mdc-dialog__title" id="my-dialog-title">
+					<h2 class="mdc-dialog__title" id="my-dialog-title" style="font-family: 'Pirata One'">
 					<!--
 					-->Select Your Perks
 					<!--
 					-->
 					</h2>
-					<div id="perksContent" class="mdc-dialog__content" id="my-dialog-content">
-						<div class="mdc-layout-grid">
-							<div id="perksContent" class="mdc-layout-grid__inner">
+					<div class="mdc-dialog__content" id="my-dialog-content">
+						<ul id=perksContent class="mdc-list">
 
-							</div>
-						</div>
+						</ul>
 					</div>
 					<footer class="mdc-dialog__actions">
-						<button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close">
+						<button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close" style="font-family: 'Pirata One'">
 							<span class="mdc-button__label">Cancel</span>
 						</button>
-						<button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="accept">
+						<button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="accept" style="font-family: 'Pirata One'">
 							<span class="mdc-button__label">Apply Perks</span>
 						</button>
 					</footer>	
