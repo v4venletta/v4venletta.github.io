@@ -178,7 +178,7 @@
         ]
       },
       {
-        "name": "Add two (rolling) IMMOBILIZE (IMMOBILIZE) cards",
+        "name": "Add two (rolling) IMMOBILIZE (immobilize) cards",
         "actions": [
           {
             "type": "add",
