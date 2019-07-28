@@ -238,7 +238,166 @@
     "name": "scoundrel perks",
     "points": 13,
     "image": "character-perks/scoundrel-perks.png",
-    "xws": "scoundrelperks"
+    "xws": "scoundrelperks",
+    "perks": [
+        {
+          "name": "Remove two -1 cards",
+          "actions": [
+            {
+              "type": "remove",
+              "cards": [
+                "am-p-12",
+                "am-p-13"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Remove two -1 cards",
+          "actions": [
+            {
+              "type": "remove",
+              "cards": [
+                "am-p-14",
+                "am-p-15"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Remove four +0 cards",
+          "actions": [
+            {
+              "type": "remove",
+              "cards": [
+                "am-p-01",
+                "am-p-02",
+                "am-p-03",
+                "am-p-04"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Replace one -2 card with one +0 card",
+          "actions": [
+            {
+              "type": "remove",
+              "cards": ["am-p-17"]
+            },
+            {
+              "type": "add",
+              "cards": ["am-sc-01"]
+            }
+          ]
+        },
+        {
+          "name": "Replace one -1 card with one +1 card",
+          "actions": [
+            {
+              "type": "remove",
+              "cards": ["am-p-16"]
+            },
+            {
+              "type": "add",
+              "cards": ["am-sc-02"]
+            }
+          ]
+        },     
+        {
+          "name": "Replace one +0 card with one +2 card",
+          "actions": [
+            {
+              "type": "remove",
+              "cards": ["am-p-05"]
+            },
+            {
+              "type": "add",
+              "cards": ["am-sc-03"]
+            }
+          ]
+        },   
+        {
+          "name": "Replace one +0 card with one +2 card",
+          "actions": [
+            {
+              "type": "remove",
+              "cards": ["am-p-06"]
+            },
+            {
+              "type": "add",
+              "cards": ["am-sc-04"]
+            }
+          ]
+        }, 
+        {
+          "name": "Add two (rolling) +1 cards",
+          "actions": [
+            {
+              "type": "add",
+              "cards": ["am-sc-05", "am-sc-06"]
+            }
+          ]
+        },
+        {
+          "name": "Add two (rolling) +1 cards",
+          "actions": [
+            {
+              "type": "add",
+              "cards": ["am-sc-07", "am-sc-08"]
+            }
+          ]
+        },
+        {
+          "name": "Add two (rolling) PIERCE (pierce) 3 cards",
+          "actions": [
+            {
+              "type": "add",
+              "cards": ["am-sc-09", "am-sc-10"]
+            }
+          ]
+        },    
+        {
+          "name": "Add two (rolling) POISON (poison) cards",
+          "actions": [
+            {
+              "type": "add",
+              "cards": ["am-sc-11", "am-sc-12"]
+            }
+          ]
+        },
+        {
+          "name": "Add two (rolling) POISON (poison) cards",
+          "actions": [
+            {
+              "type": "add",
+              "cards": ["am-sc-13", "am-sc-14"]
+            }
+          ]
+        },
+        {
+          "name": "Add two (rolling) MUDDLE (muddle) cards",
+          "actions": [
+            {
+              "type": "add",
+              "cards": ["am-sc-15", "am-sc-16"]
+            }
+          ]
+        },   
+        {
+          "name": "Add one (rolling) INVISIBLE (invisible) card",
+          "actions": [
+            {
+              "type": "add",
+              "cards": ["am-sc-17"]
+            }
+          ]
+        }, 
+        {
+          "name": "Ignore negative scenario effects",
+          "actions": []
+        }         
+    ]
   },
   {
     "name": "soothsinger perks",
