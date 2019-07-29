@@ -27,7 +27,151 @@
     "name": "cragheart perks",
     "points": 4,
     "image": "character-perks/cragheart-perks.png",
-    "xws": "cragheartperks"
+    "xws": "cragheartperks",
+    "perks": [
+      {
+        "name": "Remove four +0 cards",
+        "actions": [
+          {
+            "type": "remove",
+            "cards": [
+              "am-p-01",
+              "am-p-02",
+              "am-p-03",
+              "am-p-04"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Replace one -1 card with one +1 card",
+        "actions": [
+          {
+            "type": "remove",
+            "cards": ["am-p-12"]
+          },
+          {
+            "type": "add",
+            "cards": ["am-ch-01"]
+          }
+        ]
+      },
+      {
+        "name": "Replace one -1 card with one +1 card",
+        "actions": [
+          {
+            "type": "remove",
+            "cards": ["am-p-13"]
+          },
+          {
+            "type": "add",
+            "cards": ["am-ch-02"]
+          }
+        ]
+      },
+      {
+        "name": "Replace one -1 card with one +1 card",
+        "actions": [
+          {
+            "type": "remove",
+            "cards": ["am-p-14"]
+          },
+          {
+            "type": "add",
+            "cards": ["am-ch-03"]
+          }
+        ]
+      },
+      {
+        "name": "Add one -2 card and two +2 cards",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-ch-04","am-ch-05","am-ch-06"]
+          }
+        ]
+      },
+      {
+        "name": "Add one +1 IMMOBILIZE (immobilize) card",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-ch-07"]
+          }
+        ]
+      },
+      {
+        "name": "Add one +1 IMMOBILIZE (immobilize) card",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-ch-08"]
+          }
+        ]
+      },
+      {
+        "name": "Add one +2 MUDDLE (muddle) card",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-ch-09"]
+          }
+        ]
+      },
+      {
+        "name": "Add one +2 MUDDLE (muddle) card",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-ch-10"]
+          }
+        ]
+      },
+      {
+        "name": "Add two (rolling) PUSH (push) 2 cards",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-ch-11","am-ch-12"]
+          }
+        ]
+      },  
+      {
+        "name": "Add two (rolling) (earth) cards",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-ch-13","am-ch-14"]
+          }
+        ]
+      },
+      {
+        "name": "Add two (rolling) (earth) cards",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-ch-15","am-ch-16"]
+          }
+        ]
+      },
+      {
+        "name": "Add two (rolling) (wind) cards",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-ch-17","am-ch-18"]
+          }
+        ]
+      },
+      {
+        "name": "Ignore negative item effects",
+        "actions": []
+      },
+      {
+        "name": "Ignore negative scenario effects",
+        "actions": []
+      }
+    ]
   },
   {
     "name": "diviner perks",
