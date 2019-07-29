@@ -139,36 +139,39 @@ select.listen('MDCSelect:change', () => {
             var perkDiv = document.getElementById("perksContent");
             perkDiv.innerHTML = "";
 
-            for (let i = 0; i < activeCharacter.sheet.perks.length; i++){
-              //Start of code to replace (icon) text with the actual icon images.
-              let labelText = activeCharacter.sheet.perks[i].name.replace(/\([^)]+\)/g, (match, string) => {
-                    return `<img style="height: 25px; width: 25px;" src="/images/icons/${match.substr(1, match.length-2)}.png">`;
-              });
+            if (activeCharacter.sheet.perks){  
+              for (let i = 0; i < activeCharacter.sheet.perks.length; i++){
+                //Start of code to replace (icon) text with the actual icon images.
+                let labelText = activeCharacter.sheet.perks[i].name.replace(/\([^)]+\)/g, (match, string) => {
+                      return `<img style="height: 25px; width: 25px;" src="/images/icons/${match.substr(1, match.length-2)}.png">`;
+                });
 
 
-              let newDiv = document.createElement("div");
-              newDiv.tabindex = i;
-              newDiv.innerHTML = `
-                <div class="mdc-form-field">
-                  <div class="mdc-checkbox">
-                    <input type="checkbox"
-                           class="mdc-checkbox__native-control"
-                           value="${i}"
-                           id="checkbox-${i}"/>
-                    <div class="mdc-checkbox__background">
-                      <svg class="mdc-checkbox__checkmark"
-                           viewBox="0 0 24 24">
-                        <path class="mdc-checkbox__checkmark-path"
-                              fill="none"
-                              d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
-                      </svg>
-                      <div class="mdc-checkbox__mixedmark"></div>
+                let newDiv = document.createElement("div");
+                newDiv.tabindex = i;
+                newDiv.innerHTML = `
+                  <div class="mdc-form-field">
+                    <div class="mdc-checkbox">
+                      <input type="checkbox"
+                             class="mdc-checkbox__native-control"
+                             value="${i}"
+                             id="checkbox-${i}"/>
+                      <div class="mdc-checkbox__background">
+                        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                          <path class="mdc-checkbox__checkmark-path" 
+                                fill="none" 
+                                d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                        </svg>
+                        <div class="mdc-checkbox__mixedmark"></div>
+                      </div>
                     </div>
-                  </div>
-                  <label for="checkbox-${i}">${labelText}</label>
-                </div>`;
+                    <label for="checkbox-${i}">${labelText}</label>
+                  </div>`;
 
-              perkDiv.appendChild(newDiv);
+                perkDiv.appendChild(newDiv);
+              }
+            } else {
+              perkDiv.innerHTML = "Comming Soon";
             }
             
             // console.log("Active Character");
