@@ -133,6 +133,7 @@ try {
 select.listen('MDCSelect:change', () => {   
 
     document.getElementById("chosen-class").src = `/images/class-icons/${select.value}.png`;
+    shuffle();
 
     activeCharacter.setClass(characterClasses[`${select.value}`])
         .then(function() {
@@ -356,17 +357,19 @@ document.getElementById("discard").addEventListener('click', (event) => {
 
 //Adding event listener to handle shuffling
 document.getElementById("shuffle").addEventListener('click', (event) => {
-    var discardPile = document.getElementById("discard");
-    var tempDeck = activeCharacter.deck;
-    tempDeck.shuffleAll();
-    discardPile.style.zIndex=-1;
-    document.getElementById("discardParent").style.backgroundImage = "";
-    var stats = document.getElementById("stats");
-    stats.innerHTML = "Draw Pile: " + tempDeck.drawPile.length + ", Discard Pile: " + tempDeck.discardPile.length;
-    var warning = document.getElementById("warning");
-    warning.style = "display:none;";
-
+    shuffle();
 });
+
+function shuffle() {
+    activeCharacter.deck.shuffleAll();
+    document.getElementById("discard").style.zIndex=-1;
+    document.getElementById("discardParent").style.backgroundImage = "";
+    document.getElementById("stats").innerHTML = "Draw Pile: " 
+      + activeCharacter.deck.drawPile.length 
+      + ", Discard Pile: " 
+      + activeCharacter.deck.discardPile.length;
+    document.getElementById("warning").style = "display:none;";
+}
 
 //Handle building the elements inside the modal window
 document.getElementById("flip").addEventListener('click', (event) => {
@@ -417,6 +420,7 @@ perksDialog.listen('MDCDialog:closed', (event) => {
                       activeCharacter.applyPerk(i);
                   }
               }
-          });       
+          });
+        shuffle();       
     }
 });

@@ -3,7 +3,159 @@
     "name": "beast tyrant perks",
     "points": 0,
     "image": "character-perks/beast-tyrant-perks.png",
-    "xws": "beasttyrantperks"
+    "xws": "beasttyrantperks",
+    "perks": [
+      {
+        "name": "Remove two -1 cards",
+        "actions": [
+          {
+            "type": "remove",
+            "cards": ["am-p-12","am-p-13"]
+          }
+        ]
+      },
+      {
+        "name": "Replace one -1 card with one +1 card",
+        "actions": [
+          {
+            "type": "remove",
+            "cards": ["am-p-14"]
+          },
+          {
+            "type": "add",
+            "cards": ["am-bt-14"]
+          }
+        ]
+      },
+      {
+        "name": "Replace one -1 card with one +1 card",
+        "actions": [
+          {
+            "type": "remove",
+            "cards": ["am-p-15"]
+          },
+          {
+            "type": "add",
+            "cards": ["am-bt-15"]
+          }
+        ]
+      },
+      {
+        "name": "Replace one -1 card with one +1 card",
+        "actions": [
+          {
+            "type": "remove",
+            "cards": ["am-p-16"]
+          },
+          {
+            "type": "add",
+            "cards": ["am-bt-16"]
+          }
+        ]
+      },
+      {
+        "name": "Replace one +0 card with one +2 card",
+        "actions": [
+          {
+            "type": "remove",
+            "cards": ["am-p-01"]
+          },
+          {
+            "type": "add",
+            "cards": ["am-bt-01"]
+          }
+        ]
+      },
+      {
+        "name": "Replace one +0 card with one +2 card",
+        "actions": [
+          {
+            "type": "remove",
+            "cards": ["am-p-02"]
+          },
+          {
+            "type": "add",
+            "cards": ["am-bt-17"]
+          }
+        ]
+      },
+      {
+        "name": "Add one +1 WOUND (wound) card",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-bt-02"]
+          }
+        ]
+      },
+      {
+        "name": "Add one +1 WOUND (wound) card",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-bt-03"]
+          }
+        ]
+      },
+      {
+        "name": "Add one +1 IMMOBILIZE (immobilize) card",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-bt-04"]
+          }
+        ]
+      },
+      {
+        "name": "Add one +1 IMMOBILIZE (immobilize) card",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-bt-05"]
+          }
+        ]
+      },
+      {
+        "name": "Add two (rolling) Heal 1 cards",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-bt-06","am-bt-07"]
+          }
+        ]
+      },
+      {
+        "name": "Add two (rolling) Heal 1 cards",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-bt-08","am-bt-09"]
+          }
+        ]
+      },
+      {
+        "name": "Add two (rolling) Heal 1 cards",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-bt-10","am-bt-11"]
+          }
+        ]
+      },
+      {
+        "name": "Add two (rolling) (earth) cards",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-bt-12","am-bt-13"]
+          }
+        ]
+      },
+      {
+        "name": "Ignore negative scenario effects",
+        "actions": []
+      }
+    ]
   },
   {
     "name": "berserker perks",
@@ -330,7 +482,164 @@
     "name": "elementalist perks",
     "points": 7,
     "image": "character-perks/elementalist-perks.png",
-    "xws": "elementalistperks"
+    "xws": "elementalistperks",
+    "perks": [
+      {
+        "name": "Remove two -1 cards",
+        "actions": [
+          {
+            "type": "remove",
+            "cards": ["am-p-12","am-p-13"]
+          }
+        ]
+      },
+      {
+        "name": "Remove two -1 cards",
+        "actions": [
+          {
+            "type": "remove",
+            "cards": ["am-p-14","am-p-15"]
+          }
+        ]
+      },
+      {
+        "name": "Replace one -1 card with one +1 card",
+        "actions": [
+          {
+            "type": "remove",
+            "cards": ["am-p-16"]
+          },
+          {
+            "type": "add",
+            "cards": ["am-el-23"]
+          }
+        ]
+      },
+      {
+        "name": "Replace one +0 card with one +2 card",
+        "actions": [
+          {
+            "type": "remove",
+            "cards": ["am-p-01"]
+          },
+          {
+            "type": "add",
+            "cards": ["am-el-01"]
+          }
+        ]
+      },
+      {
+        "name": "Replace one +0 card with one +2 card",
+        "actions": [
+          {
+            "type": "remove",
+            "cards": ["am-p-02"]
+          },
+          {
+            "type": "add",
+            "cards": ["am-el-24"]
+          }
+        ]
+      },
+      {
+        "name": "Add three +0 (fire) cards",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-el-02","am-el-03","am-el-04"]
+          }
+        ]
+      },
+      {
+        "name": "Add three +0 (ice) cards",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-el-06","am-el-07","am-el-08"]
+          }
+        ]
+      },
+      {
+        "name": "Add three +0 (wind) cards",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-el-10","am-el-11","am-el-12"]
+          }
+        ]
+      },
+      {
+        "name": "Add three +0 (earth) cards",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-el-14","am-el-15","am-el-16"]
+          }
+        ]
+      },
+      {
+        "name": "Replace two +0 cards with one +0 (fire) and one +0 (earth) card",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-el-05","am-el-17"]
+          },
+          {
+            "type": "remove",
+            "cards": ["am-p-03","am-p-04"]
+          }
+        ]
+      },
+      {
+        "name": "Replace two +0 cards with one +0 (ice) and one +0 (wind) card",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-el-09","am-el-13"]
+          },
+          {
+            "type": "remove",
+            "cards": ["am-p-05","am-p-06"]
+          }
+        ]
+      },
+      {
+        "name": "Add two +1 PUSH (push) 1 cards",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-el-18","am-el-19"]
+          }
+        ]
+      },
+      {
+        "name": "Add one +1 WOUND (wound) card",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-el-20"]
+          }
+        ]
+      },
+      {
+        "name": "Add one +0 STUN (stun) card",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-el-21"]
+          }
+        ]
+      },
+      {
+        "name": "Add one +0 ADD TARGET (add-target) card",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-el-22"]
+          }
+        ]
+      }
+    ]
   },
   {
     "name": "mindthief perks",
@@ -688,7 +997,180 @@
     "name": "soothsinger perks",
     "points": 14,
     "image": "character-perks/soothsinger-perks.png",
-    "xws": "soothsingerperks"
+    "xws": "soothsingerperks",
+    "perks": [
+      {
+        "name": "Remove two -1 cards",
+        "actions": [
+          {
+            "type": "remove",
+            "cards": ["am-p-12","am-p-13"]
+          }
+        ]
+      },
+      {
+        "name": "Remove two -1 cards",
+        "actions": [
+          {
+            "type": "remove",
+            "cards": ["am-p-14","am-p-15"]
+          }
+        ]
+      },
+      {
+        "name": "Remove one -2 card",
+        "actions": [
+          {
+            "type": "remove",
+            "cards": ["am-p-17"]
+          }
+        ]
+      },
+      {
+        "name": "Replace two +1 cards with one +4 card",
+        "actions": [
+          {
+            "type": "remove",
+            "cards": ["am-p-07","am-p-08"]
+          },
+          {
+            "type": "add",
+            "cards": ["am-ss-15"]
+          }
+        ]
+      },
+      {
+        "name": "Replace two +1 cards with one +4 card",
+        "actions": [
+          {
+            "type": "remove",
+            "cards": ["am-p-09","am-p-10"]
+          },
+          {
+            "type": "add",
+            "cards": ["am-ss-16"]
+          }
+        ]
+      },
+      {
+        "name": "Replace one +0 card with one +1 IMMOBILIZE (immobilize) card",
+        "actions": [
+          {
+            "type": "remove",
+            "cards": ["am-p-01"]
+          },
+          {
+            "type": "add",
+            "cards": ["am-ss-01"]
+          }
+        ]
+      },
+      {
+        "name": "Replace one +0 card with one +1 DISARM (disarm) card",
+        "actions": [
+          {
+            "type": "remove",
+            "cards": ["am-p-02"]
+          },
+          {
+            "type": "add",
+            "cards": ["am-ss-02"]
+          }
+        ]
+      },
+      {
+        "name": "Replace one +0 card with one +2 WOUND (wound) card",
+        "actions": [
+          {
+            "type": "remove",
+            "cards": ["am-p-03"]
+          },
+          {
+            "type": "add",
+            "cards": ["am-ss-03"]
+          }
+        ]
+      },
+      {
+        "name": "Replace one +0 card with one +2 POISON (poison) card",
+        "actions": [
+          {
+            "type": "remove",
+            "cards": ["am-p-04"]
+          },
+          {
+            "type": "add",
+            "cards": ["am-ss-04"]
+          }
+        ]
+      },
+      {
+        "name": "Replace one +0 card with one +2 CURSE (curse) card",
+        "actions": [
+          {
+            "type": "remove",
+            "cards": ["am-p-05"]
+          },
+          {
+            "type": "add",
+            "cards": ["am-ss-05"]
+          }
+        ]
+      },
+      {
+        "name": "Replace one +0 card with one +3 MUDDLE (muddle) card",
+        "actions": [
+          {
+            "type": "remove",
+            "cards": ["am-p-06"]
+          },
+          {
+            "type": "add",
+            "cards": ["am-ss-06"]
+          }
+        ]
+      },
+      {
+        "name": "Replace one -1 card with one +0 STUN (stun) card",
+        "actions": [
+          {
+            "type": "remove",
+            "cards": ["am-p-16"]
+          },
+          {
+            "type": "add",
+            "cards": ["am-ss-07"]
+          }
+        ]
+      },
+      {
+        "name": "Add three (rolling) +1 cards",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-ss-08","am-ss-09","am-ss-10"]
+          }
+        ]
+      },
+      {
+        "name": "Add two (rolling) CURSE (curse) cards",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-ss-11","am-ss-12"]
+          }
+        ]
+      },
+      {
+        "name": "Add two (rolling) CURSE (curse) cards",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-ss-13","am-ss-14"]
+          }
+        ]
+      }
+    ]
   },
   {
     "name": "spellweaver perks",
@@ -845,7 +1327,160 @@
     "name": "summoner perks",
     "points": 16,
     "image": "character-perks/summoner-perks.png",
-    "xws": "summonerperks"
+    "xws": "summonerperks",
+    "perks": [
+      {
+        "name": "Remove two -1 cards",
+        "actions": [
+          {
+            "type": "remove",
+            "cards": ["am-p-12","am-p-13"]
+          }
+        ]
+      },
+      {
+        "name": "Replace one -2 card with one +0 card",
+        "actions": [
+          {
+            "type": "remove",
+            "cards": ["am-p-17"]
+          },
+          {
+            "type": "add",
+            "cards": ["am-su-19"]
+          }
+        ]
+      },
+      {
+        "name": "Replace one -1 card with one +1 card",
+        "actions": [
+          {
+            "type": "remove",
+            "cards": ["am-p-14"]
+          },
+          {
+            "type": "add",
+            "cards": ["am-su-01"]
+          }
+        ]
+      },
+      {
+        "name": "Replace one -1 card with one +1 card",
+        "actions": [
+          {
+            "type": "remove",
+            "cards": ["am-p-15"]
+          },
+          {
+            "type": "add",
+            "cards": ["am-su-02"]
+          }
+        ]
+      },
+      {
+        "name": "Replace one -1 card with one +1 card",
+        "actions": [
+          {
+            "type": "remove",
+            "cards": ["am-p-16"]
+          },
+          {
+            "type": "add",
+            "cards": ["am-su-20"]
+          }
+        ]
+      },
+      {
+        "name": "Add one +2 card",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-su-03"]
+          }
+        ]
+      },
+      {
+        "name": "Add one +2 card",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-su-04"]
+          }
+        ]
+      },
+      {
+        "name": "Add two (rolling) WOUND (wound) cards",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-su-05","am-su-06"]
+          }
+        ]
+      },
+      {
+        "name": "Add two (rolling) POISON (POISON) cards",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-su-07","am-su-08"]
+          }
+        ]
+      },
+      {
+        "name": "Add two (rolling) Heal 1 cards",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-su-09","am-su-10"]
+          }
+        ]
+      },
+      {
+        "name": "Add two (rolling) Heal 1 cards",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-su-11","am-su-12"]
+          }
+        ]
+      },
+      {
+        "name": "Add two (rolling) Heal 1 cards",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-su-13","am-su-14"]
+          }
+        ]
+      },
+      {
+        "name": "Add one (rolling) (fire) and one (rolling) (wind) card",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-su-15","am-su-16"]
+          }
+        ]
+      },
+      {
+        "name": "Add one (rolling) (night) and one (rolling) (earth) card",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-su-17","am-su-18"]
+          }
+        ]
+      },
+      {
+        "name": "Ignore negative scenario effects and add two +1 cards",
+        "actions": [
+          {
+            "type": "add",
+            "cards": ["am-su-21","am-su-22"]
+          }
+        ]
+      }
+    ]
   },
   {
     "name": "sunkeeper perks",
