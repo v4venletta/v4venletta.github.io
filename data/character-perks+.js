@@ -698,7 +698,7 @@
     "perks": [
       {
         "name": "Remove four +0 cards",
-        "action": [
+        "actions": [
           {
             "type": "remove",
             "cards": ["am-p-01","am-p-02","am-p-03","am-p-04"]
@@ -707,7 +707,7 @@
       },
       {
         "name": "Replace one -1 card with one +1 card",
-        "action": [
+        "actions": [
           {
             "type": "remove",
             "cards": ["am-p-12"]
@@ -720,7 +720,7 @@
       },
       {
         "name": "Replace one -1 card with one +1 card",
-        "action": [
+        "actions": [
           {
             "type": "remove",
             "cards": ["am-p-13"]
@@ -733,7 +733,7 @@
       },
       {
         "name": "Add two +1 cards",
-        "action": [
+        "actions": [
           {
             "type": "add",
             "cards": ["am-sw-03","am-sw-04"]
@@ -742,7 +742,7 @@
       },
       {
         "name": "Add two +1 cards",
-        "action": [
+        "actions": [
           {
             "type": "add",
             "cards": ["am-sw-05","am-sw-06"]
@@ -751,7 +751,7 @@
       },
       {
         "name": "Add one +0 STUN (stun) card",
-        "action": [
+        "actions": [
           {
             "type": "add",
             "cards": ["am-sw-07"]
@@ -760,7 +760,7 @@
       },
       {
         "name": "Add one +1 WOUND (wound) card",
-        "action": [
+        "actions": [
           {
             "type": "add",
             "cards": ["am-sw-08"]
@@ -769,7 +769,7 @@
       },
       {
         "name": "Add one +1 IMMOBILIZE (immobilize) card",
-        "action": [
+        "actions": [
           {
             "type": "add",
             "cards": ["am-sw-09"]
@@ -778,7 +778,7 @@
       },
       {
         "name": "Add one +1 CURSE (curse) card",
-        "action": [
+        "actions": [
           {
             "type": "add",
             "cards": ["am-sw-10"]
@@ -787,7 +787,7 @@
       },
       {
         "name": "Add one +2 (fire) card",
-        "action": [
+        "actions": [
           {
             "type": "add",
             "cards": ["am-sw-11"]
@@ -796,7 +796,7 @@
       },
       {
         "name": "Add one +2 (fire) card",
-        "action": [
+        "actions": [
           {
             "type": "add",
             "cards": ["am-sw-12"]
@@ -805,7 +805,7 @@
       },
       {
         "name": "Add one +2 (ice) card",
-        "action": [
+        "actions": [
           {
             "type": "add",
             "cards": ["am-sw-13"]
@@ -814,7 +814,7 @@
       },
       {
         "name": "Add one +2 (ice) card",
-        "action": [
+        "actions": [
           {
             "type": "add",
             "cards": ["am-sw-14"]
@@ -823,7 +823,7 @@
       },
       {
         "name": "Add one (rolling) (earth) and one (rolling) (wind) card",
-        "action": [
+        "actions": [
           {
             "type": "add",
             "cards": ["am-sw-15","am-sw-16"]
@@ -832,7 +832,7 @@
       },
       {
         "name": "Add one (rolling) (sun) and one (rolling) (night) card",
-        "action": [
+        "actions": [
           {
             "type": "add",
             "cards": ["am-sw-17","am-sw-18"]
@@ -861,7 +861,7 @@
     "perks": [
       {
         "name": "Remove two -1 cards",
-        "action": [
+        "actions": [
           {
             "type": "remove",
             "cards": ["am-p-12","am-p-13"]
@@ -870,7 +870,7 @@
       },
       {
         "name": "Remove two -1 cards",
-        "action": [
+        "actions": [
           {
             "type": "remove",
             "cards": ["am-p-14","am-p-15"]
@@ -879,7 +879,7 @@
       },
       {
         "name": "Replace one -2 card with one +0 card",
-        "action": [
+        "actions": [
           {
             "type": "remove",
             "cards": ["am-p-17"]
@@ -892,7 +892,7 @@
       },
       {
         "name": "Add two +1 cards",
-        "action": [
+        "actions": [
           {
             "type": "add",
             "cards": ["am-ti-02","am-ti-03"]
@@ -901,7 +901,7 @@
       },
       {
         "name": "Add one +3 card",
-        "action": [
+        "actions": [
           {
             "type": "add",
             "cards": ["am-ti-04"]
@@ -910,7 +910,7 @@
       },
       {
         "name": "Add two (rolling) (fire) cards",
-        "action": [
+        "actions": [
           {
             "type": "add",
             "cards": ["am-ti-05","am-ti-06"]
@@ -919,7 +919,7 @@
       },
       {
         "name": "Add three (rolling) MUDDLE (muddle) cards",
-        "action": [
+        "actions": [
           {
             "type": "add",
             "cards": ["am-ti-07","am-ti-08","am-ti-09"]
@@ -928,7 +928,7 @@
       },
       {
         "name": "Add one +1 WOUND (wound) card",
-        "action": [
+        "actions": [
           {
             "type": "add",
             "cards": ["am-ti-10"]
@@ -937,7 +937,7 @@
       },
       {
         "name": "Add one +1 WOUND (wound) card",
-        "action": [
+        "actions": [
           {
             "type": "add",
             "cards": ["am-ti-11"]
@@ -946,7 +946,7 @@
       },
       {
         "name": "Add one +1 IMMOBILIZE (immobilize) card",
-        "action": [
+        "actions": [
           {
             "type": "add",
             "cards": ["am-ti-12"]
@@ -955,7 +955,7 @@
       },
       {
         "name": "Add one +1 IMMOBILIZE (immobilize) card",
-        "action": [
+        "actions": [
           {
             "type": "add",
             "cards": ["am-ti-13"]
@@ -964,7 +964,7 @@
       },
       {
         "name": "Add one +1 Heal 2 card",
-        "action": [
+        "actions": [
           {
             "type": "add",
             "cards": ["am-ti-14"]
@@ -973,7 +973,7 @@
       },
       {
         "name": "Add one +1 Heal 2 card",
-        "action": [
+        "actions": [
           {
             "type": "add",
             "cards": ["am-ti-15"]
@@ -982,7 +982,7 @@
       },
       {
         "name": "Add one +0 ADD TARGET (add-target) card",
-        "action": [
+        "actions": [
           {
             "type": "add",
             "cards": ["am-ti-16"]
@@ -991,7 +991,7 @@
       },
       {
         "name": "Ignore negative scenario effects",
-        "action": []
+        "actions": []
       }
     ]
   }

@@ -397,12 +397,13 @@ dialog.listen('MDCDialog:closed', (event) => {
     if (activeCharacter.deck.shuffleNeeded) {
         document.getElementById("warning").style = "display:inline;color:red;";
     }
-    if (event.detail.action == "close") {
-        document.getElementById("discard").src = '/images/' + activeCharacter.deck.discardPile[activeCharacter.deck.discardPile.length - 1].image;
-    } else {
-        document.getElementById("discard").src = event.detail.action;
-    }
 
+    let discarded = document.getElementById("discarded");
+    discarded.src = event.detail.action == "close"
+        ? '/images/' + activeCharacter.deck.discardPile[activeCharacter.deck.discardPile.length - 1].image
+        : event.detail.action;
+        
+    document.getElementById("discardParent").style.backgroundImage = "url('" + discarded.src + "')"; 
 });
 
 perksDialog.listen('MDCDialog:closed', (event) => {
