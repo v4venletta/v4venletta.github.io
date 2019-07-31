@@ -166,7 +166,7 @@ select.listen('MDCSelect:change', () => {
                         <div class="mdc-checkbox__mixedmark"></div>
                       </div>
                     </div>
-                    <label for="checkbox-${i}">${labelText}</label>
+                    <label for="checkbox-${i}" style="font-family:'Pirata One'">${labelText}</label>
                   </div>`;
 
                 perkDiv.appendChild(newDiv);
@@ -186,7 +186,12 @@ select.listen('MDCSelect:change', () => {
 
 //Add event listener to hand for handling cards being drawn
 var cardState = "front";
+var playing = false;
 document.getElementById("hand").addEventListener('click', (event) => {
+  if (playing) {
+    return;
+  } 
+    playing = true;
     $("#cards").slideUp("fast");
     var discardPile = document.getElementById("discarded");
     var tempDeck = activeCharacter.deck;
@@ -230,7 +235,10 @@ document.getElementById("hand").addEventListener('click', (event) => {
                 duration: 400
             },
             easing: 'easeInOutSine',
-            duration: 400
+            duration: 300,
+            complete: function(anim){
+       playing = false;
+    }
 
         });
 
@@ -265,7 +273,10 @@ document.getElementById("hand").addEventListener('click', (event) => {
                 duration: 800
             },
             easing: 'easeInOutSine',
-            duration: 400
+            duration: 300,
+            complete: function(anim){
+       playing = false;
+    }
         });
     }
     if (activeCharacter.deck.shuffleNeeded) {
@@ -273,6 +284,7 @@ document.getElementById("hand").addEventListener('click', (event) => {
         warning.style = "display:inline;color:red;";
     }
     cardState = "back";
+  
 });
 
 
@@ -332,6 +344,36 @@ document.getElementById("curse").addEventListener('click', (event) => {
       alert("All curse cards are currently in use");
     }
 });
+
+document.getElementById("minusone").addEventListener('click', (event) => {
+    let minusOneCard = activeCharacter.deck.takeGlobalModCard(-1);
+
+    if (minusOneCard)
+    {
+      activeCharacter.deck.addCard(minusOneCard);
+      let minusOneDeck = document.getElementById("modDeck");
+      minusOneDeck.src = "/images/" + minusOneCard.image;
+      minusOneDeck.style.opacity = 1.0;
+      rotate = rotate + 360;
+      anime({
+          targets: '#modDeck',
+          translateX: {
+              value: [-250, 0],
+              duration: 800
+          },
+          opacity: {
+              value: 0.0,
+              delay: 800,
+              easing: 'easeInOutSine'
+          },
+          rotate: rotate,
+          duration: 800
+      });
+    } else {
+      alert("All -1 cards are currently in use");
+    }
+});
+
 document.getElementById("discard").addEventListener('click', (event) => {
 
     var cardsDiv = document.getElementById("cards");
