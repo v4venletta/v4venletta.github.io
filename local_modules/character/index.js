@@ -50,8 +50,9 @@ export class Character {
 	setDeck(json){
 
 		//Not sure if this is the best place to determine which cards are base vs mods but it's here for now.
-		var baseCards, modCards;
+		var baseCards, modCards, globalModCards;
 		baseCards = json.filter(card => card.name.startsWith("am-p-"));
+		globalModCards = json.filter(card => card.name.startsWith("am-pm-")); //Player Mod only right now
 		if (this.class){
 			modCards = json.filter(card => card.name.startsWith ("am-" + this.class.abbr));
 		}
@@ -62,7 +63,7 @@ export class Character {
 		// 	sessionStorage.setItem("globalModCards", JSON.stringify(json.filter(card => card.name.startsWith("am-pm-"))));
 		// }
 
-		this.deck = new Deck(baseCards, modCards);
+		this.deck = new Deck(baseCards, modCards, globalModCards);
 		//this.save();
 	}
 
@@ -104,30 +105,5 @@ export class Character {
 				// });
 
 		//}
-	}
-
-	static takeGlobalModCard(cardValue){
-		var globalModCards, index, card;
-
-		//Get the globalModCards
-		globalModCards = JSON.parse(sessionStorage.getItem("globalModCards"));
-
-		//Find the card by name
-		index = globalModCards.findIndex(card => card.value == cardValue);
-
-		//Take the card out of the array
-		card = globalModCards.splice(index, 1);
-
-		//Set global cards now that we've removed one.
-		sessionStorage.setItem("globalModCards", JSON.stringify(globalModCards));
-
-		//to-do - throw an error or instantiate the globalModCards if null
-		return card;
-	}
-
-	static returnGlobalModCard(cardObj){
-		var globalModCards = JSON.parse(sessionStorage.getItem("globalModCards"));
-		globalModCards.push(cardObj);
-		sessionStorage.setItem("globalModCards", JSON.stringify(globalModCards));
 	}
 }

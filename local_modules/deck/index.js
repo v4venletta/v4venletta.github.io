@@ -1,8 +1,9 @@
 export class Deck {
-	constructor (baseCards, modCards = []) {
+	constructor (baseCards, modCards = [], globalModCards = []) {
 		this.drawPile = baseCards 
 		this.discardPile = [];
 		this.modPile = modCards;
+		this.globalModCards = globalModCards;
 		this.shuffleNeeded = false;
 		this.shuffle();
 	}
@@ -33,7 +34,7 @@ export class Deck {
 			case "monster":
 				break;
 			case "player-mod":
-				Character.returnGlobalModCard(this.drawPile[index]);
+				this.returnGlobalModCard(this.drawPile[index]);
 				break;
 			case "monster-mod":
 				//to-do - return this to the global deck
@@ -76,10 +77,9 @@ export class Deck {
 			//Prevents blessing and curses from being discarded
 			if (drawnCard.value != "bless" && drawnCard.value != "curse") {
 				cardsToDiscard.push(drawnCard);
-			} //else {
-				//Character.returnGlobalModCard(drawnCard);
-				//to-do that might not be the right place for the  returnGlobalModCard function.
-			//}
+			} else {
+				this.returnGlobalModCard(drawnCard);
+			}
 
 			//Check to see if the card has a rolling modifier
 			//to-do Updated the logic once we've added the rolling value/condition
@@ -140,5 +140,34 @@ export class Deck {
 			    .fail(function(json) {
 			        //to-do error handling
 		    	});
+	}
+
+	takeGlobalModCard(cardValue){
+		let index, card;
+
+		//Get the globalModCards
+		//globalModCards = JSON.parse(sessionStorage.getItem("globalModCards"));
+
+		//Find the card by name
+		index = this.globalModCards.findIndex(card => card.value == cardValue);
+
+		//Take the card out of the array
+		if (index > -1) {
+			card = this.globalModCards.splice(index, 1)[0];
+		}
+
+		//Set global cards now that we've removed one.
+		//sessionStorage.setItem("globalModCards", JSON.stringify(globalModCards));
+
+		//to-do - throw an error or instantiate the globalModCards if null
+		return card;
+	}
+
+	returnGlobalModCard(cardObj){
+		this.globalModCards.push(cardObj);
+		// Future use with Session/LocalStorate
+		// var globalModCards = JSON.parse(sessionStorage.getItem("globalModCards"));
+		// globalModCards.push(cardObj);
+		// sessionStorage.setItem("globalModCards", JSON.stringify(globalModCards));
 	}
 }

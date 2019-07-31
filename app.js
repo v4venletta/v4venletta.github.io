@@ -142,7 +142,7 @@ select.listen('MDCSelect:change', () => {
 
             if (activeCharacter.sheet.perks){  
               for (let i = 0; i < activeCharacter.sheet.perks.length; i++){
-                //Start of code to replace (icon) text with the actual icon images.
+                //Replace (icon) text with images.
                 let labelText = activeCharacter.sheet.perks[i].name.replace(/\([^)]+\)/g, (match, string) => {
                       return `<img style="height: 25px; width: 25px;" src="/images/icons/${match.substr(1, match.length-2)}.png">`;
                 });
@@ -277,63 +277,60 @@ document.getElementById("hand").addEventListener('click', (event) => {
 
 
 document.getElementById("bless").addEventListener('click', (event) => {
-    let blessingCard = {
-        "name": "am-pm-01",
-        "points": 50,
-        "image": "attack-modifiers/base/player-mod/am-pm-01.png",
-        "value": "bless",
-        "xws": "ampm01"
-    };
-    let tempDeck = activeCharacter.deck;
-    tempDeck.addCard(blessingCard);
-    let blessDeck = document.getElementById("modDeck");
-    blessDeck.src = "/images/attack-modifiers/base/player-mod/am-pm-01.png";
-    blessDeck.style.opacity = 1.0;
-    rotate = rotate + 360;
-    anime({
-        targets: '#modDeck',
-        translateX: {
-            value: [-250, 0],
-            duration: 800
-        },
-        opacity: {
-            value: 0.0,
-            delay: 800,
-            easing: 'linear'
-        },
-        rotate: rotate,
-        duration: 800
-    });
+    let blessingCard = activeCharacter.deck.takeGlobalModCard("bless");
+
+    if (blessingCard){
+      activeCharacter.deck.addCard(blessingCard);
+      let blessDeck = document.getElementById("modDeck");
+      blessDeck.src = "/images/" + blessingCard.image;
+      blessDeck.style.opacity = 1.0;
+      rotate = rotate + 360;
+      anime({
+          targets: '#modDeck',
+          translateX: {
+              value: [-250, 0],
+              duration: 800
+          },
+          opacity: {
+              value: 0.0,
+              delay: 800,
+              easing: 'linear'
+          },
+          rotate: rotate,
+          duration: 800
+      });
+    } else {
+      alert("All bless cards are currently in use");
+    }
 
 });
 document.getElementById("curse").addEventListener('click', (event) => {
-    let curseCard = {
-        "name": "am-pm-21",
-        "points": 50,
-        "image": "attack-modifiers/base/player-mod/am-pm-21.png",
-        "value": "curse",
-        "xws": "ampm21"
-    };
-    let tempDeck = activeCharacter.deck;
-    tempDeck.addCard(curseCard);
-    let curseDeck = document.getElementById("modDeck");
-    curseDeck.src = "/images/attack-modifiers/base/player-mod/am-pm-21.png";
-    curseDeck.style.opacity = 1.0;
-    rotate = rotate + 360;
-    anime({
-        targets: '#modDeck',
-        translateX: {
-            value: [-250, 0],
-            duration: 800
-        },
-        opacity: {
-            value: 0.0,
-            delay: 800,
-            easing: 'easeInOutSine'
-        },
-        rotate: rotate,
-        duration: 800
-    });
+    let curseCard = activeCharacter.deck.takeGlobalModCard("curse");
+
+    if (curseCard)
+    {
+      activeCharacter.deck.addCard(curseCard);
+      let curseDeck = document.getElementById("modDeck");
+      curseDeck.src = "/images/" + curseCard.image;
+      curseDeck.style.opacity = 1.0;
+      rotate = rotate + 360;
+      anime({
+          targets: '#modDeck',
+          translateX: {
+              value: [-250, 0],
+              duration: 800
+          },
+          opacity: {
+              value: 0.0,
+              delay: 800,
+              easing: 'easeInOutSine'
+          },
+          rotate: rotate,
+          duration: 800
+      });
+    } else {
+      alert("All curse cards are currently in use");
+    }
 });
 document.getElementById("discard").addEventListener('click', (event) => {
 
