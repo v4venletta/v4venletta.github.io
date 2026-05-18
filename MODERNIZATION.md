@@ -33,7 +33,7 @@ Known caveat:
 
 ### Phase 2: Modern Browser Shell
 
-Status: Next.
+Status: In progress.
 
 Goals:
 
@@ -41,6 +41,25 @@ Goals:
 - Create a browser-testable app shell.
 - Wire the first UI slice to `GameSession`.
 - Keep the legacy app available until the new shell can cover core flows.
+
+Completed so far:
+
+- Added a `modern.html` Vite entrypoint beside the legacy `index.html`.
+- Added a Svelte + TypeScript app shell for class selection, drawing, shuffling, scenario modifiers, discard inspection, stats, and first-pass perk application.
+- Added `src/browser-data.ts` to load existing JSON-shaped data files in the browser without changing legacy consumers.
+- Added `src/state/DeckSessionController` as a testable UI-facing state/action wrapper around `GameSession`.
+- Split the modern shell into focused Svelte components: class picker, draw stage, stats/discard panel, and perks panel.
+- Added stable `data-testid` hooks for upcoming browser tests.
+- Added Node-runner state tests for the modern shell action surface.
+- Removed the legacy webpack/Babel/node-sass dependency stack from `package.json`; the legacy checked-in bundle remains available through `index.html`.
+- Regenerated `package-lock.json` for the modern Vite/Svelte toolchain.
+- Added `node_modules/` and `dist/` to `.gitignore`.
+
+Current validation: `npm install`, `npm test`, `npm run build`, and `npm run dev` pass on modern Node.
+
+Known caveat:
+
+- `node_modules/` was previously tracked in git. The cleanup removes the tracked dependency tree from the working copy; the eventual commit should intentionally stop tracking dependency folders.
 
 Acceptance criteria:
 
@@ -67,13 +86,18 @@ Acceptance criteria:
 
 ### Phase 4: Component Rewrite
 
-Status: Not started.
+Status: Started.
 
 Goals:
 
 - Replace DOM mutation in `app.js` with Svelte components.
 - Build class selector, deck view, discard pile, modifier controls, stats, and perks dialog.
 - Move inline styles into component or global styles.
+
+Completed so far:
+
+- Added first-pass Svelte components for the class selector, draw stage, stats/discard panel, and perks panel.
+- Kept app coordination in `App.svelte` and state/action behavior in `src/state/DeckSessionController`.
 
 Acceptance criteria:
 
@@ -118,6 +142,8 @@ Acceptance criteria:
 
 ## Testing Notes
 
-- Current domain validation: `npm test`.
-- Legacy webpack build is blocked on modern Node by `node-sass@4.12.0`.
-- Browser-testable rewritten code begins in Phase 2 after the Vite/Svelte shell is introduced.
+- Current source validation: `npm test`.
+- Modern build validation: `npm run build`.
+- Modern dev server validation: `npm run dev`, then open `http://127.0.0.1:5173/modern.html`.
+- Legacy webpack build is no longer part of the npm scripts; the existing checked-in legacy bundle is still available through `index.html` during migration.
+- Browser-testable rewritten code exists under `modern.html`.
