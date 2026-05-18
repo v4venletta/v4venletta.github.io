@@ -53,6 +53,20 @@ test("controller changes class and applies active perks", () => {
   assert.equal(perked.lastDrawnCards.length, 0);
 });
 
+test("controller toggles active perks on and off", () => {
+  const controller = createController();
+
+  const enabled = controller.togglePerk(0);
+
+  assert.deepEqual(enabled.activePerks, [0]);
+  assert.equal(enabled.stats.drawPile, 18);
+
+  const disabled = controller.togglePerk(0);
+
+  assert.deepEqual(disabled.activePerks, []);
+  assert.equal(disabled.stats.drawPile, 20);
+});
+
 function createController(): DeckSessionController {
   return new DeckSessionController(loadAppData());
 }

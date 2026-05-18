@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { Character, createDeck } from "../../src/domain/index.ts";
+import { shouldShuffleAfterDraw } from "../../src/domain/deck.ts";
 import { loadAttackModifierCards, loadCharacterSheets } from "../support/load-json-data.ts";
 import type { CharacterClass } from "../../src/domain/types.ts";
 
@@ -15,6 +16,16 @@ test("real attack modifier data builds the expected Brute deck pools", () => {
   assert.equal(deck.drawPile.length, 20);
   assert.equal(deck.modPile.length, 22);
   assert.equal(deck.globalModCards.length, 35);
+});
+
+test("real player terminal cards are identified as shuffle triggers", () => {
+  const shuffleCards = loadAttackModifierCards()
+    .filter((card) => card.name.startsWith("am-p-"))
+    .filter(shouldShuffleAfterDraw)
+    .map((card) => card.name)
+    .sort();
+
+  assert.deepEqual(shuffleCards, ["am-p-19", "am-p-20"]);
 });
 
 test("real Brute perk data can remove base cards", () => {

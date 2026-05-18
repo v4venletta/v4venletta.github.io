@@ -74,7 +74,7 @@ export class Deck {
       throw new Error("Cannot draw from an empty deck");
     }
 
-    if (card.value === "x2" || card.value === "miss") {
+    if (shouldShuffleAfterDraw(card)) {
       this.shuffleNeeded = true;
     }
 
@@ -86,6 +86,10 @@ export class Deck {
   }
 
   drawCards(numCards = 1): AttackModifierCard[] {
+    if (this.shuffleNeeded) {
+      this.shuffleAll();
+    }
+
     const drawnCards: AttackModifierCard[] = [];
     const cardsToDiscard: AttackModifierCard[] = [];
 
@@ -149,6 +153,10 @@ export class Deck {
 
 function allCardsAreRolling(cards: AttackModifierCard[]): boolean {
   return cards.length > 0 && cards.every((card) => card.value === "rolling");
+}
+
+export function shouldShuffleAfterDraw(card: AttackModifierCard): boolean {
+  return card.shuffle === true || card.value === "x2" || card.value === "miss";
 }
 
 function isBaseModifier(card: AttackModifierCard): boolean {

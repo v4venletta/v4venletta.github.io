@@ -3,7 +3,7 @@
 
   export let perks: Perk[];
   export let activePerks: number[];
-  export let onApplyPerk: (perkIndex: number) => void = () => {};
+  export let onTogglePerk: (perkIndex: number) => void = () => {};
 </script>
 
 <section class="perks" aria-label="Class perks">
@@ -14,16 +14,15 @@
 
   <div class="perk-grid" data-testid="perk-list">
     {#each perks as perk, index}
-      <button
-        type="button"
-        class:active={activePerks.includes(index)}
-        disabled={activePerks.includes(index)}
-        data-testid={`perk-${index}`}
-        on:click={() => onApplyPerk(index)}
-      >
+      <label class:active={activePerks.includes(index)} class="perk-option" data-testid={`perk-${index}`}>
+        <input
+          type="checkbox"
+          checked={activePerks.includes(index)}
+          on:change={() => onTogglePerk(index)}
+        />
         <span>{index + 1}</span>
         {perk.name}
-      </button>
+      </label>
     {/each}
   </div>
 </section>

@@ -42,7 +42,7 @@
   }
 
   function applyPerk(perkIndex: number): void {
-    runSessionAction(() => controller?.applyPerk(perkIndex));
+    runSessionAction(() => controller?.togglePerk(perkIndex));
   }
 
   function runSessionAction(action: () => DeckSessionSnapshot | undefined): void {
@@ -109,7 +109,7 @@
         <StatsPanel stats={snapshot.stats} discardPile={snapshot.discardPile} {cardImage} />
       </div>
 
-      <PerksPanel perks={snapshot.perks} activePerks={snapshot.activePerks} onApplyPerk={applyPerk} />
+      <PerksPanel perks={snapshot.perks} activePerks={snapshot.activePerks} onTogglePerk={applyPerk} />
     {:else}
       <p class="error" role="alert">{errorMessage || "The app could not start."}</p>
     {/if}

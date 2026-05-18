@@ -74,6 +74,15 @@ export class DeckSessionController {
     return this.snapshot;
   }
 
+  togglePerk(perkIndex: number): DeckSessionSnapshot {
+    const nextPerks = this.session.character.activePerks.includes(perkIndex)
+      ? this.session.character.activePerks.filter((activePerk) => activePerk !== perkIndex)
+      : [...this.session.character.activePerks, perkIndex];
+
+    this.session.setActivePerks(nextPerks);
+    return this.snapshot;
+  }
+
   get snapshot(): DeckSessionSnapshot {
     const selectedClass = this.classOptions.find((option) => option.id === this.selectedClassId);
 

@@ -74,6 +74,16 @@ export class GameSession {
   }
 
   applyPerks(perkIndexes: number[]): DeckStats {
+    return this.setActivePerks(perkIndexes);
+  }
+
+  setActivePerks(perkIndexes: number[]): DeckStats {
+    if (!this.character.characterClass) {
+      throw new Error("Cannot set perks before selecting a class");
+    }
+
+    this.character.setClass(this.character.characterClass, this.sheets, this.cards);
+
     for (const perkIndex of perkIndexes) {
       this.character.applyPerk(perkIndex);
     }
