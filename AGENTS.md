@@ -25,6 +25,8 @@ Target structure:
 
 Keep the app deployable as a static GitHub Pages site. Avoid introducing a server requirement unless a future feature explicitly needs persistence beyond browser storage or static assets.
 
+For the active migration checklist, phase status, and acceptance criteria, see `MODERNIZATION.md`.
+
 ## Commands
 
 - `npm install`: install dependencies. This project uses older webpack/node-sass tooling, so a modern Node version may require dependency upgrades or an older compatible Node runtime.
