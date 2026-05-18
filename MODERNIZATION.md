@@ -25,7 +25,7 @@ Completed:
 - Added `GameSession` as a UI-facing action layer.
 - Added typed class registry and app data initializer.
 - Added tests for deck behavior, character perks, real data, class registry, and session actions.
-- Current validation: `npm test` passes with 21 tests.
+- Current validation: covered by the full `npm test` suite.
 
 Known caveat:
 
@@ -33,7 +33,7 @@ Known caveat:
 
 ### Phase 2: Modern Browser Shell
 
-Status: In progress.
+Status: Complete on `codex-phase-2-vite-shell`; ready to merge after review.
 
 Goals:
 
@@ -53,13 +53,15 @@ Completed so far:
 - Added Node-runner state tests for the modern shell action surface.
 - Removed the legacy webpack/Babel/node-sass dependency stack from `package.json`; the legacy checked-in bundle remains available through `index.html`.
 - Regenerated `package-lock.json` for the modern Vite/Svelte toolchain.
-- Added `node_modules/` and `dist/` to `.gitignore`.
+- Added `node_modules/`, `dist/`, and Playwright output folders to `.gitignore`.
+- Added Playwright configuration and browser tests for the modern shell.
+- Added perk toggles and terminal-card auto-shuffle behavior to the modern UI.
 
-Current validation: `npm install`, `npm test`, `npm run build`, and `npm run dev` pass on modern Node.
+Current validation: `npm test`, `npm run build`, and `npm run test:e2e` pass on modern Node. The browser app has also been manually validated at `http://127.0.0.1:5173/modern.html`.
 
 Known caveat:
 
-- `node_modules/` was previously tracked in git. The cleanup removes the tracked dependency tree from the working copy; the eventual commit should intentionally stop tracking dependency folders.
+- `modern.html` is still a parallel entrypoint. The legacy `index.html` remains available until the new shell fully replaces the old app and deployment is updated.
 
 Acceptance criteria:
 
@@ -86,7 +88,7 @@ Acceptance criteria:
 
 ### Phase 4: Component Rewrite
 
-Status: Started.
+Status: Started as part of Phase 2; remaining work should continue after data normalization.
 
 Goals:
 
@@ -98,6 +100,7 @@ Completed so far:
 
 - Added first-pass Svelte components for the class selector, draw stage, stats/discard panel, and perks panel.
 - Kept app coordination in `App.svelte` and state/action behavior in `src/state/DeckSessionController`.
+- Added a first-pass responsive layout and visible controls for core deck workflows.
 
 Acceptance criteria:
 
@@ -107,17 +110,22 @@ Acceptance criteria:
 
 ### Phase 5: Browser Tests
 
-Status: Not started.
+Status: Started; core modern-shell flows are covered.
 
 Goals:
 
 - Add Playwright coverage for core app flows.
 - Verify the app renders with real assets.
 
+Completed so far:
+
+- Added `@playwright/test`, `playwright.config.ts`, and `npm run test:e2e`.
+- Covered class selection, perk reset, drawing, manual shuffling, scenario modifier buttons, perk toggling, and terminal-card auto-shuffle.
+
 Acceptance criteria:
 
-- Browser tests cover class selection, drawing, shuffling, discard inspection, modifier buttons, and perk application.
-- Tests run locally and in the intended CI path.
+- Browser tests cover class selection, drawing, shuffling, discard inspection, modifier buttons, and perk application. Complete for the current modern shell.
+- Tests run locally. CI/deployment integration remains for Phase 6.
 
 ### Phase 6: Legacy Removal And Deployment
 
@@ -138,12 +146,13 @@ Acceptance criteria:
 ## Current Branches
 
 - `master`: contains Phase 1.
-- `codex-phase-2-vite-shell`: active Phase 2 branch.
+- `codex-phase-2-vite-shell`: active modernization branch with Phase 2 complete and early Phase 4/5 work.
 
 ## Testing Notes
 
-- Current source validation: `npm test`.
+- Current source validation: `npm test` passes with 34 tests.
 - Modern build validation: `npm run build`.
 - Modern dev server validation: `npm run dev`, then open `http://127.0.0.1:5173/modern.html`.
+- Browser validation: `npm run test:e2e` passes with 5 Playwright tests.
 - Legacy webpack build is no longer part of the npm scripts; the existing checked-in legacy bundle is still available through `index.html` during migration.
 - Browser-testable rewritten code exists under `modern.html`.
