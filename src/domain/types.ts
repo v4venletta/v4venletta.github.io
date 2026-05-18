@@ -28,3 +28,11 @@ export interface CharacterSheet {
   name: string;
   perks: Perk[];
 }
+
+export interface DeckStats {
+  drawPile: number;
+  discardPile: number;
+  modifierPile: number;
+  globalModifierPile: number;
+  shuffleNeeded: boolean;
+}
