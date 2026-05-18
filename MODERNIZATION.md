@@ -72,7 +72,7 @@ Acceptance criteria:
 
 ### Phase 3: Data Normalization
 
-Status: Not started.
+Status: Complete for the current modern deck workflow.
 
 Goals:
 
@@ -80,11 +80,27 @@ Goals:
 - Add validation for card, perk, class, and image-path data.
 - Remove ad hoc file-path and naming knowledge from UI code.
 
+Completed so far:
+
+- Added canonical JSON files for the modern attack modifier and character perk data used by the deck workflow.
+- Added `src/data/` as the normalized app-data entrypoint with runtime validation for attack modifier cards, character sheets, perk actions, modifier values, and perk card references.
+- Updated the modern browser loader and test helpers to use typed bundled data instead of fetching and parsing legacy `.js` data files.
+- Added tests for data normalization, placeholder character sheets, and invalid card references.
+- Moved class metadata and icon paths into `src/data/`, leaving the existing domain registry API as a compatibility adapter.
+- Added tests that validate normalized attack modifier image paths and class icon paths exist on disk.
+- Added cross-data validation so class metadata, character perk sheets, and class attack modifier card prefixes stay in sync.
+- Documented the modern/legacy data boundary in `src/data/README.md`.
+- Added parity tests to keep the modern JSON files in sync with the legacy JSON-shaped `.js` files while both app entrypoints exist.
+
+Remaining deferred work:
+
+- Broader non-deck datasets such as items, events, monsters, ability cards, and map assets can be normalized when the modern UI starts consuming them.
+
 Acceptance criteria:
 
-- Domain/session initialization uses typed data imports.
-- Tests validate data shape and key cross-references.
-- Legacy data consumers are either migrated or explicitly preserved.
+- Domain/session initialization uses typed data imports. Complete for deck workflow.
+- Tests validate data shape and key cross-references. Complete for deck workflow.
+- Legacy data consumers are either migrated or explicitly preserved. Complete; legacy `.js` data files are preserved and parity-tested.
 
 ### Phase 4: Component Rewrite
 

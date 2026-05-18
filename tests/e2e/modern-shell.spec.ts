@@ -1,6 +1,9 @@
 import { expect, test } from "@playwright/test";
 
 test.beforeEach(async ({ page }) => {
+  await page.addInitScript(() => {
+    Math.random = () => 0.5;
+  });
   await page.goto("/modern.html");
   await expect(page.getByRole("heading", { name: "Attack modifier deck" })).toBeVisible();
 });
