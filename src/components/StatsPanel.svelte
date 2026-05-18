@@ -9,19 +9,19 @@
 <aside class="side-panel" aria-label="Deck stats">
   <div class="stats-grid" data-testid="deck-stats">
     <div>
-      <span>{stats.drawPile}</span>
+      <span data-testid="draw-pile-count">{stats.drawPile}</span>
       <p>Draw</p>
     </div>
     <div>
-      <span>{stats.discardPile}</span>
+      <span data-testid="discard-pile-count">{stats.discardPile}</span>
       <p>Discard</p>
     </div>
     <div>
-      <span>{stats.modifierPile}</span>
+      <span data-testid="modifier-pile-count">{stats.modifierPile}</span>
       <p>Class mods</p>
     </div>
     <div>
-      <span>{stats.globalModifierPile}</span>
+      <span data-testid="global-modifier-pile-count">{stats.globalModifierPile}</span>
       <p>Global mods</p>
     </div>
   </div>
