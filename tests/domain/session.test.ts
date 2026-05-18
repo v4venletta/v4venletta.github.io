@@ -1,20 +1,14 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { GameSession } from "../../src/domain/index.ts";
-import { loadAttackModifierCards, loadCharacterSheets } from "../support/load-json-data.ts";
-import type { CharacterClass } from "../../src/domain/types.ts";
-
-const brute: CharacterClass = {
-  name: "brute",
-  abbr: "br",
-};
+import { createGameSession, getCharacterClass } from "../../src/domain/index.ts";
+import { loadAppData } from "../support/load-json-data.ts";
 
 test("selectClass prepares a UI-ready active character and deck stats", () => {
   const session = createSession();
 
-  const stats = session.selectClass(brute);
+  const stats = session.selectClassById("brute");
 
-  assert.equal(session.character.characterClass, brute);
+  assert.equal(session.character.characterClass, getCharacterClass("brute"));
   assert.deepEqual(stats, {
     drawPile: 20,
     discardPile: 0,
@@ -26,7 +20,7 @@ test("selectClass prepares a UI-ready active character and deck stats", () => {
 
 test("drawCard records the last drawn card and updates discard stats", () => {
   const session = createSession();
-  session.selectClass(brute);
+  session.selectClassById("brute");
 
   const card = session.drawCard();
 
@@ -38,7 +32,7 @@ test("drawCard records the last drawn card and updates discard stats", () => {
 
 test("shuffle clears drawn card state, discard pile, and shuffle warning", () => {
   const session = createSession();
-  session.selectClass(brute);
+  session.selectClassById("brute");
 
   session.drawCard();
   session.character.deck.shuffleNeeded = true;
@@ -52,7 +46,7 @@ test("shuffle clears drawn card state, discard pile, and shuffle warning", () =>
 
 test("scenario modifier actions take cards from the global pool and add them to draw pile", () => {
   const session = createSession();
-  session.selectClass(brute);
+  session.selectClassById("brute");
 
   const bless = session.addBless();
   const curse = session.addCurse();
@@ -67,7 +61,7 @@ test("scenario modifier actions take cards from the global pool and add them to 
 
 test("applyPerks exposes a multi-perk action for future UI checkboxes", () => {
   const session = createSession();
-  session.selectClass(brute);
+  session.selectClassById("brute");
 
   const stats = session.applyPerks([0, 2]);
 
@@ -80,9 +74,6 @@ test("applyPerks exposes a multi-perk action for future UI checkboxes", () => {
   assert.equal(session.character.deck.drawPile.some((card) => card.name === "am-br-10"), true);
 });
 
-function createSession(): GameSession {
-  return new GameSession({
-    cards: loadAttackModifierCards(),
-    sheets: loadCharacterSheets(),
-  });
+function createSession() {
+  return createGameSession(loadAppData());
 }

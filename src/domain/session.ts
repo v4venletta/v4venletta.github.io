@@ -1,4 +1,5 @@
 import { Character } from "./character.ts";
+import { getCharacterClass, type CharacterClassId } from "./class-registry.ts";
 import type {
   AttackModifierCard,
   CharacterClass,
@@ -30,6 +31,10 @@ export class GameSession {
     this.character.setClass(characterClass, this.sheets, this.cards);
     this.lastDrawnCards = [];
     return this.stats;
+  }
+
+  selectClassById(characterClassId: CharacterClassId): DeckStats {
+    return this.selectClass(getCharacterClass(characterClassId));
   }
 
   drawCard(): AttackModifierCard {
