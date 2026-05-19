@@ -164,6 +164,7 @@ Completed so far:
 - Archived the previous jQuery/Material legacy page as `legacy.html` for one migration step.
 - Updated Vite and Playwright to build and exercise `/` as the production app route.
 - Added a GitHub Actions Pages workflow that tests, builds, uploads `dist/`, and deploys the static Vite output.
+- Updated the production build to copy the runtime `images/` tree into `dist/images/` so card and icon paths resolve on GitHub Pages.
 
 Acceptance criteria:
 

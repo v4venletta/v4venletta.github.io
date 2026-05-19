@@ -15,7 +15,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "build": "vite build",
+    "build": "vite build && npm run copy:images",
+    "copy:images": "mkdir -p dist/images && cp -R images/. dist/images/",
     "dev": "vite --host 127.0.0.1",
     "preview": "vite preview --host 127.0.0.1",
     "start": "npm run dev",
