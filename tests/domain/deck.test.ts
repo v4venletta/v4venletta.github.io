@@ -24,6 +24,22 @@ test("drawing x2 or miss marks the deck for shuffle", () => {
   assert.equal(deck.shuffleNeeded, true);
 });
 
+test("drawing a data-flagged shuffle card marks the deck for shuffle", () => {
+  const deck = new Deck([{ ...card("am-custom-01", 1), shuffle: true }]);
+
+  deck.draw();
+
+  assert.equal(deck.shuffleNeeded, true);
+});
+
+test("drawing an unflagged non-terminal modifier does not mark the deck for shuffle", () => {
+  const deck = new Deck([card("am-p-01", 1)]);
+
+  deck.draw();
+
+  assert.equal(deck.shuffleNeeded, false);
+});
+
 test("shuffleAll combines discard and draw piles and clears shuffle warning", () => {
   const deck = new Deck([card("am-p-01", "x2"), card("am-p-02", 1)]);
 
@@ -33,6 +49,24 @@ test("shuffleAll combines discard and draw piles and clears shuffle warning", ()
   assert.equal(deck.drawPile.length, 2);
   assert.equal(deck.discardPile.length, 0);
   assert.equal(deck.shuffleNeeded, false);
+});
+
+test("draw automatically shuffles first when a shuffle warning is pending", () => {
+  const deck = new Deck([card("am-p-01", "x2"), card("am-p-02", 1)]);
+  const nextCard = card("am-p-03", 0);
+  const oldDiscard = card("am-p-04", 1);
+
+  deck.shuffle = () => {};
+  deck.drawPile = [oldDiscard];
+  deck.discardPile = [nextCard];
+  deck.shuffleNeeded = true;
+
+  const drawn = deck.draw();
+
+  assert.equal(drawn, nextCard);
+  assert.equal(deck.shuffleNeeded, false);
+  assert.equal(deck.discardPile.includes(nextCard), true);
+  assert.equal(deck.length, 2);
 });
 
 test("bless and curse cards return to the global modifier pool instead of discard", () => {

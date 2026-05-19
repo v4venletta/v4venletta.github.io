@@ -74,6 +74,33 @@ test("applyPerks exposes a multi-perk action for future UI checkboxes", () => {
   assert.equal(session.character.deck.drawPile.some((card) => card.name === "am-br-10"), true);
 });
 
+test("setActivePerks rebuilds the class deck from the requested perk set", () => {
+  const session = createSession();
+  session.selectClassById("brute");
+
+  session.applyPerks([0, 2]);
+  const stats = session.setActivePerks([2]);
+
+  assert.equal(stats.drawPile, 22);
+  assert.deepEqual(session.character.activePerks, [2]);
+  assert.equal(session.character.deck.drawPile.some((card) => card.name === "am-p-12"), true);
+  assert.equal(session.character.deck.drawPile.some((card) => card.name === "am-p-13"), true);
+  assert.equal(session.character.deck.drawPile.some((card) => card.name === "am-br-09"), true);
+  assert.equal(session.character.deck.drawPile.some((card) => card.name === "am-br-10"), true);
+});
+
+test("setActivePerks clears transient draw state", () => {
+  const session = createSession();
+  session.selectClassById("brute");
+  session.drawCard();
+
+  const stats = session.setActivePerks([]);
+
+  assert.deepEqual(session.lastDrawnCards, []);
+  assert.equal(stats.drawPile, 20);
+  assert.equal(stats.discardPile, 0);
+});
+
 function createSession() {
   return createGameSession(loadAppData());
 }

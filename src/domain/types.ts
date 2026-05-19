@@ -4,6 +4,7 @@ export interface AttackModifierCard {
   name: string;
   image: string;
   value?: ModifierValue;
+  shuffle?: boolean;
   points?: number;
   xws?: string;
   conditions?: string[];
