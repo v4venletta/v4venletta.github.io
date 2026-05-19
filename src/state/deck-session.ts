@@ -22,6 +22,7 @@ export interface DeckSessionSnapshot {
 
 export type DeckSessionAction =
   | "draw"
+  | "drawTwo"
   | "shuffle"
   | "bless"
   | "curse"
@@ -51,6 +52,9 @@ export class DeckSessionController {
     switch (action) {
       case "draw":
         this.session.drawCard();
+        break;
+      case "drawTwo":
+        this.session.drawCards(2);
         break;
       case "shuffle":
         this.session.shuffle();

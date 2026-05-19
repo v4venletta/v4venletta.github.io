@@ -44,24 +44,24 @@ Goals:
 
 Completed so far:
 
-- Added a `modern.html` Vite entrypoint beside the legacy `index.html`.
+- Added a `modern.html` Vite entrypoint beside the legacy `index.html`; Phase 6 prep later promoted this to `index.html`.
 - Added a Svelte + TypeScript app shell for class selection, drawing, shuffling, scenario modifiers, discard inspection, stats, and first-pass perk application.
 - Added `src/browser-data.ts` to load existing JSON-shaped data files in the browser without changing legacy consumers.
 - Added `src/state/DeckSessionController` as a testable UI-facing state/action wrapper around `GameSession`.
 - Split the modern shell into focused Svelte components: class picker, draw stage, stats/discard panel, and perks panel.
 - Added stable `data-testid` hooks for upcoming browser tests.
 - Added Node-runner state tests for the modern shell action surface.
-- Removed the legacy webpack/Babel/node-sass dependency stack from `package.json`; the legacy checked-in bundle remains available through `index.html`.
+- Removed the legacy webpack/Babel/node-sass dependency stack from `package.json`; the legacy checked-in bundle remains available through `legacy.html`.
 - Regenerated `package-lock.json` for the modern Vite/Svelte toolchain.
 - Added `node_modules/`, `dist/`, and Playwright output folders to `.gitignore`.
 - Added Playwright configuration and browser tests for the modern shell.
 - Added perk toggles and terminal-card auto-shuffle behavior to the modern UI.
 
-Current validation: `npm test`, `npm run build`, and `npm run test:e2e` pass on modern Node. The browser app has also been manually validated at `http://127.0.0.1:5173/modern.html`.
+Current validation: `npm test`, `npm run build`, and `npm run test:e2e` pass on modern Node. The browser app has also been manually validated at `http://127.0.0.1:5173/`.
 
 Known caveat:
 
-- `modern.html` is still a parallel entrypoint. The legacy `index.html` remains available until the new shell fully replaces the old app and deployment is updated.
+- Superseded by Phase 6 prep: the modern shell now owns `index.html`, and the legacy page has been archived as `legacy.html`.
 
 Acceptance criteria:
 
@@ -117,6 +117,11 @@ Completed so far:
 - Added first-pass Svelte components for the class selector, draw stage, stats/discard panel, and perks panel.
 - Kept app coordination in `App.svelte` and state/action behavior in `src/state/DeckSessionController`.
 - Added a first-pass responsive layout and visible controls for core deck workflows.
+- Added the legacy two-card draw workflow to the modern draw stage for advantage/disadvantage-style checks.
+- Added expandable discard inspection so the modern shell can show the full discard pile when more than eight cards are present.
+- Restored perk symbol rendering in the modern perks panel using existing icon assets for tokens such as rolling, wound, push, and elements.
+- Tightened mobile draw-stage layout so attack modifier cards keep their landscape ratio, avoid horizontal overflow, and display two-card draws side by side.
+- Improved the mobile perks layout by switching the icon-heavy perk list to a single readable column on narrow screens.
 
 Acceptance criteria:
 
@@ -145,13 +150,19 @@ Acceptance criteria:
 
 ### Phase 6: Legacy Removal And Deployment
 
-Status: Not started.
+Status: Started.
 
 Goals:
 
 - Remove webpack 3, Babel 6/7 legacy build pieces, `node-sass`, jQuery, old Material Components packages, and unused local package indirection.
 - Decide whether generated assets are committed or built in deployment.
 - Configure GitHub Pages deployment for the Vite build.
+
+Completed so far:
+
+- Promoted the Svelte/Vite app from `modern.html` to the primary `index.html` entrypoint.
+- Archived the previous jQuery/Material legacy page as `legacy.html` for one migration step.
+- Updated Vite and Playwright to build and exercise `/` as the production app route.
 
 Acceptance criteria:
 
@@ -168,7 +179,7 @@ Acceptance criteria:
 
 - Current source validation: `npm test` passes with 34 tests.
 - Modern build validation: `npm run build`.
-- Modern dev server validation: `npm run dev`, then open `http://127.0.0.1:5173/modern.html`.
+- Modern dev server validation: `npm run dev`, then open `http://127.0.0.1:5173/`.
 - Browser validation: `npm run test:e2e` passes with 5 Playwright tests.
-- Legacy webpack build is no longer part of the npm scripts; the existing checked-in legacy bundle is still available through `index.html` during migration.
-- Browser-testable rewritten code exists under `modern.html`.
+- Legacy webpack build is no longer part of the npm scripts; the existing checked-in legacy bundle is still available through `legacy.html` during migration.
+- Browser-testable rewritten code now owns `index.html`.

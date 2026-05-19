@@ -39,6 +39,9 @@
     <button type="button" class="primary" data-testid="draw-card" on:click={() => onAction("draw")}>
       Draw
     </button>
+    <button type="button" data-testid="draw-two-cards" on:click={() => onAction("drawTwo")}>
+      Draw 2
+    </button>
     <button type="button" data-testid="shuffle-deck" on:click={() => onAction("shuffle")}>
       Shuffle
     </button>
@@ -48,7 +51,7 @@
     <button type="button" data-testid="add-curse" on:click={() => onAction("curse")}>
       Curse
     </button>
-    <button type="button" data-testid="add-minus-one" on:click={() => onAction("minusOne")}>
+    <button type="button" class="compact" data-testid="add-minus-one" on:click={() => onAction("minusOne")}>
       -1
     </button>
   </div>

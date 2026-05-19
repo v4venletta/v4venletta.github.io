@@ -66,6 +66,10 @@
     return assetPath(path);
   }
 
+  function perkIcon(token: string): string {
+    return assetPath(`images/icons/${token}.png`);
+  }
+
   function cardValue(card: AttackModifierCard): string {
     return card.value === undefined ? "Special" : String(card.value);
   }
@@ -109,7 +113,12 @@
         <StatsPanel stats={snapshot.stats} discardPile={snapshot.discardPile} {cardImage} />
       </div>
 
-      <PerksPanel perks={snapshot.perks} activePerks={snapshot.activePerks} onTogglePerk={applyPerk} />
+      <PerksPanel
+        perks={snapshot.perks}
+        activePerks={snapshot.activePerks}
+        iconPath={perkIcon}
+        onTogglePerk={applyPerk}
+      />
     {:else}
       <p class="error" role="alert">{errorMessage || "The app could not start."}</p>
     {/if}

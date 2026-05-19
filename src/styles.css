@@ -166,6 +166,7 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 16px;
   min-height: 100%;
   padding: 16px;
@@ -182,10 +183,14 @@ h2 {
 }
 
 .drawn-card img {
-  width: min(230px, 42vw);
-  aspect-ratio: 0.69;
+  width: min(240px, 34vw);
+  aspect-ratio: 1.5;
   object-fit: contain;
   filter: drop-shadow(0 18px 20px rgb(30 24 18 / 22%));
+}
+
+.drawn-card:only-child img {
+  width: min(320px, 70vw);
 }
 
 .drawn-card figcaption,
@@ -198,8 +203,10 @@ h2 {
 .empty-draw {
   display: grid;
   place-items: center;
-  width: min(260px, 100%);
-  aspect-ratio: 0.69;
+  align-content: center;
+  gap: 0.75rem;
+  width: min(360px, 100%);
+  aspect-ratio: 1.5;
   border: 2px solid #3a3029;
   border-radius: 8px;
   background: #2f3a35;
@@ -208,14 +215,14 @@ h2 {
 }
 
 .empty-draw p {
-  margin: -5rem 0 0;
+  margin: 0;
   color: #d8caa8;
   font-weight: 700;
 }
 
 .actions {
   display: grid;
-  grid-template-columns: 1.4fr repeat(4, minmax(74px, 1fr));
+  grid-template-columns: 1.3fr repeat(5, minmax(70px, 1fr));
   gap: 0.6rem;
 }
 
@@ -228,6 +235,10 @@ h2 {
 
 .actions .primary:hover {
   background: #254f52;
+}
+
+.actions .compact {
+  min-width: 54px;
 }
 
 .side-panel {
@@ -279,10 +290,31 @@ h2 {
   gap: 0.8rem;
 }
 
+.panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.text-button {
+  min-height: 36px;
+  padding: 0.35rem 0.65rem;
+  border-color: rgb(58 48 41 / 32%);
+  background: transparent;
+  font-weight: 800;
+}
+
 .mini-card-list {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0.5rem;
+}
+
+.discard-list.expanded .mini-card-list {
+  max-height: 520px;
+  overflow: auto;
+  padding-right: 0.25rem;
 }
 
 .mini-card-list img {
@@ -337,7 +369,7 @@ h2 {
   accent-color: #2f5f63;
 }
 
-.perk-option span {
+.perk-number {
   display: grid;
   place-items: center;
   width: 2rem;
@@ -346,6 +378,21 @@ h2 {
   background: #d7c394;
   color: #211b15;
   font-weight: 800;
+}
+
+.perk-name {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.15rem 0.25rem;
+  min-width: 0;
+}
+
+.perk-icon {
+  width: 1.45rem;
+  height: 1.45rem;
+  object-fit: contain;
+  vertical-align: middle;
 }
 
 .perk-option.active {
@@ -374,5 +421,19 @@ h2 {
 
   .actions {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .perk-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .perk-option {
+    grid-template-columns: auto 2rem minmax(0, 1fr);
+  }
+
+  .perk-name {
+    font-size: 0.98rem;
   }
 }

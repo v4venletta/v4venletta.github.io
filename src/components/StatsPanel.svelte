@@ -4,6 +4,15 @@
   export let stats: DeckStats;
   export let discardPile: AttackModifierCard[];
   export let cardImage: (card: AttackModifierCard) => string;
+
+  let showFullDiscard = false;
+
+  $: visibleDiscardPile = showFullDiscard
+    ? discardPile.slice().reverse()
+    : discardPile.slice().reverse().slice(0, 8);
+  $: if (discardPile.length === 0) {
+    showFullDiscard = false;
+  }
 </script>
 
 <aside class="side-panel" aria-label="Deck stats">
@@ -30,13 +39,27 @@
     {stats.shuffleNeeded ? "Shuffle needed" : "Deck clean"}
   </div>
 
-  <section class="discard-list" aria-label="Discard pile">
-    <h2>Discard</h2>
+  <section class:expanded={showFullDiscard} class="discard-list" aria-label="Discard pile">
+    <div class="panel-heading">
+      <h2>Discard</h2>
+      {#if discardPile.length > 8}
+        <button
+          type="button"
+          class="text-button"
+          data-testid="toggle-discard-pile"
+          aria-expanded={showFullDiscard}
+          on:click={() => (showFullDiscard = !showFullDiscard)}
+        >
+          {showFullDiscard ? "Recent" : "All"}
+        </button>
+      {/if}
+    </div>
+
     {#if discardPile.length === 0}
       <p class="muted">No cards discarded.</p>
     {:else}
       <div class="mini-card-list" data-testid="discard-pile">
-        {#each discardPile.slice().reverse().slice(0, 8) as card}
+        {#each visibleDiscardPile as card}
           <img src={cardImage(card)} alt={card.name} title={card.name} />
         {/each}
       </div>

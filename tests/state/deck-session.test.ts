@@ -28,6 +28,16 @@ test("controller updates snapshot after drawing and shuffling", () => {
   assert.equal(shuffled.stats.discardPile, 0);
 });
 
+test("controller can draw two cards for advantage-style flows", () => {
+  const controller = createController();
+
+  const drawn = controller.run("drawTwo");
+
+  assert.equal(drawn.lastDrawnCards.length, 2);
+  assert.equal(drawn.stats.drawPile, 18);
+  assert.equal(drawn.stats.discardPile, 2);
+});
+
 test("controller exposes scenario modifier actions", () => {
   const controller = createController();
 
