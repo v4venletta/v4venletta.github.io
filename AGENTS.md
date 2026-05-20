@@ -2,18 +2,20 @@
 
 ## Project Overview
 
-This is a static Gloomhaven attack modifier/card data app. The browser entrypoint is `index.html`; the app source is `app.js` plus `app.scss`, bundled by webpack into the checked-in `bundle.js` and `bundle.css`.
+This is a static Gloomhaven attack modifier/card data app. The browser entrypoint is `index.html`; the app source lives in `src/` and is built by Vite.
 
 The repository also contains reusable Gloomhaven data and assets:
 
 - `data/`: JavaScript/JSON data files for cards, perks, events, items, monsters, and related content.
 - `images/`: card, icon, map, and token images used by the app and downstream consumers.
-- `local_modules/deck` and `local_modules/character`: local npm packages imported as `deck` and `character`.
-- `source/`, `lib/`, `src/`, and top-level `utility.js`: older/supporting module sources; inspect call sites before changing them.
+- `src/domain/`: framework-independent TypeScript for deck, character, perk, modifier, and rule behavior.
+- `src/data/`: typed app data and validation for the modern deck workflow.
+- `src/components/`: Svelte UI components.
+- `src/state/`: UI-facing session state and actions.
 
 ## Modernization Target
 
-The recommended target state is a static TypeScript app built with Vite. Prefer Svelte + TypeScript for the UI because the app is mostly reactive state around a small card/deck workflow. React + TypeScript is an acceptable alternative if team familiarity matters more than minimal UI boilerplate.
+The target state is a static TypeScript app built with Vite and Svelte. The modern app is now the primary deployed experience.
 
 Target structure:
 
@@ -29,26 +31,18 @@ For the active migration checklist, phase status, and acceptance criteria, see `
 
 ## Commands
 
-- `npm install`: install dependencies. This project uses older webpack/node-sass tooling, so a modern Node version may require dependency upgrades or an older compatible Node runtime.
-- `npm run build`: run `webpack -p` and regenerate `bundle.js` / `bundle.css`.
-- `npm start`: run `webpack-dev-server`.
-
-There is no formal automated test suite configured in `package.json`. For behavior changes, verify with a local browser/dev server and exercise class selection, drawing, shuffling, bless/curse/-1 modifiers, and perk changes.
-
-Target commands after modernization:
-
+- `npm install`: install dependencies.
 - `npm run dev`: start the Vite development server.
 - `npm run build`: type-check and build the static production bundle.
 - `npm run preview`: preview the production build locally.
-- `npm test`: run Vitest domain/unit tests.
+- `npm test`: run Node test-runner domain/unit tests.
 - `npm run test:e2e`: run Playwright browser flows.
 
 ## Coding Notes
 
-- Preserve the existing plain JavaScript style unless a larger modernization is explicitly requested.
-- `app.js` relies on browser globals from `index.html`, including jQuery and Material Components assets loaded from CDNs.
+- Prefer TypeScript for new app code and keep framework-independent behavior in `src/domain/`.
 - Image and data paths are mostly root-relative, such as `/images/...` and `../data/...`; check behavior under the intended GitHub Pages base path before changing paths.
-- The app stores character state in browser storage through the `Character` module. Be careful when changing storage keys or object shapes.
+- The app stores selected class/perk state in browser storage through `DeckSessionController`. Be careful when changing storage keys or object shapes.
 - When modifying `data/` files, keep exported object/array shapes compatible with existing consumers and avoid broad formatting churn.
 - When adding images, keep file sizes reasonable and preserve the existing directory naming conventions.
 
@@ -65,4 +59,4 @@ Target commands after modernization:
 ## Git Hygiene
 
 - Do not commit generated dependency folders or local OS files. This repo currently has untracked `.DS_Store` files; leave them alone unless explicitly asked to clean them up.
-- If source files change, rebuild only when the generated `bundle.js` / `bundle.css` are intended to be updated.
+- The production build output lives in `dist/` and is deployed by GitHub Actions; do not commit generated build output.

@@ -1,6 +1,14 @@
-# Gloomhaven
+# Gloomhaven Attack Modifier App
 
-An easy-to-use collection of data and images from [Gloomhaven] (http://www.cephalofair.com/gloomhaven) by [Cephalofair Games] (http://www.cephalofair.com/) [Developer: Isaac Childres].
+A static Gloomhaven attack modifier deck app built with Vite, Svelte, and TypeScript. It also preserves reusable Gloomhaven data and images from [Gloomhaven](http://www.cephalofair.com/gloomhaven) by [Cephalofair Games](http://www.cephalofair.com/) [Developer: Isaac Childres].
+
+## Development
+
+- `npm install`: install dependencies.
+- `npm run dev`: start the local Vite dev server.
+- `npm test`: run domain, data, and state tests.
+- `npm run build`: build the static GitHub Pages output in `dist/`.
+- `npm run test:e2e`: run Playwright browser flows.
 
 ## What's included
 
@@ -17,7 +25,7 @@ This repository contains data and images for the following components:
 - personal-goals
 - random-dungeons
 
-There are two top-level directories; `data` and `images`.
+The primary app source lives in `src/`. The reusable content lives in `data/` and `images/`.
 
 ### data
 
@@ -37,7 +45,7 @@ The easiest way to do this is via [Git submodule](https://git-scm.com/book/en/v2
 
 ## Bugs / Issues
 
-Please [open a ticket](https://github.com/any2cards/gloomhaven/issues/new) on Github.
+Please open an issue in this repository.
 
 ## Contributing
 
@@ -78,4 +86,3 @@ This work would not have been possible without the invaluable help and guidance 
 ---
 
 Gloomhaven: Gloomhaven and all related properties, images and text are owned by Cephalofair Games.
-
