@@ -56,6 +56,26 @@
     </button>
   </div>
 
+  <div class="reset-actions" aria-label="Reset and history controls">
+    <button
+      type="button"
+      data-testid="undo-action"
+      disabled={!snapshot.canUndo}
+      on:click={() => onAction("undo")}
+    >
+      Undo
+    </button>
+    <button type="button" data-testid="reset-scenario" on:click={() => onAction("resetScenario")}>
+      Reset scenario
+    </button>
+    <button type="button" data-testid="reset-base-deck" on:click={() => onAction("resetBaseDeck")}>
+      Reset base deck
+    </button>
+    <button type="button" data-testid="reset-character" on:click={() => onAction("resetCharacter")}>
+      Reset character
+    </button>
+  </div>
+
   {#if errorMessage}
     <p class="error" role="alert">{errorMessage}</p>
   {/if}

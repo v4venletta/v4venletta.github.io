@@ -122,6 +122,9 @@ Completed so far:
 - Restored perk symbol rendering in the modern perks panel using existing icon assets for tokens such as rolling, wound, push, and elements.
 - Tightened mobile draw-stage layout so attack modifier cards keep their landscape ratio, avoid horizontal overflow, and display two-card draws side by side.
 - Improved the mobile perks layout by switching the icon-heavy perk list to a single readable column on narrow screens.
+- Added four independent character slots to the modern UI so class, perk, deck, discard, and scenario modifier state can be managed per character.
+- Added global undo for the latest mutating deck/session action.
+- Added reset controls for scenario state, the active base deck, and the active character slot.
 
 Acceptance criteria:
 
@@ -142,6 +145,7 @@ Completed so far:
 
 - Added `@playwright/test`, `playwright.config.ts`, and `npm run test:e2e`.
 - Covered class selection, perk reset, drawing, manual shuffling, scenario modifier buttons, perk toggling, and terminal-card auto-shuffle.
+- Covered undo, independent character slots, and scenario/base-deck/character reset controls.
 
 Acceptance criteria:
 

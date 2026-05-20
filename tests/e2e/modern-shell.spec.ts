@@ -81,6 +81,65 @@ test("adds scenario modifiers to the draw pile", async ({ page }) => {
   await expect(page.getByTestId("global-modifier-pile-count")).toHaveText("32");
 });
 
+test("undo restores the previous active character deck state", async ({ page }) => {
+  await expect(page.getByTestId("undo-action")).toBeDisabled();
+
+  await page.getByTestId("draw-card").click();
+
+  await expect(page.getByTestId("draw-pile-count")).toHaveText("19");
+  await expect(page.getByTestId("undo-action")).toBeEnabled();
+
+  await page.getByTestId("undo-action").click();
+
+  await expect(page.getByTestId("draw-pile-count")).toHaveText("20");
+  await expect(page.getByText("No cards discarded.")).toBeVisible();
+  await expect(page.getByTestId("undo-action")).toBeDisabled();
+});
+
+test("keeps separate state for multiple characters", async ({ page }) => {
+  await page.getByTestId("class-picker").selectOption("spellweaver");
+  await page.getByTestId("perk-0").getByRole("checkbox").check();
+
+  await page.getByTestId("character-slot-1").click();
+
+  await expect(
+    page.getByLabel("Draw controls and current card").getByText("brute", { exact: true }),
+  ).toBeVisible();
+  await expect(page.getByText("0 active")).toBeVisible();
+
+  await page.getByTestId("character-slot-0").click();
+
+  await expect(
+    page.getByLabel("Draw controls and current card").getByText("spellweaver", { exact: true }),
+  ).toBeVisible();
+  await expect(page.getByText("1 active")).toBeVisible();
+});
+
+test("resets scenario, base deck, and active character state", async ({ page }) => {
+  await page.getByTestId("perk-0").getByRole("checkbox").check();
+  await page.getByTestId("add-bless").click();
+  await page.getByTestId("draw-card").click();
+
+  await page.getByTestId("reset-scenario").click();
+
+  await expect(page.getByTestId("draw-pile-count")).toHaveText("18");
+  await expect(page.getByTestId("discard-pile-count")).toHaveText("0");
+  await expect(page.getByTestId("global-modifier-pile-count")).toHaveText("35");
+  await expect(page.getByText("1 active")).toBeVisible();
+
+  await page.getByTestId("reset-base-deck").click();
+
+  await expect(page.getByTestId("draw-pile-count")).toHaveText("20");
+  await expect(page.getByText("0 active")).toBeVisible();
+
+  await page.getByTestId("class-picker").selectOption("spellweaver");
+  await page.getByTestId("reset-character").click();
+
+  await expect(
+    page.getByLabel("Draw controls and current card").getByText("brute", { exact: true }),
+  ).toBeVisible();
+});
+
 test("toggles perks on and off", async ({ page }) => {
   const firstPerk = page.getByTestId("perk-0").getByRole("checkbox");
 

@@ -1,12 +1,11 @@
 # to-do
 
--Add global undo functionality
--Add support for multiple characters
--Add "Reset Button"
---Scenario
---Base Deck
---Character
--Add auto removal of curse and bless cards when drawn
--Add a value attribute to all attack modifier cards
--Add a conditions array attribute to all attack modifier cards
--
+- [x] Add global undo functionality
+- [x] Add support for multiple characters
+- [x] Add reset buttons
+  - [x] Scenario
+  - [x] Base deck
+  - [x] Character
+- [x] Add auto removal of curse and bless cards when drawn
+- [ ] Add a value attribute to all attack modifier cards
+- [ ] Add a conditions array attribute to all attack modifier cards

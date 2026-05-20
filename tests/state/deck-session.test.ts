@@ -6,10 +6,13 @@ import { loadAppData } from "../support/load-json-data.ts";
 test("controller creates a UI snapshot for the default class", () => {
   const controller = createController();
 
+  assert.equal(controller.snapshot.characters.length, 4);
+  assert.equal(controller.snapshot.activeCharacterIndex, 0);
   assert.equal(controller.snapshot.selectedClassId, "brute");
   assert.equal(controller.snapshot.selectedClass.name, "brute");
   assert.equal(controller.snapshot.stats.drawPile, 20);
   assert.equal(controller.snapshot.perks.length > 0, true);
+  assert.equal(controller.snapshot.canUndo, false);
 });
 
 test("controller updates snapshot after drawing and shuffling", () => {
@@ -49,6 +52,22 @@ test("controller exposes scenario modifier actions", () => {
   assert.equal(snapshot.stats.globalModifierPile, 32);
 });
 
+test("controller supports independent character slots", () => {
+  const controller = createController();
+
+  controller.selectClass("spellweaver");
+  controller.togglePerk(0);
+  const secondCharacter = controller.selectCharacter(1);
+
+  assert.equal(secondCharacter.selectedClassId, "brute");
+  assert.deepEqual(secondCharacter.activePerks, []);
+
+  const firstCharacter = controller.selectCharacter(0);
+
+  assert.equal(firstCharacter.selectedClassId, "spellweaver");
+  assert.deepEqual(firstCharacter.activePerks, [0]);
+});
+
 test("controller changes class and applies active perks", () => {
   const controller = createController();
 
@@ -75,6 +94,57 @@ test("controller toggles active perks on and off", () => {
 
   assert.deepEqual(disabled.activePerks, []);
   assert.equal(disabled.stats.drawPile, 20);
+});
+
+test("controller can undo the last mutating action", () => {
+  const controller = createController();
+
+  controller.run("draw");
+  assert.equal(controller.snapshot.stats.drawPile, 19);
+  assert.equal(controller.snapshot.canUndo, true);
+
+  const undone = controller.run("undo");
+
+  assert.equal(undone.stats.drawPile, 20);
+  assert.equal(undone.stats.discardPile, 0);
+  assert.equal(undone.lastDrawnCards.length, 0);
+  assert.equal(undone.canUndo, false);
+});
+
+test("controller resets scenario modifiers while preserving character perks", () => {
+  const controller = createController();
+
+  controller.togglePerk(0);
+  controller.run("bless");
+  controller.run("curse");
+  controller.run("draw");
+  const reset = controller.run("resetScenario");
+
+  assert.deepEqual(reset.activePerks, [0]);
+  assert.equal(reset.stats.drawPile, 18);
+  assert.equal(reset.stats.discardPile, 0);
+  assert.equal(reset.stats.globalModifierPile, 35);
+  assert.equal(reset.lastDrawnCards.length, 0);
+});
+
+test("controller resets the active base deck and active character", () => {
+  const controller = createController();
+
+  controller.togglePerk(0);
+  controller.run("bless");
+  const baseDeck = controller.run("resetBaseDeck");
+
+  assert.equal(baseDeck.selectedClassId, "brute");
+  assert.deepEqual(baseDeck.activePerks, []);
+  assert.equal(baseDeck.stats.drawPile, 20);
+  assert.equal(baseDeck.stats.globalModifierPile, 35);
+
+  controller.selectClass("spellweaver");
+  const character = controller.run("resetCharacter");
+
+  assert.equal(character.selectedClassId, "brute");
+  assert.deepEqual(character.activePerks, []);
+  assert.equal(character.stats.drawPile, 20);
 });
 
 function createController(): DeckSessionController {
