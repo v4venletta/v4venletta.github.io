@@ -150,7 +150,7 @@ Acceptance criteria:
 
 ### Phase 6: Legacy Removal And Deployment
 
-Status: Started.
+Status: Complete for the primary app migration.
 
 Goals:
 
@@ -166,23 +166,23 @@ Completed so far:
 - Added a GitHub Actions Pages workflow that tests, builds, uploads `dist/`, and deploys the static Vite output.
 - Updated the production build to copy the runtime `images/` tree into `dist/images/` so card and icon paths resolve on GitHub Pages.
 - Removed the temporary `legacy.html` page and old checked-in `bundle.js` / `bundle.css` artifacts now that the modern app is deployed from `dist/`.
+- Removed the obsolete webpack entrypoints, Bower metadata, old HTML harnesses, local `deck`/`character` package shims, and unused browser-global source files.
 
 Acceptance criteria:
 
 - Dependency vulnerabilities from the old build stack are eliminated or materially reduced. Complete for npm dependencies; legacy generated bundles have also been removed.
 - `npm install`, `npm run build`, and deployment work on a modern Node runtime.
-- Legacy bundles and obsolete source paths are removed or documented if retained.
+- Legacy bundles and obsolete source paths are removed or documented if retained. Complete for the old browser app source.
 
 ## Current Branches
 
-- `master`: contains Phase 1.
-- `codex-phase-2-vite-shell`: active modernization branch with Phase 2 complete and early Phase 4/5 work.
+- `master`: primary branch with the Vite/Svelte app and GitHub Pages deployment.
 
 ## Testing Notes
 
-- Current source validation: `npm test` passes with 34 tests.
+- Current source validation: `npm test` passes with the modern domain, data, and state tests.
 - Modern build validation: `npm run build`.
 - Modern dev server validation: `npm run dev`, then open `http://127.0.0.1:5173/`.
 - Browser validation: `npm run test:e2e` passes with 5 Playwright tests.
-- Legacy webpack build is no longer part of the npm scripts, and the temporary `legacy.html` plus checked-in `bundle.js` / `bundle.css` have been removed.
+- Legacy webpack build is no longer part of the npm scripts, and the temporary legacy page, checked-in bundles, and obsolete source paths have been removed.
 - Browser-testable rewritten code now owns `index.html`.
