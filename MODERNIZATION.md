@@ -51,7 +51,7 @@ Completed so far:
 - Split the modern shell into focused Svelte components: class picker, draw stage, stats/discard panel, and perks panel.
 - Added stable `data-testid` hooks for upcoming browser tests.
 - Added Node-runner state tests for the modern shell action surface.
-- Removed the legacy webpack/Babel/node-sass dependency stack from `package.json`; the legacy checked-in bundle remains available through `legacy.html`.
+- Removed the legacy webpack/Babel/node-sass dependency stack from `package.json`; the legacy checked-in bundle was later removed during Phase 6 cleanup.
 - Regenerated `package-lock.json` for the modern Vite/Svelte toolchain.
 - Added `node_modules/`, `dist/`, and Playwright output folders to `.gitignore`.
 - Added Playwright configuration and browser tests for the modern shell.
@@ -61,7 +61,7 @@ Current validation: `npm test`, `npm run build`, and `npm run test:e2e` pass on 
 
 Known caveat:
 
-- Superseded by Phase 6 prep: the modern shell now owns `index.html`, and the legacy page has been archived as `legacy.html`.
+- Superseded by Phase 6 cleanup: the modern shell now owns `index.html`, and the temporary `legacy.html` archive has been removed.
 
 Acceptance criteria:
 
@@ -165,10 +165,11 @@ Completed so far:
 - Updated Vite and Playwright to build and exercise `/` as the production app route.
 - Added a GitHub Actions Pages workflow that tests, builds, uploads `dist/`, and deploys the static Vite output.
 - Updated the production build to copy the runtime `images/` tree into `dist/images/` so card and icon paths resolve on GitHub Pages.
+- Removed the temporary `legacy.html` page and old checked-in `bundle.js` / `bundle.css` artifacts now that the modern app is deployed from `dist/`.
 
 Acceptance criteria:
 
-- Dependency vulnerabilities from the old build stack are eliminated or materially reduced.
+- Dependency vulnerabilities from the old build stack are eliminated or materially reduced. Complete for npm dependencies; legacy generated bundles have also been removed.
 - `npm install`, `npm run build`, and deployment work on a modern Node runtime.
 - Legacy bundles and obsolete source paths are removed or documented if retained.
 
@@ -183,5 +184,5 @@ Acceptance criteria:
 - Modern build validation: `npm run build`.
 - Modern dev server validation: `npm run dev`, then open `http://127.0.0.1:5173/`.
 - Browser validation: `npm run test:e2e` passes with 5 Playwright tests.
-- Legacy webpack build is no longer part of the npm scripts; the existing checked-in legacy bundle is still available through `legacy.html` during migration.
+- Legacy webpack build is no longer part of the npm scripts, and the temporary `legacy.html` plus checked-in `bundle.js` / `bundle.css` have been removed.
 - Browser-testable rewritten code now owns `index.html`.
