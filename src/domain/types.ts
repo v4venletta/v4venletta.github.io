@@ -1,4 +1,4 @@
-export type ModifierValue = number | "x2" | "miss" | "bless" | "curse" | "rolling";
+export type ModifierValue = number | "x2" | "miss" | "bless" | "curse" | "rolling" | "special";
 
 export interface AttackModifierCard {
   name: string;

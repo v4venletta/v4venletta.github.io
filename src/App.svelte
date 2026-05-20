@@ -81,7 +81,7 @@
   }
 
   function cardValue(card: AttackModifierCard): string {
-    return card.value === undefined ? "Special" : String(card.value);
+    return card.value === undefined || card.value === "special" ? "Special" : String(card.value);
   }
 
   $: classOptions = controller?.classOptions ?? [];
