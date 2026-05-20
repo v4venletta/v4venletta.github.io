@@ -72,7 +72,7 @@ Acceptance criteria:
 
 ### Phase 3: Data Normalization
 
-Status: Complete for the current modern deck workflow.
+Status: Complete for the current modern deck workflow and normalized catalog imports.
 
 Goals:
 
@@ -91,15 +91,13 @@ Completed so far:
 - Added cross-data validation so class metadata, character perk sheets, and class attack modifier card prefixes stay in sync.
 - Documented the modern/legacy data boundary in `src/data/README.md`.
 - Added parity tests to keep the modern JSON files in sync with the legacy JSON-shaped `.js` files while both app entrypoints exist.
-
-Remaining deferred work:
-
-- Broader non-deck datasets such as items, events, monsters, ability cards, and map assets can be normalized when the modern UI starts consuming them.
+- Filled attack modifier `value` and `conditions` metadata for every normalized attack modifier card, including a corrected `am-p-17` `-2` value.
+- Added canonical JSON copies, typed imports, and shape/image-path validation for broader catalog datasets: items, events, monster cards, ability cards, map tiles, and world map assets.
 
 Acceptance criteria:
 
 - Domain/session initialization uses typed data imports. Complete for deck workflow.
-- Tests validate data shape and key cross-references. Complete for deck workflow.
+- Tests validate data shape and key cross-references. Complete for deck workflow and broader catalog data.
 - Legacy data consumers are either migrated or explicitly preserved. Complete; legacy `.js` data files are preserved and parity-tested.
 
 ### Phase 4: Component Rewrite

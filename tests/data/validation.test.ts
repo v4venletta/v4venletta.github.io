@@ -12,7 +12,7 @@ test("normalizeAppData validates perk card references against attack modifier ca
   assert.throws(
     () =>
       normalizeAppData({
-        cards: [{ name: "am-p-01", image: "attack-modifiers/base/player/am-p-01.png" }],
+        cards: [{ name: "am-p-01", image: "attack-modifiers/base/player/am-p-01.png", value: 0, conditions: [] }],
         sheets: [
           {
             name: "brute perks",
@@ -33,10 +33,30 @@ test("normalizeAppData rejects unsupported modifier values", () => {
   assert.throws(
     () =>
       normalizeAppData({
-        cards: [{ name: "am-p-01", image: "attack-modifiers/base/player/am-p-01.png", value: "triple" }],
+        cards: [{ name: "am-p-01", image: "attack-modifiers/base/player/am-p-01.png", value: "triple", conditions: [] }],
         sheets: [],
       }),
     /unsupported modifier value/,
+  );
+});
+
+test("normalizeAppData requires complete attack modifier metadata", () => {
+  assert.throws(
+    () =>
+      normalizeAppData({
+        cards: [{ name: "am-p-01", image: "attack-modifiers/base/player/am-p-01.png", value: 0 }],
+        sheets: [],
+      }),
+    /missing conditions metadata/,
+  );
+
+  assert.throws(
+    () =>
+      normalizeAppData({
+        cards: [{ name: "am-p-01", image: "attack-modifiers/base/player/am-p-01.png", conditions: [] }],
+        sheets: [],
+      }),
+    /missing value metadata/,
   );
 });
 
@@ -55,7 +75,7 @@ test("normalizeAppData validates character sheets against class metadata", () =>
   assert.throws(
     () =>
       normalizeAppData({
-        cards: [{ name: "am-br-01", image: "attack-modifiers/BR/am-br-01.png" }],
+        cards: [{ name: "am-br-01", image: "attack-modifiers/BR/am-br-01.png", value: 1, conditions: [] }],
         sheets: [{ name: "unknown perks", perks: [] }],
         classes: {
           brute: { name: "brute", abbr: "br", iconPath: "/images/class-icons/brute.png" },
@@ -69,7 +89,7 @@ test("normalizeAppData validates class modifier card prefixes against class meta
   assert.throws(
     () =>
       normalizeAppData({
-        cards: [{ name: "am-p-01", image: "attack-modifiers/base/player/am-p-01.png" }],
+        cards: [{ name: "am-p-01", image: "attack-modifiers/base/player/am-p-01.png", value: 0, conditions: [] }],
         sheets: [{ name: "brute perks", perks: [] }],
         classes: {
           brute: { name: "brute", abbr: "br", iconPath: "/images/class-icons/brute.png" },

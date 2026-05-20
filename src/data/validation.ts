@@ -2,13 +2,14 @@ import type { AppData } from "../domain/app-data.ts";
 import type { AttackModifierCard, CharacterSheet, ModifierValue, Perk, PerkAction } from "../domain/types.ts";
 import type { CharacterClassData } from "./character-classes.ts";
 
-const modifierValues = new Set<ModifierValue>(["x2", "miss", "bless", "curse", "rolling"]);
+const modifierValues = new Set<ModifierValue>(["x2", "miss", "bless", "curse", "rolling", "special"]);
 const perkActionTypes = new Set<PerkAction["type"]>(["add", "remove"]);
 
 export function normalizeAppData(input: { cards: unknown; sheets: unknown; classes?: Record<string, CharacterClassData> }): AppData {
   const cards = normalizeAttackModifierCards(input.cards);
   const sheets = normalizeCharacterSheets(input.sheets);
 
+  validateAttackModifierMetadata(cards);
   validatePerkCardReferences(sheets, cards);
   if (input.classes) {
     validateClassDataReferences(input.classes, sheets, cards);
@@ -175,6 +176,18 @@ function validatePerkCardReferences(sheets: CharacterSheet[], cards: AttackModif
           }
         }
       }
+    }
+  }
+}
+
+function validateAttackModifierMetadata(cards: AttackModifierCard[]): void {
+  for (const card of cards) {
+    if (card.value === undefined) {
+      throw new Error(`Attack modifier "${card.name}" is missing value metadata`);
+    }
+
+    if (!Array.isArray(card.conditions)) {
+      throw new Error(`Attack modifier "${card.name}" is missing conditions metadata`);
     }
   }
 }

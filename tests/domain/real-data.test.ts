@@ -28,6 +28,14 @@ test("real player terminal cards are identified as shuffle triggers", () => {
   assert.deepEqual(shuffleCards, ["am-p-19", "am-p-20"]);
 });
 
+test("real attack modifier data has value and conditions metadata for every card", () => {
+  const cards = loadAttackModifierCards();
+
+  assert.equal(cards.every((card) => card.value !== undefined), true);
+  assert.equal(cards.every((card) => Array.isArray(card.conditions)), true);
+  assert.equal(cards.find((card) => card.name === "am-p-17")?.value, -2);
+});
+
 test("real Brute perk data can remove base cards", () => {
   const character = new Character("base");
 
