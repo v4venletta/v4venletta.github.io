@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import type { AttackModifierCard, CharacterClassId } from "./domain/index.ts";
   import { assetPath, loadAppData } from "./browser-data.ts";
+  import CharacterTabs from "./components/CharacterTabs.svelte";
   import ClassPicker from "./components/ClassPicker.svelte";
   import DrawStage from "./components/DrawStage.svelte";
   import PerksPanel from "./components/PerksPanel.svelte";
@@ -35,6 +36,15 @@
 
     errorMessage = "";
     snapshot = controller.selectClass(classId);
+  }
+
+  function selectCharacter(index: number): void {
+    if (!controller) {
+      return;
+    }
+
+    errorMessage = "";
+    snapshot = controller.selectCharacter(index);
   }
 
   function runAction(action: DeckSessionAction): void {
@@ -100,6 +110,12 @@
     {#if isLoading}
       <div class="status" role="status">Loading deck data...</div>
     {:else if snapshot}
+      <CharacterTabs
+        characters={snapshot.characters}
+        activeCharacterIndex={snapshot.activeCharacterIndex}
+        onSelect={selectCharacter}
+      />
+
       <div class="deck-layout">
         <DrawStage
           {snapshot}
